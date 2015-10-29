@@ -1,24 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Scrum Tool</title>
-
-
-<style>
-</style>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	
+		<title>Scrum Tool</title>
 
 
-</head>
+		<style>
+			body {
+				padding-top: 50px;
+			}
+		</style>
 
-<body>
+	</head>
 
-	<h1>CA MARCHE MAGGGUEUL !!</h1>
+	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Scrumtool</a>
+				</div>
+				<div>
+      			<ul class="nav navbar-nav">
+        			<li><a href="#">Backlog</a></li>
+        			<li><a href="#">Sprint</a></li> 
+        			<li><a href="#">Other stuff</a></li> 
+      			</ul>
+    		</div>
+			</div>
+		</nav>
+		
+		<div class="container">
 
+			<div class="jumbotron">
+				<h1>Backlog</h1>
+			</div>
+			
+			<div>
+				<table>
+					<thead>
+						<tr>
+							<th>Test</th>
+							<th>Test</th>
+							<th>Test</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>aaa</td>
+							<td>bbb</td>
+							<td>ccc</td>
+						</tr>
+					</tbody>
+			</div>
+		</div>
 
-
-</body>
+	</body>
 </html>
