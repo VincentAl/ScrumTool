@@ -12,3 +12,4 @@ NB : La base doit déjà être créée.
 
 SourceTree config OK : 
 	- Vincent
+	- Adrien
