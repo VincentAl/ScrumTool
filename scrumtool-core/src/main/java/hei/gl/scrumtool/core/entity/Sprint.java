@@ -9,10 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Entity;
 
-import org.hibernate.annotations.Entity;
 
-@SuppressWarnings("deprecation")
 @Entity
 public class Sprint {
 
@@ -34,4 +33,64 @@ public class Sprint {
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "sprint")
 	private Personne productOwner;
+
+	
+//Getters-Setters
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Time getPointDepart() {
+		return pointDepart;
+	}
+
+	public void setPointDepart(Time pointDepart) {
+		this.pointDepart = pointDepart;
+	}
+
+	public Time getPointFin() {
+		return pointFin;
+	}
+
+	public void setPointFin(Time pointFin) {
+		this.pointFin = pointFin;
+	}
+
+	public long getNumero() {
+		return numero;
+	}
+
+	public void setNumero(long numero) {
+		this.numero = numero;
+	}
+
+	public List<Story> getListeStories() {
+		return listeStories;
+	}
+
+	public void setListeStories(List<Story> listeStories) {
+		this.listeStories = listeStories;
+	}
+
+	public Personne getScrumMaster() {
+		return scrumMaster;
+	}
+
+	public void setScrumMaster(Personne scrumMaster) {
+		this.scrumMaster = scrumMaster;
+	}
+
+	public Personne getProductOwner() {
+		return productOwner;
+	}
+
+	public void setProductOwner(Personne productOwner) {
+		this.productOwner = productOwner;
+	}
+	
+	
 }

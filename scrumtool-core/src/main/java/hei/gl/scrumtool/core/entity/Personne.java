@@ -1,8 +1,8 @@
 package hei.gl.scrumtool.core.entity;
 
-import org.hibernate.annotations.Entity;
+import javax.persistence.Entity;
 
-@SuppressWarnings("deprecation")
+
 @Entity
 public class Personne {
 
