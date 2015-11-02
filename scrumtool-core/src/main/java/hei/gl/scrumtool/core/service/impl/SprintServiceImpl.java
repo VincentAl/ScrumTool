@@ -1,20 +1,27 @@
 package hei.gl.scrumtool.core.service.impl;
 
-import java.util.List;
-
-import javax.inject.Inject;
-
-import com.mysql.fabric.xmlrpc.Client;
-
 import hei.gl.scrumtool.core.dao.SprintDAO;
+import hei.gl.scrumtool.core.dao.StoryDAO;
 import hei.gl.scrumtool.core.entity.Sprint;
 import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.service.SprintService;
 
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import org.springframework.transaction.annotation.Transactional;
+
+@Named
+@Transactional
 public class SprintServiceImpl implements SprintService {
 	
 	@Inject
 	SprintDAO sprintDAO;
+
+	@Inject
+	StoryDAO storyDAO;
 
 	@Override
 	public Sprint findById(long idSprint) {
@@ -28,7 +35,6 @@ public class SprintServiceImpl implements SprintService {
 
 	@Override
 	public void ajouterStory(long idStory, long idSprint) {
-		// TODO Auto-generated method stub
 
 	}
 

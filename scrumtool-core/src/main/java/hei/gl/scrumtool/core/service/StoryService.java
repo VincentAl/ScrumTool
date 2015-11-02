@@ -16,4 +16,7 @@ public interface StoryService {
 	
 	//TODO void save(Object.Story);
 	void Supprimer(long idStory);
+	
+	public Story create(Story story);
+	
 }
