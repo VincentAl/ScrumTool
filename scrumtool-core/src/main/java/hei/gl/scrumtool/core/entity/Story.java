@@ -3,11 +3,11 @@ package hei.gl.scrumtool.core.entity;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Entity;
 
 
 @Entity
@@ -16,17 +16,15 @@ public class Story {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	
+
 	private long numero;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "story")
 	private Set<Tache> listeTaches;
-	
+
 	private String titre;
 
-	
-//Getters-Setters
+	// Getters-Setters
 	public long getId() {
 		return id;
 	}
@@ -58,6 +56,5 @@ public class Story {
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
-	
-	
+
 }
