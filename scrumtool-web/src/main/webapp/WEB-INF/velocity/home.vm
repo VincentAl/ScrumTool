@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="resources/css/Drag&Drop_CSS.css">
 	
 		<title>Scrum Tool</title>
 
@@ -83,25 +84,38 @@
 					</div>
 </div>
 			
-			<div>
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>Ideas</th>
-							<th>Approved</th>
-							<th>Next sprint</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>aaa</td>
-							<td>bbb</td>
-							<td>ccc</td>
-						</tr>
-					</tbody>
-			</div>
-		</div>
+			<div class="drag-container">
+		<ul class="drag-list">
+			<li class="drag-column drag-column-on-hold">
+				<span class="drag-column-header">
+					<h2>Ideas</h2>
+				</span>
+				<ul class="drag-inner-list" id="1">
+					<li class="drag-item"></li>
+				</ul>
+			</li>
+			<li class="drag-column drag-column-in-progress">
+				<span class="drag-column-header">
+					<h2>Approved</h2>
+				</span>
+				<ul class="drag-inner-list" id="2">
+					<li class="drag-item"></li>
+				</ul>
+			</li>
+			<li class="drag-column drag-column-needs-review">
+				<span class="drag-column-header">
+					<h2>Next Sprint</h2>
+				</span>
+				<ul class="drag-inner-list" id="3">
+					<li class="drag-item"></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 		
+		
+		<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/dragula.min.js'></script>
+	<script src="resources/js/Drag&Drop_JS.js"></script>
 
 	</body>
 </html>
