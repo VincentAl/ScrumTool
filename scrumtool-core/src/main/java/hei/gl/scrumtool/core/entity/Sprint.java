@@ -34,6 +34,24 @@ public class Sprint {
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "sprint")
 	private Personne productOwner;
 
+
+	public void addStory(Story story){
+		this.listeStories.add(story);
+	}
+	
+	public void addListStories(List<Story> stories){
+		this.listeStories.addAll(stories);
+	}
+	
+	public void removeStory(long idStory){
+		for (int i=0;i<this.listeStories.size();i++) {
+			if(this.listeStories.get(i).getId()==idStory){
+				this.listeStories.remove(i);
+				break;
+			}
+		}
+	}
+
 	
 //Getters-Setters
 	public long getId() {
@@ -75,7 +93,7 @@ public class Sprint {
 	public void setListeStories(List<Story> listeStories) {
 		this.listeStories = listeStories;
 	}
-
+	
 	public Personne getScrumMaster() {
 		return scrumMaster;
 	}
@@ -91,6 +109,5 @@ public class Sprint {
 	public void setProductOwner(Personne productOwner) {
 		this.productOwner = productOwner;
 	}
-	
-	
+
 }

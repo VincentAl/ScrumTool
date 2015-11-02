@@ -2,20 +2,21 @@ package hei.gl.scrumtool.core.service;
 
 import java.util.List;
 
+import hei.gl.scrumtool.core.entity.Sprint;
+import hei.gl.scrumtool.core.entity.Story;
+
 public interface SprintService {
 	
-	//TODO void cree(object.Sprint);
 	
-	//TODO Object.Sprint findById(long idSprint);
-	//TODO List<Object.Sprint> findAll();
+	Sprint findById(long idSprint);
+	List<Sprint> findAll();
 	
 	void ajouterStory(long idStory, long idSprint);
-	void ajouterStory(List<Long> idStories, long idSprint);
-	//TODO void ajouterStory(object.Story, long idSpring);
-	//TODO void ajouterStory(List<object.Story> Stories, long idSprint);
+	void ajouterStory(Story story, long idSpring);
+	void ajouterStory(List<Story> Stories, long idSprint);
 	
 	void enleverStory(long idStory, long idSprint);
 	
-	//TODO void save(Object.Sprint);
+	void save(Sprint sprint);
 	void sprimerSprint(long idSprint);
 }
