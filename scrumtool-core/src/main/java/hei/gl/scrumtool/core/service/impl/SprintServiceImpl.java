@@ -57,7 +57,7 @@ public class SprintServiceImpl implements SprintService {
 	}
 
 	@Override
-	public void sprimerSprint(long idSprint) {
+	public void supprimerSprint(long idSprint) {
 		sprintDAO.delete(idSprint);
 
 	}
