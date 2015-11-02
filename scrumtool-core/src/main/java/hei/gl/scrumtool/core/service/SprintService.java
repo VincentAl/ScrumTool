@@ -18,5 +18,5 @@ public interface SprintService {
 	void enleverStory(long idStory, long idSprint);
 	
 	void save(Sprint sprint);
-	void sprimerSprint(long idSprint);
+	void supprimerSprint(long idSprint);
 }

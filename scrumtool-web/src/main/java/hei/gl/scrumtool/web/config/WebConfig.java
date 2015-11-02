@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.velocity.VelocityViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages={"hei.gl.scrumtool.web.controller"})
+@ComponentScan(basePackages = { "hei.gl.scrumtool.web.controller" })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Override
@@ -20,22 +20,19 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/webjars/**").addResourceLocations("/webjars/");
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
-	
+
 	@Bean
-	public VelocityConfigurer getVelocityConfigurer(){
+	public VelocityConfigurer getVelocityConfigurer() {
 		VelocityConfigurer vc = new VelocityConfigurer();
 		vc.setResourceLoaderPath("WEB-INF/velocity");
 		return vc;
 	}
-	
+
 	@Bean
-	public VelocityViewResolver getVelocityViewResolver(){
+	public VelocityViewResolver getVelocityViewResolver() {
 		VelocityViewResolver vvr = new VelocityViewResolver();
 		vvr.setSuffix(".vm");
 		return vvr;
 	}
-	
 
 }
-
-
