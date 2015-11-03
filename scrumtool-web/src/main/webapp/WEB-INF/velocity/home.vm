@@ -5,17 +5,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="resources/css/Drag&Drop_CSS.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/backlog.css">
 	
 		<title>Scrum Tool</title>
 
-
-		<style>
-			body {
-				padding-top: 50px;
-			}
-			
-		</style>
+		
+		
 
 	</head>
 
@@ -39,10 +34,14 @@
 
 			<div class="jumbotron">
 				<h1>Backlog</h1>
-				<p>Liste des stories par cat&eacute;gorie</p>
+				<p>Drag&Drop to change status</p>
+			</div>
+				
+			<div>
+				 <button type="button" id="toggleBtn" class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></span>Add story </button>
 			</div>
 			
-			<div style="background-color:rgb(48,48,48); padding:30px" >
+			<div class="addForm" style="display:none;" >
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
@@ -81,7 +80,8 @@
 				<ul class="drag-inner-list" id="1">
 					#foreach($story in $idea)
 						<li class="drag-item">
-							$story.titre
+							<p>Title : $story.titre</p>
+							<p>Desciption : $story.description</p>
 						</li>
 					#end
 				</ul>
@@ -93,7 +93,8 @@
 				<ul class="drag-inner-list" id="2">
 					#foreach($story in $confirmed)
 						<li class="drag-item">
-							$story.titre
+							<p>Title : $story.titre</p>
+							<p>Description : $story.description</p>
 						</li>
 					#end
 				</ul>
@@ -105,7 +106,8 @@
 				<ul class="drag-inner-list" id="3">
 					#foreach($story in $next_sprint)
 						<li class="drag-item">
-							$story.titre
+							<p>Title : $story.titre</p>
+							<p>Description : $story.description</p>
 						</li>
 					#end
 				</ul>
@@ -115,7 +117,8 @@
 		
 		
 		<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/dragula.min.js'></script>
-	<script src="resources/js/Drag&Drop_JS.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="resources/js/backlog.js"></script>
 
 	</body>
 </html>
