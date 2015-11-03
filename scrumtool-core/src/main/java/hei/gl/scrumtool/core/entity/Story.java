@@ -10,20 +10,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import hei.gl.scrumtool.core.enumeration.ColonneStory;
+
 
 @Entity
 public class Story {
-	public static final int IDEA = 1;
-	public static final int CONFIRMED = 2;
-	public static final int NEXT_SPRINT = 3;
+	
+	private ColonneStory categorie;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	private long storyPoints;
-	
-	private int categorie;
 	
 	private String description;
 
@@ -67,14 +66,6 @@ public class Story {
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
-	
-	public int getCategorie() {
-		return categorie;
-	}
-
-	public void setCategorie(int categorie) {
-		this.categorie = categorie;
-	}
 
 	public Sprint getSprint() {
 		return sprint;
@@ -90,6 +81,14 @@ public class Story {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public ColonneStory getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(ColonneStory colonneStory) {
+		this.categorie = colonneStory;
 	}
 
 }

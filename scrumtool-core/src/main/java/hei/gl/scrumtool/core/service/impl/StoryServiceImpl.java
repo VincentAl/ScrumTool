@@ -2,6 +2,7 @@ package hei.gl.scrumtool.core.service.impl;
 
 import hei.gl.scrumtool.core.dao.StoryDAO;
 import hei.gl.scrumtool.core.entity.Story;
+import hei.gl.scrumtool.core.enumeration.ColonneStory;
 import hei.gl.scrumtool.core.service.StoryService;
 
 import java.util.List;
@@ -41,7 +42,7 @@ public class StoryServiceImpl implements StoryService{
 	}
 
 	@Override
-	public Set<Story> findByCategorie(int categorie) {
+	public Set<Story> findByCategorie(ColonneStory categorie) {
 		return storyDAO.findByCategorie(categorie);
 	}
 

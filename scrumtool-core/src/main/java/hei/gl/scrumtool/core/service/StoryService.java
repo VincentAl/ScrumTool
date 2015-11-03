@@ -1,6 +1,7 @@
 package hei.gl.scrumtool.core.service;
 
 import hei.gl.scrumtool.core.entity.Story;
+import hei.gl.scrumtool.core.enumeration.ColonneStory;
 
 import java.util.List;
 import java.util.Set;
@@ -20,6 +21,6 @@ public interface StoryService {
 	
 	public Story create(Story story);
 	
-	public Set<Story> findByCategorie(int categorie);
+	public Set<Story> findByCategorie(ColonneStory categorie);
 	
 }
