@@ -5,7 +5,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< HEAD
 		<link rel="stylesheet" type="text/css" href="resources/css/backlog.css">
+=======
+		<link rel="stylesheet" type="text/css" href="resources/css/dracula.min.css">
+		<link rel="stylesheet" type="text/css" href="resources/css/scrumtool.css">
+>>>>>>> feat drag and drop, gestion des ids cote js
 	
 		<title>Scrum Tool</title>
 
@@ -77,13 +82,18 @@
 				<span class="drag-column-header">
 					<h2>Ideas</h2>
 				</span>
-				<ul class="drag-inner-list" id="1">
+				<ul class="drag-inner-list" id="story_column_1" data-storycolumnid="1">
 					#foreach($story in $idea)
+<<<<<<< HEAD
 						<li class="drag-item">
 							<span class="drag-title" >$story.titre</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p>Desciption : $story.description </br>
 							<span class="badge">$story.storyPoints</span></p>
+=======
+						<li class="drag-item" data-storyid="$story.id">
+							$story.titre
+>>>>>>> feat drag and drop, gestion des ids cote js
 						</li>
 					#end
 				</ul>
@@ -92,6 +102,7 @@
 				<span class="drag-column-header">
 					<h2>Approved</h2>
 				</span>
+<<<<<<< HEAD
 				<ul class="drag-inner-list" id="2"> 
 					#foreach($story in $confirmed)
 						<li class="drag-item">
@@ -100,6 +111,13 @@
 							<p>Desciption : $story.description </br>
 							<span class="badge">$story.storyPoints</span></p>
 						</li>	
+=======
+				<ul class="drag-inner-list" id="story_column_2" data-storycolumnid="2">
+					#foreach($story in $confirmed)
+						<li class="drag-item" data-storyid="$story.id">
+							$story.titre
+						</li>
+>>>>>>> feat drag and drop, gestion des ids cote js
 					#end
 				</ul>
 			</li>
@@ -107,13 +125,18 @@
 				<span class="drag-column-header">
 					<h2>Next Sprint</h2>
 				</span>
-				<ul class="drag-inner-list" id="3">
+				<ul class="drag-inner-list" id="story_column_3" data-storycolumnid="3">
 					#foreach($story in $next_sprint)
+<<<<<<< HEAD
 						<li class="drag-item">
 							<span class="drag-title" >$story.titre</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p>Desciption : $story.description </br>
 							<span class="badge">$story.storyPoints</span></p>
+=======
+						<li class="drag-item" data-storyid="$story.id">
+							$story.titre
+>>>>>>> feat drag and drop, gestion des ids cote js
 						</li>
 					#end
 				</ul>
@@ -121,10 +144,16 @@
 		</ul>
 	</div>
 		
+<<<<<<< HEAD
 		
 		<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/dragula.min.js'></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="resources/js/backlog.js"></script>
+=======
+		<script type="text/javascript" src="resources/js/jquery.min.js"></script>
+		<script type="text/javascript" src="resources/js/dragula.min.js"></script>
+		<script type="text/javascript" src="resources/js/scrumtool.js"></script>
+>>>>>>> feat drag and drop, gestion des ids cote js
 
 	</body>
 </html>

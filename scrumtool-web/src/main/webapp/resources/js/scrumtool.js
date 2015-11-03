@@ -1,5 +1,18 @@
-dragula([
-	document.getElementById('1'),
-	document.getElementById('2'),
-	document.getElementById('3')
-])
+$(function(){
+	
+	dragula([
+		document.getElementById('story_column_1'),
+		document.getElementById('story_column_2'),
+		document.getElementById('story_column_3')
+	])
+		.on('drop', function(elem, target){
+			console.log($(elem).data('storyid'));
+			console.log($(target).data('storycolumnid'));
+		});
+	
+	
+	
+	
+	
+});
+

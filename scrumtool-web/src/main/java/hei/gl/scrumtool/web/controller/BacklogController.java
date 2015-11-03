@@ -58,4 +58,6 @@ public class BacklogController {
 		return "redirect:/";
 	}
 	
+	// @responseBody pour renvoyer du contenu brut 
+	
 }
