@@ -16,7 +16,7 @@ public interface StoryService {
 	//TODO void Deplacer(long idStory, idOldSprint,Etat);//pour permetre d'envelever une story du sprint en cour
 	
 	//TODO void save(Object.Story);
-	void Supprimer(long idStory);
+	void supprimer(long idStory);
 	
 	public Story create(Story story);
 	
