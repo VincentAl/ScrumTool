@@ -1,10 +1,10 @@
 var changeStoryCategory = function(storyId, columnId){
 	
 	$.ajax({
-		url: "",
-		methode: "PUT",
-		
-	})
+		url: "story/"+storyId+"/column/"+columnId,
+		method: "PUT",
+		success: function(){
+			console.log("ok");
+		}
+	});
 }
-
-// story

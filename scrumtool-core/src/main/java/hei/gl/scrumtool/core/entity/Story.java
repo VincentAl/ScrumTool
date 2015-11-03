@@ -16,7 +16,7 @@ import hei.gl.scrumtool.core.enumeration.ColonneStory;
 @Entity
 public class Story {
 	
-	private ColonneStory categorie;
+	private ColonneStory category;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -83,12 +83,12 @@ public class Story {
 		this.description = description;
 	}
 
-	public ColonneStory getCategorie() {
-		return categorie;
+	public ColonneStory getCategory() {
+		return category;
 	}
 
-	public void setCategorie(ColonneStory colonneStory) {
-		this.categorie = colonneStory;
+	public void setCategory(ColonneStory colonneStory) {
+		this.category = colonneStory;
 	}
 
 }

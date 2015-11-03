@@ -22,17 +22,17 @@ public class StoryServiceImpl implements StoryService{
 	StoryDAO storyDAO;
 
 	@Override
-	public Story FindById(long idStory) {
+	public Story findById(long idStory) {
 		return storyDAO.findOne(idStory);
 	}
 
 	@Override
-	public List<Story> FindALL() {
+	public List<Story> findALL() {
 		return storyDAO.findAll();
 	}
 
 	@Override
-	public void supprimer(long idStory) {
+	public void delete(long idStory) {
 		storyDAO.delete(idStory);
 	}
 	
@@ -42,8 +42,12 @@ public class StoryServiceImpl implements StoryService{
 	}
 
 	@Override
-	public Set<Story> findByCategorie(ColonneStory categorie) {
-		return storyDAO.findByCategorie(categorie);
+	public Set<Story> findByCategory(ColonneStory category) {
+		return storyDAO.findByCategory(category);
+	}
+	
+	public Story update(Story story){
+		return storyDAO.save(story);
 	}
 
 }

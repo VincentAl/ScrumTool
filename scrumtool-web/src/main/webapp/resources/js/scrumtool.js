@@ -6,11 +6,27 @@ $(function(){
 		document.getElementById('story_column_3')
 	])
 		.on('drop', function(elem, target){
-			console.log($(elem).data('storyid'));
-			console.log($(target).data('storycolumnid'));
+			changeStoryCategory($(elem).data('storyid'), $(target).data('storycolumnid'));
 		});
 	
+	$("#toggleBtn").click(function() {
+		$(".addForm").slideToggle();
+		$("#toggleBtn span").toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
+		});
 	
+	$(".btnSup").click(function(){
+		var id = $(this).attr('id');
+		var $that=$(this).parent();
+
+		$.ajax({
+			url : "story/"+id,
+			type : "DELETE",
+			success : function(){
+				$that.remove();
+			}
+		})
+		
+	});
 	
 	
 	

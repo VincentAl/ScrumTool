@@ -23,6 +23,8 @@ public interface StoryDAO extends JpaRepository<Story, Long> {
 	@Override
 	List<Story> findAll();
 	
-	Set<Story> findByCategorie(ColonneStory categorie);
+	Set<Story> findByCategory(ColonneStory category);
+	
+	
 
 }

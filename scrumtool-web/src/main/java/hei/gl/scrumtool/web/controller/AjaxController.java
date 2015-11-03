@@ -1,5 +1,9 @@
 package hei.gl.scrumtool.web.controller;
 
+import hei.gl.scrumtool.core.entity.Story;
+import hei.gl.scrumtool.core.enumeration.ColonneStory;
+import hei.gl.scrumtool.core.service.StoryService;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -10,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hei.gl.scrumtool.core.service.StoryService;
-
 @Controller
 public class AjaxController {
 	private final static Logger logger = LoggerFactory.getLogger(AjaxController.class);
@@ -20,10 +22,24 @@ public class AjaxController {
 	private StoryService storyService;
 
 	@ResponseBody
-	@RequestMapping(value = "/story/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/story/{id}", method = RequestMethod.DELETE)
 	public String deleteOneStory(@PathVariable("id") long id) {
-		storyService.supprimer(id);
-		return "";
+		storyService.delete(id);
+		return "OK";
+	}
+	
+	@ResponseBody    
+	@RequestMapping(value = "/story/{id}/column/{id_col}", method = RequestMethod.PUT)
+	public String updateOneStory(@PathVariable("id") long id, @PathVariable("id_col") long idCol) {
+		Story story = storyService.findById(id);
+		
+		for (ColonneStory col : ColonneStory.values()) {
+			if(col.getId() == idCol)
+				story.setCategory(col);
+		}
+		
+		storyService.update(story);
+		return "OK";
 	}
 
 }

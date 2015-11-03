@@ -34,10 +34,9 @@ public class BacklogController {
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home(ModelMap model){
-		
 		Map<String, Set<Story>> listStories = new HashMap();
 		for (ColonneStory colonneStory : ColonneStory.values()) {
-			listStories.put(colonneStory.getNom(), storyService.findByCategorie(colonneStory));
+			listStories.put(colonneStory.toString(), storyService.findByCategory(colonneStory));
 		}
 
 		Map<ColonneStory, String> categories = new HashMap();
