@@ -5,6 +5,10 @@ import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.service.SprintService;
 import hei.gl.scrumtool.core.service.StoryService;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -29,6 +33,20 @@ public class BacklogController {
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home(ModelMap model){
+		
+		Map<String, Set<Story>> listStories = new HashMap();
+		listStories.put("idea", storyService.findByCategorie(Story.IDEA));
+		listStories.put("confirmed", storyService.findByCategorie(Story.CONFIRMED));
+		listStories.put("next_sprint", storyService.findByCategorie(Story.NEXT_SPRINT));
+		
+		Map<Integer, String> categories = new HashMap();
+		categories.put(1, "Idea");
+		categories.put(2, "Confirmed");
+		categories.put(3, "Next sprint");
+		
+		model.addAllAttributes(listStories);
+		model.addAttribute("categories", categories);
+		model.put("story", new Story());
 		return "home";
 	}
 	
@@ -36,7 +54,7 @@ public class BacklogController {
 	public String submitForm(@ModelAttribute("story") Story story){
 		
 		storyService.create(story);
-		return "redirect:home";
+		return "redirect:/";
 	}
 	
 }

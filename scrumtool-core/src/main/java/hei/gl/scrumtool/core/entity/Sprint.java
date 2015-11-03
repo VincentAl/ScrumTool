@@ -1,6 +1,6 @@
 package hei.gl.scrumtool.core.entity;
 
-import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -19,19 +21,21 @@ public class Sprint {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	private Time pointDepart;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date pointDepart;
 
-	private Time pointFin;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date pointFin;
 
 	private long numero;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sprint")
 	private List<Story> listeStories;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "sprint")
+	@OneToOne
 	private Personne scrumMaster;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "sprint")
+	@OneToOne
 	private Personne productOwner;
 
 
@@ -53,7 +57,7 @@ public class Sprint {
 	}
 
 	
-//Getters-Setters
+	//Getters-Setters
 	public long getId() {
 		return id;
 	}
@@ -62,19 +66,19 @@ public class Sprint {
 		this.id = id;
 	}
 
-	public Time getPointDepart() {
+	public Date getPointDepart() {
 		return pointDepart;
 	}
 
-	public void setPointDepart(Time pointDepart) {
+	public void setPointDepart(Date pointDepart) {
 		this.pointDepart = pointDepart;
 	}
 
-	public Time getPointFin() {
+	public Date getPointFin() {
 		return pointFin;
 	}
 
-	public void setPointFin(Time pointFin) {
+	public void setPointFin(Date pointFin) {
 		this.pointFin = pointFin;
 	}
 

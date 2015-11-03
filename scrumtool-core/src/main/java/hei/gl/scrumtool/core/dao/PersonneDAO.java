@@ -10,9 +10,9 @@ public interface PersonneDAO extends JpaRepository<Personne, Long> {
 	@Override
 	void delete(Personne personne);
 
-	Personne findOne(String nom);
+	Personne findById(Long id);
 	
-	void savePersonne (Personne personne);
+	Personne save (Personne personne);
 
 	@Override
 	List<Personne> findAll();

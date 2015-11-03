@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan({ "hei.scrumtool.core.service" })
+@ComponentScan({ "hei.gl.scrumtool.core.service" })
 public class AppConfig {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(AppConfig.class);

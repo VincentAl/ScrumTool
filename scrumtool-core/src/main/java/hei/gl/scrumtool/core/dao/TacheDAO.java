@@ -17,10 +17,9 @@ public interface TacheDAO extends JpaRepository<Tache, Long> {
 	@Override
 	void deleteAll();
 
-	@Override
-	Tache findOne(Long id);
+	Tache findById(Long id);
 
-	Tache findOne(String titre);
+	Tache findByTitre(String titre);
 
 	@Override
 	List<Tache> findAll();

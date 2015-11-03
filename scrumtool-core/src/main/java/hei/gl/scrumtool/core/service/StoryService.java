@@ -1,8 +1,9 @@
 package hei.gl.scrumtool.core.service;
 
-import java.util.List;
-
 import hei.gl.scrumtool.core.entity.Story;
+
+import java.util.List;
+import java.util.Set;
 
 public interface StoryService {
 	
@@ -18,5 +19,7 @@ public interface StoryService {
 	void Supprimer(long idStory);
 	
 	public Story create(Story story);
+	
+	public Set<Story> findByCategorie(int categorie);
 	
 }

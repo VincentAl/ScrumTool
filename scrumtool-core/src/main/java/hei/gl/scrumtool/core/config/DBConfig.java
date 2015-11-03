@@ -15,7 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import com.jolbox.bonecp.BoneCPDataSource;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "hei.scrumtool.core.dao")
+@EnableJpaRepositories(basePackages = "hei.gl.scrumtool.core.dao")
 public class DBConfig {
 
     @Bean(destroyMethod = "close")
@@ -58,7 +58,7 @@ public class DBConfig {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.getJpaPropertyMap().put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-        factory.setPackagesToScan("hei.scrumtool.core.entity");
+        factory.setPackagesToScan("hei.gl.scrumtool.core.entity");
         factory.setDataSource(dataSource);
         factory.afterPropertiesSet();
         return factory.getObject();

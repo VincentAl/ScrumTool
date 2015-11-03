@@ -1,6 +1,6 @@
 package hei.gl.scrumtool.core.entity;
 
-import java.sql.Time;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -25,7 +27,8 @@ public class Tache {
 
 	private String priorite;
 
-	private Time pointDepart;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date pointDepart;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Story story;
@@ -72,11 +75,11 @@ public class Tache {
 		this.priorite = priorite;
 	}
 
-	public Time getPointDepart() {
+	public Date getPointDepart() {
 		return pointDepart;
 	}
 
-	public void setPointDepart(Time pointDepart) {
+	public void setPointDepart(Date pointDepart) {
 		this.pointDepart = pointDepart;
 	}
 

@@ -5,6 +5,7 @@ import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.service.StoryService;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -37,6 +38,11 @@ public class StoryServiceImpl implements StoryService{
 	@Override
 	public Story create(Story story){
 		return storyDAO.save(story);
+	}
+
+	@Override
+	public Set<Story> findByCategorie(int categorie) {
+		return storyDAO.findByCategorie(categorie);
 	}
 
 }

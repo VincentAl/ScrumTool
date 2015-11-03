@@ -1,10 +1,11 @@
 package hei.gl.scrumtool.core.dao;
 
+import hei.gl.scrumtool.core.entity.Story;
+
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import hei.gl.scrumtool.core.entity.Story;
 
 public interface StoryDAO extends JpaRepository<Story, Long> {
 
@@ -14,12 +15,13 @@ public interface StoryDAO extends JpaRepository<Story, Long> {
 	@Override
 	void deleteAll();
 
-	@Override
-	Story findOne(Long id);
+	Story findById(Long id);
 	
-	Story findOne(String titre);
+	Story findByTitre(String titre);
 
 	@Override
 	List<Story> findAll();
+	
+	Set<Story> findByCategorie(int categorie);
 
 }
