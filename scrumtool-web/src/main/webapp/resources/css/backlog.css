@@ -6,7 +6,8 @@
 /* Style général du body */
 body {
 	padding-top: 50px;
-	font-weight: 300; line-height : 1.5;
+	font-weight: 300;
+	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 	line-height: 1.5;
 }
@@ -20,8 +21,9 @@ ul {
 
 /*Style du formulaire d'ajout*/
 .addForm {
-	background-color:rgb(48,48,48);
-	padding:30px;
+	margin-top:10px;
+	background-color: rgb(48, 48, 48);
+	padding: 30px;
 }
 
 /* Taille et marge des containers pour les "stories" */
@@ -102,7 +104,7 @@ ul {
 /* Permet de prendre les items */
 .drag-item {
 	border: 1px solid white;
-	padding:5px;
+	padding: 5px;
 	margin: 10px;
 	height: 100px;
 	color: white;
