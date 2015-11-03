@@ -1,9 +1,0 @@
-/target/
-
-# shity things #
-.project
-.settings/
-.classpath
-
-# db.properties #
-src/main/resources/db.properties

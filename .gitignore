@@ -1,18 +1,10 @@
-*.class
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
+**.project
+**.settings/
+**.classpath
+**/target/
+*.bak
 *.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
-# shity things #
-.project
-.settings/
-.classpath
-
+*.tern-project
+*.idea/
+*.iml
+**db.properties
