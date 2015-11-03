@@ -41,6 +41,7 @@ ul {
 	align-items: flex-start;
 }
 
+
 /* Gère les colonnes */
 .drag-column {
 	-webkit-box-flex: 1;
@@ -109,6 +110,15 @@ ul {
 	background: rgba(0, 0, 0, 0.4);
 	-webkit-transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 	transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+	box-shadow: 8px 8px 0px #aaa;	  
+}
+
+.drag-title{
+	font-size:    20px;	
+}
+
+.badge{
+	background: rgba(0, 0, 0, 0.6);
 }
 
 /* Dragula CSS  */

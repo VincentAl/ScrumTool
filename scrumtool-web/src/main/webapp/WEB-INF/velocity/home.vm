@@ -80,9 +80,10 @@
 				<ul class="drag-inner-list" id="1">
 					#foreach($story in $idea)
 						<li class="drag-item">
-							<span>Title : $story.titre</span>
-							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<p>Desciption : $story.description</p>
+							<span class="drag-title" >$story.titre</span>
+							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<p>Desciption : $story.description </br>
+							<span class="badge">$story.storyPoints</span></p>
 						</li>
 					#end
 				</ul>
@@ -91,13 +92,14 @@
 				<span class="drag-column-header">
 					<h2>Approved</h2>
 				</span>
-				<ul class="drag-inner-list" id="2">
+				<ul class="drag-inner-list" id="2"> 
 					#foreach($story in $confirmed)
 						<li class="drag-item">
-							<span>Title : $story.titre</span>
+							<span class="drag-title" >$story.titre</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-							<p>Desciption : $story.description</p>
-						</li>
+							<p>Desciption : $story.description </br>
+							<span class="badge">$story.storyPoints</span></p>
+						</li>	
 					#end
 				</ul>
 			</li>
@@ -108,9 +110,10 @@
 				<ul class="drag-inner-list" id="3">
 					#foreach($story in $next_sprint)
 						<li class="drag-item">
-							<span>Title : $story.titre</span>
-							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<p>Desciption : $story.description</p>
+							<span class="drag-title" >$story.titre</span>
+							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<p>Desciption : $story.description </br>
+							<span class="badge">$story.storyPoints</span></p>
 						</li>
 					#end
 				</ul>
