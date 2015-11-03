@@ -32,7 +32,7 @@ public class StoryServiceImpl implements StoryService{
 	}
 
 	@Override
-	public void Supprimer(long idStory) {
+	public void supprimer(long idStory) {
 		storyDAO.delete(idStory);
 	}
 	
