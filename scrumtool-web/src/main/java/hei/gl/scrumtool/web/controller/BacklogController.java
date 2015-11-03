@@ -36,9 +36,9 @@ public class BacklogController {
 	public String home(ModelMap model){
 		
 		Map<String, Set<Story>> listStories = new HashMap();
-		listStories.put("idea", storyService.findByCategorie(ColonneStory.IDEA));
-		listStories.put("confirmed", storyService.findByCategorie(ColonneStory.CONFIRMED));
-		listStories.put("next_sprint", storyService.findByCategorie(ColonneStory.NEXT_SPRINT));
+		for (ColonneStory colonneStory : ColonneStory.values()) {
+			listStories.put(colonneStory.getNom(), storyService.findByCategorie(colonneStory));
+		}
 
 		Map<ColonneStory, String> categories = new HashMap();
 		for (ColonneStory colonneStory : ColonneStory.values()) {
