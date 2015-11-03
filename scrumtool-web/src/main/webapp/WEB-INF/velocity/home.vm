@@ -80,7 +80,8 @@
 				<ul class="drag-inner-list" id="1">
 					#foreach($story in $idea)
 						<li class="drag-item">
-							<p>Title : $story.titre</p>
+							<span>Title : $story.titre</span>
+							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<p>Desciption : $story.description</p>
 						</li>
 					#end
@@ -93,8 +94,9 @@
 				<ul class="drag-inner-list" id="2">
 					#foreach($story in $confirmed)
 						<li class="drag-item">
-							<p>Title : $story.titre</p>
-							<p>Description : $story.description</p>
+							<span>Title : $story.titre</span>
+							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<p>Desciption : $story.description</p>
 						</li>
 					#end
 				</ul>
@@ -106,8 +108,9 @@
 				<ul class="drag-inner-list" id="3">
 					#foreach($story in $next_sprint)
 						<li class="drag-item">
-							<p>Title : $story.titre</p>
-							<p>Description : $story.description</p>
+							<span>Title : $story.titre</span>
+							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<p>Desciption : $story.description</p>
 						</li>
 					#end
 				</ul>
