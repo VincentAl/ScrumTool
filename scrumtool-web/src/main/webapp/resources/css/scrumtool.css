@@ -111,3 +111,11 @@ ul {
 	-webkit-transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 	transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
+
+/* Personnalise les drag items */
+.drag-title{
+	font-size:    20px;	
+}
+
+.badge{
+	background: rgba(0, 0, 0, 0.6);

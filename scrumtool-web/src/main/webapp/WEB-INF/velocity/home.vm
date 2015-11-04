@@ -76,9 +76,10 @@
 				<ul class="drag-inner-list" id="story_column_1" data-storycolumnid="1">
 					#foreach($story in $IDEA)
 						<li class="drag-item" data-storyid="$story.id">
-							<span>$story.titre</span>
-							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<p>$story.description</p>
+							<span class="drag-title" >$story.titre</span>
+							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<p>$story.description </br>
+							<span class="badge">$story.storyPoints</span></p>
 						</li>
 					#end
 				</ul>
@@ -90,9 +91,11 @@
 				<ul class="drag-inner-list" id="story_column_2" data-storycolumnid="2">
 					#foreach($story in $CONFIRMED)
 						<li class="drag-item" data-storyid="$story.id">
-							<span>$story.titre</span>
+							<span class="drag-title" >$story.titre</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-							<p>$story.description</p>
+							<p>Desciption : $story.description </br>
+							<span class="badge">$story.storyPoints</span></p>
+
 						</li>
 					#end
 				</ul>
@@ -104,9 +107,10 @@
 				<ul class="drag-inner-list" id="story_column_3" data-storycolumnid="3">
 					#foreach($story in $NEXT_SPRINT)
 						<li class="drag-item" data-storyid="$story.id">
-							<span>$story.titre</span>
-							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<p>$story.description</p>
+							<span class="drag-title" >$story.titre</span>
+							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<p>Desciption : $story.description </br>
+							<span class="badge">$story.storyPoints</span></p>
 						</li>
 					#end
 				</ul>
