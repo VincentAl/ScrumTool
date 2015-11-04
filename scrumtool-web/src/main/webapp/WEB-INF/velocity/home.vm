@@ -93,7 +93,7 @@
 						<li class="drag-item" data-storyid="$story.id">
 							<span class="drag-title" >$story.titre</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-							<p>Desciption : $story.description </br>
+							<p>$story.description </br>
 							<span class="badge">$story.storyPoints</span></p>
 
 						</li>
@@ -109,7 +109,7 @@
 						<li class="drag-item" data-storyid="$story.id">
 							<span class="drag-title" >$story.titre</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-							<p>Desciption : $story.description </br>
+							<p>$story.description </br>
 							<span class="badge">$story.storyPoints</span></p>
 						</li>
 					#end
