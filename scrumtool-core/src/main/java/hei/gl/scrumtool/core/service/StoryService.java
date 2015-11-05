@@ -13,8 +13,8 @@ public interface StoryService {
 	
 	List<Story> findALL();
 	
-	//TODO void move(long idStory, Etat);
-	//TODO void move(long idStory, idOldSprint,Etat);//pour permetre d'envelever une story du sprint en cour
+	void move(long idStory, ColonneStory category);
+	void move(long idStory, long idOldSprint,ColonneStory category);//pour permetre d'envelever une story du sprint en cour
 	
 	void delete(long idStory);
 	
