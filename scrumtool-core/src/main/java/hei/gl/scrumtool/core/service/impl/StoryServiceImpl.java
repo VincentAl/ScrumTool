@@ -46,6 +46,7 @@ public class StoryServiceImpl implements StoryService{
 		return storyDAO.findByCategory(category);
 	}
 	
+	@Override
 	public Story update(Story story){
 		return storyDAO.save(story);
 	}

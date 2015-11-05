@@ -1,6 +1,7 @@
 package hei.gl.scrumtool.core.entity;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -48,10 +49,11 @@ public class Sprint {
 	}
 	
 	public void removeStory(long idStory){
-		for (int i=0;i<this.listeStories.size();i++) {
-			if(this.listeStories.get(i).getId()==idStory){
-				this.listeStories.remove(i);
-				break;
+		Iterator<Story>i=this.listeStories.iterator();
+		while (i.hasNext()) {
+			Story story = (Story) i.next();
+			if(story.getId()==idStory){
+				i.remove();
 			}
 		}
 	}

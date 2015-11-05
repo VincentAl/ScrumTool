@@ -10,13 +10,12 @@ public interface StoryService {
 	
 	
 	Story findById(long idStory);
-	//TODO List<Story> FindByState(ETAT);//pour recuperer une colone de story
+	
 	List<Story> findALL();
 	
-	//TODO void Deplacer(long idStory, Etat);
-	//TODO void Deplacer(long idStory, idOldSprint,Etat);//pour permetre d'envelever une story du sprint en cour
+	//TODO void move(long idStory, Etat);
+	//TODO void move(long idStory, idOldSprint,Etat);//pour permetre d'envelever une story du sprint en cour
 	
-	//TODO void save(Object.Story);
 	void delete(long idStory);
 	
 	public Story create(Story story);
