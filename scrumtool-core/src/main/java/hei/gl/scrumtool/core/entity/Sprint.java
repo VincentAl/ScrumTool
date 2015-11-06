@@ -23,33 +23,33 @@ public class Sprint {
 	private long id;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date pointDepart;
+	private Date startTime;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date pointFin;
+	private Date endTime;
 
-	private long numero;
+	private long number;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sprint")
-	private List<Story> listeStories;
+	private List<Story> storyList;
 
 	@OneToOne
-	private Personne scrumMaster;
+	private User scrumMaster;
 
 	@OneToOne
-	private Personne productOwner;
+	private User productOwner;
 
 
 	public void addStory(Story story){
-		this.listeStories.add(story);
+		this.storyList.add(story);
 	}
 	
-	public void addListStories(List<Story> stories){
-		this.listeStories.addAll(stories);
+	public void addStoryList(List<Story> stories){
+		this.storyList.addAll(stories);
 	}
 	
 	public void removeStory(long idStory){
-		Iterator<Story>i=this.listeStories.iterator();
+		Iterator<Story>i = this.storyList.iterator();
 		while (i.hasNext()) {
 			Story story = (Story) i.next();
 			if(story.getId()==idStory){
@@ -68,51 +68,51 @@ public class Sprint {
 		this.id = id;
 	}
 
-	public Date getPointDepart() {
-		return pointDepart;
+	public Date getStartTime() {
+		return startTime;
 	}
 
-	public void setPointDepart(Date pointDepart) {
-		this.pointDepart = pointDepart;
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
 	}
 
-	public Date getPointFin() {
-		return pointFin;
+	public Date getEndTime() {
+		return endTime;
 	}
 
-	public void setPointFin(Date pointFin) {
-		this.pointFin = pointFin;
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
 	}
 
-	public long getNumero() {
-		return numero;
+	public long getNumber() {
+		return number;
 	}
 
-	public void setNumero(long numero) {
-		this.numero = numero;
+	public void setNumber(long number) {
+		this.number = number;
 	}
 
-	public List<Story> getListeStories() {
-		return listeStories;
+	public List<Story> getStoryList() {
+		return storyList;
 	}
 
-	public void setListeStories(List<Story> listeStories) {
-		this.listeStories = listeStories;
+	public void setStoryList(List<Story> storyList) {
+		this.storyList = storyList;
 	}
 	
-	public Personne getScrumMaster() {
+	public User getScrumMaster() {
 		return scrumMaster;
 	}
 
-	public void setScrumMaster(Personne scrumMaster) {
+	public void setScrumMaster(User scrumMaster) {
 		this.scrumMaster = scrumMaster;
 	}
 
-	public Personne getProductOwner() {
+	public User getProductOwner() {
 		return productOwner;
 	}
 
-	public void setProductOwner(Personne productOwner) {
+	public void setProductOwner(User productOwner) {
 		this.productOwner = productOwner;
 	}
 

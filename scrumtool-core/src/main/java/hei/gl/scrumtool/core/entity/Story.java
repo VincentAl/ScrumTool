@@ -1,5 +1,7 @@
 package hei.gl.scrumtool.core.entity;
 
+import hei.gl.scrumtool.core.enumeration.StoryColumn;
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,13 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import hei.gl.scrumtool.core.enumeration.ColonneStory;
-
 
 @Entity
 public class Story {
 	
-	private ColonneStory category;
+	private StoryColumn category;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +30,9 @@ public class Story {
 	private Sprint sprint;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "story")
-	private Set<Tache> listeTaches;
+	private Set<Task> tasksList;
 
-	private String titre;
+	private String title;
 
 	// Getters-Setters
 	public long getId() {
@@ -51,20 +51,20 @@ public class Story {
 		this.storyPoints = storyPoints;
 	}
 
-	public Set<Tache> getListeTaches() {
-		return listeTaches;
+	public Set<Task> getTasksList() {
+		return tasksList;
 	}
 
-	public void setListeTaches(Set<Tache> listeTaches) {
-		this.listeTaches = listeTaches;
+	public void setTasksList(Set<Task> tasksList) {
+		this.tasksList = tasksList;
 	}
 
-	public String getTitre() {
-		return titre;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitre(String titre) {
-		this.titre = titre;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public Sprint getSprint() {
@@ -83,12 +83,12 @@ public class Story {
 		this.description = description;
 	}
 
-	public ColonneStory getCategory() {
+	public StoryColumn getCategory() {
 		return category;
 	}
 
-	public void setCategory(ColonneStory colonneStory) {
-		this.category = colonneStory;
+	public void setCategory(StoryColumn storyColumn) {
+		this.category = storyColumn;
 	}
 
 }

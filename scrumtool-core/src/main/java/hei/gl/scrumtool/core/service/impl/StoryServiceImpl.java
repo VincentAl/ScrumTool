@@ -4,7 +4,7 @@ import hei.gl.scrumtool.core.dao.SprintDAO;
 import hei.gl.scrumtool.core.dao.StoryDAO;
 import hei.gl.scrumtool.core.entity.Sprint;
 import hei.gl.scrumtool.core.entity.Story;
-import hei.gl.scrumtool.core.enumeration.ColonneStory;
+import hei.gl.scrumtool.core.enumeration.StoryColumn;
 import hei.gl.scrumtool.core.service.SprintService;
 import hei.gl.scrumtool.core.service.StoryService;
 
@@ -48,7 +48,7 @@ public class StoryServiceImpl implements StoryService{
 	}
 
 	@Override
-	public Set<Story> findByCategory(ColonneStory category) {
+	public Set<Story> findByCategory(StoryColumn category) {
 		return storyDAO.findByCategory(category);
 	}
 	
@@ -58,17 +58,17 @@ public class StoryServiceImpl implements StoryService{
 	}
 
 	@Override
-	public void move(long idStory, ColonneStory category) {
+	public void move(long idStory, StoryColumn category) {
 		Story story=this.findById(idStory);
 		story.setCategory(category);
 		update(story);
 	}
 
 	@Override
-	public void move(long idStory, long idOldSprint, ColonneStory category) {
+	public void move(long idStory, long idOldSprint, StoryColumn category) {
 		Story story=this.findById(idStory);
 		story.setCategory(category);
-		sprintService.enleverStory(idStory, idOldSprint);
+		sprintService.removeStory(idStory, idOldSprint);
 		this.update(story);
 	}
 

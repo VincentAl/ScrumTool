@@ -8,7 +8,7 @@ import javax.persistence.OneToOne;
 
 
 @Entity
-public class Personne {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

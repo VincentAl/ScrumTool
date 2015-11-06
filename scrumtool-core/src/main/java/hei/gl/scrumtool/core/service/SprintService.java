@@ -1,9 +1,9 @@
 package hei.gl.scrumtool.core.service;
 
-import java.util.List;
-
 import hei.gl.scrumtool.core.entity.Sprint;
 import hei.gl.scrumtool.core.entity.Story;
+
+import java.util.List;
 
 public interface SprintService {
 	
@@ -11,13 +11,13 @@ public interface SprintService {
 	Sprint findById(long idSprint);
 	List<Sprint> findAll();
 	
-	void ajouterStory(long idStory, long idSprint);
-	void ajouterStory(Story story, long idSpring);
-	void ajouterStory(List<Story> Stories, long idSprint);
+	void addStory(long idStory, long idSprint);
+	void addStory(Story story, long idSpring);
+	void addStory(List<Story> stories, long idSprint);
 	
-	void enleverStory(long idStory, long idSprint);
+	void removeStory(long idStory, long idSprint);
 	
 	public Sprint create(Sprint sprint);
 	public Sprint update(Sprint sprint);
-	void supprimerSprint(long idSprint);
+	void delete(long idSprint);
 }

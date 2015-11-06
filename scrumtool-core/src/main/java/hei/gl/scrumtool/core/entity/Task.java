@@ -13,22 +13,22 @@ import javax.persistence.TemporalType;
 
 
 @Entity
-public class Tache {
+public class Task {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	private String titre;
+	private String title;
 
 	private String description;
 
-	private String etat;
+	private String state;
 
-	private String priorite;
+	private String priority;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date pointDepart;
+	private Date startTime;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Story story;
@@ -43,12 +43,12 @@ public class Tache {
 		this.id = id;
 	}
 
-	public String getTitre() {
-		return titre;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitre(String titre) {
-		this.titre = titre;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDescription() {
@@ -59,28 +59,28 @@ public class Tache {
 		this.description = description;
 	}
 
-	public String getEtat() {
-		return etat;
+	public String getState() {
+		return state;
 	}
 
-	public void setEtat(String etat) {
-		this.etat = etat;
+	public void setState(String state) {
+		this.state = state;
 	}
 
-	public String getPriorite() {
-		return priorite;
+	public String getPriority() {
+		return priority;
 	}
 
-	public void setPriorite(String priorite) {
-		this.priorite = priorite;
+	public void setPriority(String priority) {
+		this.priority = priority;
 	}
 
-	public Date getPointDepart() {
-		return pointDepart;
+	public Date getStartPoint() {
+		return startTime;
 	}
 
-	public void setPointDepart(Date pointDepart) {
-		this.pointDepart = pointDepart;
+	public void setStartPoint(Date startTime) {
+		this.startTime = startTime;
 	}
 
 	public Story getStory() {

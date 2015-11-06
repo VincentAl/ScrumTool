@@ -1,7 +1,7 @@
 package hei.gl.scrumtool.web.controller;
 
 import hei.gl.scrumtool.core.entity.Story;
-import hei.gl.scrumtool.core.enumeration.ColonneStory;
+import hei.gl.scrumtool.core.enumeration.StoryColumn;
 import hei.gl.scrumtool.core.service.StoryService;
 
 import javax.inject.Inject;
@@ -33,7 +33,7 @@ public class AjaxController {
 	public String updateOneStory(@PathVariable("id") long id, @PathVariable("id_col") long idCol) {
 		Story story = storyService.findById(id);
 		
-		for (ColonneStory col : ColonneStory.values()) {
+		for (StoryColumn col : StoryColumn.values()) {
 			if(col.getId() == idCol)
 				story.setCategory(col);
 		}

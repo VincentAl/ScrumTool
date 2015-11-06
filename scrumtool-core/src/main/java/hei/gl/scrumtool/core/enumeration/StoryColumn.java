@@ -1,25 +1,23 @@
 package hei.gl.scrumtool.core.enumeration;
 
-public enum ColonneStory {
+public enum StoryColumn {
 	IDEA(1,"Idea"),
 	CONFIRMED(2,"Confirmed"),
 	NEXT_SPRINT(3, "Next sprint");
 	
 	private int id;
-	private String nom;
+	private String label;
 	
-	private ColonneStory(int id, String nom) {
+	private StoryColumn(int id, String label) {
 		this.id = id;
-		this.nom = nom;
+		this.label = label;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public String getNom() {
-		return nom;
+	public String getLabel() {
+		return label;
 	}
-	
-	
 }

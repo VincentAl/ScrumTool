@@ -2,7 +2,7 @@ package hei.gl.scrumtool.web.controller;
 
 
 import hei.gl.scrumtool.core.entity.Story;
-import hei.gl.scrumtool.core.enumeration.ColonneStory;
+import hei.gl.scrumtool.core.enumeration.StoryColumn;
 import hei.gl.scrumtool.core.service.SprintService;
 import hei.gl.scrumtool.core.service.StoryService;
 
@@ -34,17 +34,17 @@ public class BacklogController {
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home(ModelMap model){
-		Map<String, Set<Story>> listStories = new HashMap();
-		for (ColonneStory colonneStory : ColonneStory.values()) {
-			listStories.put(colonneStory.toString(), storyService.findByCategory(colonneStory));
+		Map<String, Set<Story>> storyList = new HashMap();
+		for (StoryColumn storyColumn : StoryColumn.values()) {
+			storyList.put(storyColumn.toString(), storyService.findByCategory(storyColumn));
 		}
 
-		Map<ColonneStory, String> categories = new HashMap();
-		for (ColonneStory colonneStory : ColonneStory.values()) {
-			categories.put(colonneStory, colonneStory.getNom());
+		Map<StoryColumn, String> categories = new HashMap();
+		for (StoryColumn storyColumn : StoryColumn.values()) {
+			categories.put(storyColumn, storyColumn.getLabel());
 		}
 		
-		model.addAllAttributes(listStories);
+		model.addAllAttributes(storyList);
 		model.addAttribute("categories", categories);
 		model.put("story", new Story());
 		return "home";

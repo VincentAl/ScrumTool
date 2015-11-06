@@ -1,18 +1,17 @@
 package hei.gl.scrumtool.core.service.impl;
 
-import java.util.Iterator;
+import hei.gl.scrumtool.core.dao.SprintDAO;
+import hei.gl.scrumtool.core.entity.Sprint;
+import hei.gl.scrumtool.core.entity.Story;
+import hei.gl.scrumtool.core.service.SprintService;
+import hei.gl.scrumtool.core.service.StoryService;
+
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.springframework.transaction.annotation.Transactional;
-
-import hei.gl.scrumtool.core.dao.SprintDAO;
-import hei.gl.scrumtool.core.entity.Sprint;
-import hei.gl.scrumtool.core.entity.Story;
-import hei.gl.scrumtool.core.service.SprintService;
-import hei.gl.scrumtool.core.service.StoryService;
 
 @Named
 @Transactional
@@ -35,27 +34,27 @@ public class SprintServiceImpl implements SprintService {
 	}
 
 	@Override
-	public void ajouterStory(long idStory, long idSprint) {
+	public void addStory(long idStory, long idSprint) {
 		Story story = storyService.findById(idStory);
-		ajouterStory(story, idSprint);
+		addStory(story, idSprint);
 	}
 
 	@Override
-	public void ajouterStory(Story story, long idSprint) {
+	public void addStory(Story story, long idSprint) {
 		Sprint sprint=this.findById(idSprint);
 		sprint.addStory(story);
 		update(sprint);
 	}
 
 	@Override
-	public void ajouterStory(List<Story> Stories, long idSprint) {
+	public void addStory(List<Story> stories, long idSprint) {
 		Sprint sprint=this.findById(idSprint);
-		sprint.addListStories(Stories);
+		sprint.addStoryList(stories);
 		update(sprint);
 	}
 
 	@Override
-	public void enleverStory(long idStory, long idSprint) {
+	public void removeStory(long idStory, long idSprint) {
 		Sprint sprint= this.findById(idSprint);
 		sprint.removeStory(idStory);
 		update(sprint);
@@ -72,7 +71,7 @@ public class SprintServiceImpl implements SprintService {
 	}
 
 	@Override
-	public void supprimerSprint(long idSprint) {
+	public void delete(long idSprint) {
 		sprintDAO.delete(idSprint);
 
 	}
