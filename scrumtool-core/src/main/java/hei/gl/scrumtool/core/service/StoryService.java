@@ -14,7 +14,7 @@ public interface StoryService {
 	List<Story> findALL();
 	
 	void move(long idStory, StoryColumn category);
-	void move(long idStory, long idOldSprint, StoryColumn category);//pour permetre d'envelever une story du sprint en cour
+	void move(long idStory, long idOldSprint, StoryColumn category);//pour permettre d'enlever une story du sprint en cours
 	
 	void delete(long idStory);
 	
