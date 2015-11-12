@@ -6,7 +6,12 @@ import hei.gl.scrumtool.core.enumeration.StoryColumn;
 import hei.gl.scrumtool.core.service.SprintService;
 import hei.gl.scrumtool.core.service.StoryService;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -34,9 +39,24 @@ public class BacklogController {
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home(ModelMap model){
-		Map<String, Set<Story>> storyList = new HashMap();
+		Map<String, Map<Integer, Story>> storyList = new HashMap();
 		for (StoryColumn storyColumn : StoryColumn.values()) {
-			storyList.put(storyColumn.toString(), storyService.findByCategory(storyColumn));
+			Map<Integer, Story> storyMap = new HashMap();
+			for (Story story : storyService.findByCategory(storyColumn)) {
+				storyMap.put(story.getPriority(), story);
+			}
+
+			List<Integer> keys = new LinkedList<Integer>(storyMap.keySet());
+	        Collections.sort(keys);
+	     
+	        //LinkedHashMap will keep the keys in the order they are inserted
+	        //which is currently sorted on natural ordering
+	        Map<Integer,Story> sortedMap = new LinkedHashMap<Integer,Story>();
+	        for(Integer key: keys){
+	            sortedMap.put(key, storyMap.get(key));
+	        }
+
+			storyList.put(storyColumn.toString(), sortedMap);
 		}
 
 		Map<StoryColumn, String> categories = new HashMap();
