@@ -17,6 +17,7 @@ import hei.gl.scrumtool.core.enumeration.StoryColumn;
 @Entity
 public class Story {
 
+	// Properties
 	private StoryColumn category;
 
 	@Id
@@ -26,6 +27,8 @@ public class Story {
 
 	@JsonView(View.Summary.class)
 	private long storyPoints;
+
+	private int priority;
 
 	@JsonView(View.Summary.class)
 	private String description;
@@ -94,6 +97,14 @@ public class Story {
 
 	public void setCategory(StoryColumn storyColumn) {
 		this.category = storyColumn;
+	}
+
+	public int getPriority() {
+		return priority;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 
 }
