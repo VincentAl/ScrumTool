@@ -25,9 +25,36 @@ ul {
 	padding: 30px;
 }
 
+/*Centrer modal*/
+.modal {
+	background-color: rgba(0, 0, 0, 0.8);
+	text-align: center;
+	padding: 0 !important;
+}
+
+.modal:before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: -4px; /* Adjusts for spacing */
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+
 /* Taille et marge des containers pour les "stories" */
-.drag-container {
-	margin: 20px auto;
+	.
+	drag-container
+	{
+	margin
+	:
+	20px
+	auto;
 }
 
 /* Met les listes à la verticale + responsive */
@@ -105,7 +132,7 @@ ul {
 	border: 1px solid white;
 	padding: 5px;
 	margin: 10px;
-	height: 100px;
+	/*height: 100px;*/
 	color: white;
 	background: rgba(0, 0, 0, 0.4);
 	-webkit-transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
@@ -113,9 +140,10 @@ ul {
 }
 
 /* Personnalise les drag items */
-.drag-title{
-	font-size:    20px;	
+.drag-title {
+	font-size: 20px;
 }
 
-.badge{
+.badge {
 	background: rgba(0, 0, 0, 0.6);
+}
