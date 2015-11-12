@@ -2,6 +2,7 @@ package hei.gl.scrumtool.core.entity;
 
 import hei.gl.scrumtool.core.enumeration.StoryColumn;
 
+import java.util.HashMap;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,11 +17,14 @@ import javax.persistence.OneToMany;
 @Entity
 public class Story {
 	
+//Properties
 	private StoryColumn category;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	private int priority;
 	
 	private long storyPoints;
 	
@@ -34,7 +38,12 @@ public class Story {
 
 	private String title;
 
-	// Getters-Setters
+
+//Methods
+	public HashMap<K, V>
+	
+	
+// Getters-Setters
 	public long getId() {
 		return id;
 	}
@@ -89,6 +98,14 @@ public class Story {
 
 	public void setCategory(StoryColumn storyColumn) {
 		this.category = storyColumn;
+	}
+
+	public int getPriority() {
+		return priority;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 
 }
