@@ -13,7 +13,7 @@ NB : La base doit déjà être créée.
 SourceTree config OK : 
 	- Vincent
 	- Adrien
-	- 
 	
+Edit demo conflict r�solu
 
 Test de modif de michel (pour essayer les merge)
