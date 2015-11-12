@@ -22,10 +22,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class StoryServiceImpl implements StoryService{
 	
 	@Inject 
-	StoryDAO storyDAO;
+	private StoryDAO storyDAO;
 	
 	@Inject
-	SprintService sprintService; 
+	private SprintService sprintService; 
 
 	@Override
 	public Story findById(long idStory) {
@@ -60,6 +60,43 @@ public class StoryServiceImpl implements StoryService{
 	@Override
 	public void move(long idStory, StoryColumn category) {
 		Story story=this.findById(idStory);
+		
+		// decrementation des priorites dans l'ancienne categorie
+		Set<Story> storiesInOldCategory = this.findByCategory(story.getCategory());
+		for (Story storyInOldCategory : storiesInOldCategory) {
+		if (storyInOldCategory.getPriority()>=story.getPriority()){
+				storyInOldCategory.setPriority(storyInOldCategory.getPriority()-1);
+			}
+		}
+		
+		//deplacement de la story
+		story.setCategory(category);
+		story.setPriority(this.findByCategory(category).size()+1);
+		update(story);
+	}
+	
+
+	@Override
+	public void move(long idStory, StoryColumn category, int newPriority) {
+		Story story = this.findById(idStory);
+		
+		// decrementation des priorites dans l'ancienne categorie
+		Set<Story> storiesInOldCategory = this.findByCategory(story.getCategory());
+		for (Story storyInOldCategory : storiesInOldCategory) {
+			if (storyInOldCategory.getPriority()>=story.getPriority()){
+				storyInOldCategory.setPriority(storyInOldCategory.getPriority()-1);
+			}
+		}
+		
+		//incrementation des priorites dans la nouvelle categorie
+		Set<Story> storiesInNewCategory = this.findByCategory(category);
+		for (Story storyInNewCategory : storiesInNewCategory) {
+			if (storyInNewCategory.getPriority()>=newPriority) {
+				storyInNewCategory.setPriority(storyInNewCategory.getPriority()+1);
+			}
+		}
+		
+		//deplacement de la story
 		story.setCategory(category);
 		update(story);
 	}
@@ -67,7 +104,10 @@ public class StoryServiceImpl implements StoryService{
 	@Override
 	public void move(long idStory, long idOldSprint, StoryColumn category) {
 		Story story=this.findById(idStory);
+		
+		//deplacement de la story
 		story.setCategory(category);
+		story.setPriority(this.findByCategory(category).size()+1);
 		sprintService.removeStory(idStory, idOldSprint);
 		this.update(story);
 	}

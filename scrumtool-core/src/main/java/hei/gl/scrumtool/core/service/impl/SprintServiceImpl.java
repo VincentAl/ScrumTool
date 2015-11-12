@@ -18,10 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class SprintServiceImpl implements SprintService {
 	
 	@Inject
-	SprintDAO sprintDAO;
+	private SprintDAO sprintDAO;
 
 	@Inject
-	StoryService storyService ;
+	private StoryService storyService ;
 
 	@Override
 	public Sprint findById(long idSprint) {
