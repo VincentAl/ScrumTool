@@ -9,14 +9,14 @@ import java.util.Set;
 public interface StoryService {
 	
 	
-	Story findById(long idStory);
+	public Story findById(long idStory);
 	
-	List<Story> findALL();
+	public List<Story> findALL();
 	
-	void move(long idStory, StoryColumn category);
-	void move(long idStory, long idOldSprint, StoryColumn category);//pour permettre d'enlever une story du sprint en cours
+	public void move(long idStory, StoryColumn category);
+	public void move(long idStory, long idOldSprint, StoryColumn category);//pour permettre d'enlever une story du sprint en cours
 	
-	void delete(long idStory);
+	public void delete(long idStory);
 	
 	public Story create(Story story);
 	

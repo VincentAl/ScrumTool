@@ -22,10 +22,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class StoryServiceImpl implements StoryService{
 	
 	@Inject 
-	StoryDAO storyDAO;
+	private StoryDAO storyDAO;
 	
 	@Inject
-	SprintService sprintService; 
+	private SprintService sprintService; 
 
 	@Override
 	public Story findById(long idStory) {
@@ -49,6 +49,7 @@ public class StoryServiceImpl implements StoryService{
 
 	@Override
 	public Set<Story> findByCategory(StoryColumn category) {
+		Set<Story> stories = storyDAO.findByCategory(category);
 		return storyDAO.findByCategory(category);
 	}
 	
