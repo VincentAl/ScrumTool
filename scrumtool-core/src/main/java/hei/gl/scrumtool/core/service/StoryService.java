@@ -14,6 +14,7 @@ public interface StoryService {
 	public List<Story> findALL();
 	
 	public void move(long idStory, StoryColumn category);
+	public void move(long idStory, StoryColumn category, int priority);
 	public void move(long idStory, long idOldSprint, StoryColumn category);//pour permettre d'enlever une story du sprint en cours
 	
 	public void delete(long idStory);
