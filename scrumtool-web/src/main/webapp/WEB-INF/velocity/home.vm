@@ -22,13 +22,12 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#">Scrumtool</a>
+					<a class="navbar-brand">Scrumtool</a>
 				</div>
 				<div>
       			<ul class="nav navbar-nav">
         			<li><a href="#">Backlog</a></li>
         			<li><a href="#">Sprint</a></li> 
-        			<li><a href="#">Other stuff</a></li> 
       			</ul>
     		</div>
 			</div>
@@ -40,16 +39,11 @@
 				<h1>Backlog</h1>
 				<p>Drag&Drop to change status</p>
 			</div>
-				
-			<div>
-				 <button type="button" id="toggleBtn" class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></span>Add story </button>
-			</div>
-			
-			<div class="addForm" style="display:none;" >
-				<div class="row">
-					<div class="col-md-4"></div>
-					<div class="col-md-4">
-						<h3 style="color:white">Add a new story</h3>
+		
+ 
+ <div id="add"><span class="glyphicon glyphicon-plus"></span> Add Story</div>
+			<div id="addFormu">
+					<h3> ADD STORY </h3>
 							<form action="new-story" method="POST">
 								<div class="form-group">
     								#springFormInput("story.title" "class='form-control' id='title' placeholder='Title'")
@@ -61,18 +55,16 @@
 										#springFormSingleSelect("story.category" $categories "class='form-control'")
 								</div>
 								<div class="form-group">
-    								<label for="rating" style="color:white">Story Point</label>
+    								<label for="rating" style="color:#8F8F8F">Story Point</label>
 									#springFormInput("story.storyPoints" "type='number' class='form-control' min='1' max='10' id='story_points'")
   								</div>
 								<br>
 								<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Submit</button>
 					
 							</form>
-						</div>
-						<div class="col-md-4"></div>
 					</div>
-</div>
-			
+		<br>
+		
 			<div class="drag-container">
 		<ul class="drag-list">
 			<li class="drag-column drag-column-on-hold">
@@ -91,7 +83,7 @@
 			</li>
 			<li class="drag-column drag-column-in-progress">
 				<span class="drag-column-header">
-					<h2>Approved</h2>
+					<h2>CONFIRMED</h2>
 				</span>
 				<ul class="drag-inner-list" id="story_column_2" data-storycolumnid="2">
 					#foreach($story in $CONFIRMED)

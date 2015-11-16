@@ -147,3 +147,58 @@ ul {
 .badge {
 	background: rgba(0, 0, 0, 0.6);
 }
+
+h1{ margin: 0; }
+#add { 
+  -webkit-user-select: none;     
+  -moz-user-select: none;
+  -ms-user-select: none;
+  width: 100px; 
+  height: 30px; 
+  line-height: 30px;
+  background-color: #B8B8B8;
+  border-radius: 3px;
+  color: black;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid grey;
+}
+
+#add:hover { background: #575757; }
+
+#addFormu { 
+  display: none;
+  border: 6px solid #CCCCCC; 
+  border-radius: 7px;
+  padding: 2em;
+  width: 400px;
+  text-align: center;
+  background: #F0F0F0;
+  position: absolute;
+  Z-Index:2;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+input, textarea { 
+  margin: .8em auto;
+  -webkit-font-smoothing: antialiased;
+  display: block; 
+  width: 280px; 
+  padding: .4em;
+}
+
+textarea { height: 80px; resize: none; }
+
+.formBtn { 
+  width: 140px;
+  display: inline-block;
+  background: teal;
+  color: #fff;
+  font-weight: 100;
+  font-size: 1.2em;
+  border: none;
+  height: 30px;
+}

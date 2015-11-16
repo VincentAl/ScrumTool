@@ -45,7 +45,20 @@ $(function(){
 		
 	});
 	
-	
+	  $('#add').click(function() {
+		    $('#addFormu').fadeToggle();
+		  })
+		  
+		  // Remove pop up when you click around it
+		  $(document).mouseup(function (e) {
+		    var container = $("#addFormu");
+
+		    if (!container.is(e.target)
+		        && container.has(e.target).length === 0)
+		    {
+		        container.fadeOut();
+		    }
+		  });
 	
 });
 
