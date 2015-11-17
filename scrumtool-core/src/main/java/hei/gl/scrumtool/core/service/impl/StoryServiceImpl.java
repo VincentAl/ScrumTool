@@ -30,6 +30,7 @@ public class StoryServiceImpl implements StoryService{
 	@Override
 	public Story findById(long idStory) {
 		return storyDAO.findOne(idStory);
+
 	}
 
 	@Override

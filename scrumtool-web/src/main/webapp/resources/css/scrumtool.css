@@ -41,20 +41,14 @@ ul {
 }
 
 .modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
 }
 
-
 /* Taille et marge des containers pour les "stories" */
-	.
-	drag-container
-	{
-	margin
-	:
-	20px
-	auto;
+.drag-container {
+	margin: 20px auto;
 }
 
 /* Met les listes à la verticale + responsive */
@@ -146,6 +140,13 @@ ul {
 
 .badge {
 	background: rgba(0, 0, 0, 0.6);
+}
+
+.modalStatusInfo {
+	display: none;
+	padding:10px;
+	font-weight:bold;
+	border-radius:3px;
 }
 
 h1{ margin: 0; }

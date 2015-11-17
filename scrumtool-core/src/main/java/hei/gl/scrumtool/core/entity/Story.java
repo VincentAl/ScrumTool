@@ -107,4 +107,12 @@ public class Story {
 		this.priority = priority;
 	}
 
+	@Override
+	public String toString() {
+		return "Story [category=" + category + ", id=" + id + ", storyPoints=" + storyPoints + ", priority=" + priority
+				+ ", description=" + description + ", sprint=" + sprint + ", tasksList=" + tasksList + ", title="
+				+ title + "]";
+	}
+	
+
 }
