@@ -72,11 +72,8 @@ public class BacklogController {
 	
 	@RequestMapping(value="/new-story", method=RequestMethod.POST)
 	public String submitForm(@ModelAttribute("story") Story story){
-		
+		story.setPriority(storyService.findByCategory(story.getCategory()).size());
 		storyService.create(story);
 		return "redirect:/";
 	}
-	
-	// @responseBody pour renvoyer du contenu brut 
-	
 }

@@ -59,16 +59,16 @@ public class AjaxController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/story/{id}/column/{id_col}", method = RequestMethod.PUT)
-	public String updateOneStory(@PathVariable("id") long id, @PathVariable("id_col") long idCol) {
-		Story story = storyService.findById(id);
-
-		for (StoryColumn col : StoryColumn.values()) {
-			if (col.getId() == idCol)
-				story.setCategory(col);
+	@RequestMapping(value = "/story/{id}/column/{id_col}/previous/{id_previous}", method = RequestMethod.PUT)
+	public String updateOneStory(@PathVariable("id") long id, @PathVariable("id_col") long idCol, @PathVariable("id_previous") long idPrev) {
+		
+		
+		if(idPrev == -1){
+			storyService.move(id, StoryColumn.getStoryColumnById(idCol));
+		}else{
+			storyService.move(id, StoryColumn.getStoryColumnById(idCol), 
+					storyService.findById(idPrev).getPriority());
 		}
-
-		storyService.update(story);
 		return "{}";
 	}
 

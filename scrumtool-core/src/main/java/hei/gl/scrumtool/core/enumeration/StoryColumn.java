@@ -20,4 +20,12 @@ public enum StoryColumn {
 	public String getLabel() {
 		return label;
 	}
+	
+	public static StoryColumn getStoryColumnById(long id){
+		for (StoryColumn sc : StoryColumn.values()) {
+			if(sc.getId() == id)
+				return sc;
+		}
+		return null;
+	}
 }

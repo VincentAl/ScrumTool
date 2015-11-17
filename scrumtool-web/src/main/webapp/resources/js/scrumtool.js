@@ -1,25 +1,33 @@
-$(function(){
-	
-	dragula([
-		document.getElementById('story_column_1'),
-		document.getElementById('story_column_2'),
-		document.getElementById('story_column_3')
-	])
-		.on('drop', function(elem, target){
-			changeStoryCategory($(elem).data('storyid'), $(target).data('storycolumnid'));
-		});
-	
-	$("#toggleBtn").click(function() {
-		$(".addForm").slideToggle();
-		$("#toggleBtn span").toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
-	});
-	
-	$('#detailsModal').on('show.bs.modal', function(event){
+$(function() {
+
+	dragula(
+			[ document.getElementById('story_column_1'),
+					document.getElementById('story_column_2'),
+					document.getElementById('story_column_3') ]).on(
+			'drop',
+			function(elem, target, source, sib) {
+				console.log(sib)
+				
+				if(sib != null){
+					changeStoryCategory($(elem).data('storyid'), $(target).data('storycolumnid'), $(sib).data('storyid'));	
+				}else{
+					changeStoryCategory($(elem).data('storyid'), $(target).data('storycolumnid'), -1);
+				}
+			});
+
+	$("#toggleBtn").click(
+			function() {
+				$(".addForm").slideToggle();
+				$("#toggleBtn span").toggleClass(
+						"glyphicon-chevron-right glyphicon-chevron-down");
+			});
+
+	$('#detailsModal').on('show.bs.modal', function(event) {
 		var thisStory = $(event.relatedTarget) // item that triggered the event
 		var id = thisStory.data('storyid') // Extract info from data-idstory
-								console.log(event)// attributes
+		console.log(event)// attributes
 		viewModal();
-		//showDetailsStory(id);
+		// showDetailsStory(id);
 		$.ajax({
 			url : "story/" + id,
 			type : "GET",
@@ -33,49 +41,53 @@ $(function(){
 			}
 		});
 	});
-	
-	//Suppression d'une story
-	$(".btnSup").click(function(){
+
+	// Suppression d'une story
+	$(".btnSup").click(function() {
 		var id = $(this).attr('id');
 		var $that = $(this).parent();
 
 		$.ajax({
-			url : "story/"+id,
+			url : "story/" + id,
 			type : "DELETE",
-			success : function(){
+			success : function() {
 				$that.remove();
 			},
 		});
 	});
-	
-	
-	//change les boutons pour la modification de story
-	$("#editBtn").click(function(event){
+
+	// change les boutons pour la modification de story
+	$("#editBtn").click(function(event) {
 		editModal();
 	});
-	
-	  $('#add').click(function() {
-		    $('#addFormu').fadeToggle();
-		  })
-		  
-		  // Remove pop up when you click around it
-		  $(document).mouseup(function (e) {
-		    var container = $("#addFormu");
 
-	//enregistre la ou les modifications apportées
-	$("#saveModifications").click(function(){
+	$('#add').click(function() {
+		$('#addFormu').fadeToggle();
+	});
+
+	// Remove pop up when you click around it
+	$(document).mouseup(function(e) {
+		var container = $("#addFormu");
+	});
+
+	// enregistre la ou les modifications apportées
+	$("#saveModifications").click(function() {
 		var id = $('#idStoryInput').val();
 		var title = $('#titleInput').val();
 		var description = $('#descriptionInput').val();
 		var storyPoint = $('#storypointInput').val();
-		var story = {title:title,id:id,description:description, storyPoints:storyPoint};
+		var story = {
+			title : title,
+			id : id,
+			description : description,
+			storyPoints : storyPoint
+		};
 		saveStory(story);
 	});
-	
-	$("#cancelBtn").click(function(){
-		//showDetailsStory($('#idStoryInput').val());
-		
+
+	$("#cancelBtn").click(function() {
+		// showDetailsStory($('#idStoryInput').val());
+
 	});
 
 });
-

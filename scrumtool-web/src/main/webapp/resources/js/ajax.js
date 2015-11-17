@@ -1,6 +1,6 @@
-var changeStoryCategory = function(storyId, columnId) {
+var changeStoryCategory = function(storyId, columnId, previousStoryId) {
 	$.ajax({
-		url : "story/" + storyId + "/column/" + columnId,
+		url : "story/" + storyId + "/column/" + columnId + "/previous/" + previousStoryId,
 		method : "PUT",
 		success : function() {
 			console.log("ok");
