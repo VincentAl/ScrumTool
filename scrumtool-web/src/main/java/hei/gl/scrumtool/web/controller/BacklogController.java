@@ -37,7 +37,7 @@ public class BacklogController {
 	@Inject
 	private StoryService storyService;
 
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String home(ModelMap model){
 		Map<String, Map<Integer, Story>> storyList = new HashMap();
 		for (StoryColumn storyColumn : StoryColumn.values()) {
@@ -68,6 +68,12 @@ public class BacklogController {
 		model.addAttribute("categories", categories);
 		model.put("story", new Story());
 		return "home";
+	}
+	
+	
+	@RequestMapping(value="/sprint", method=RequestMethod.GET)
+	public String sprint(ModelMap model){
+		return "sprint";
 	}
 	
 	@RequestMapping(value="/new-story", method=RequestMethod.POST)

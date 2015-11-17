@@ -7,7 +7,12 @@
 		<link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="resources/css/dragula.min.css">
 		<link rel="stylesheet" type="text/css" href="resources/css/scrumtool.css">
-
+		
+		<script type="text/javascript" src="resources/js/jquery.min.js"></script>
+		<script type="text/javascript" src="resources/js/dragula.min.js"></script>
+		<script type="text/javascript" src="resources/js/ajax.js"></script>
+		<script type="text/javascript" src="resources/js/scrumtool.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		
 		<title>ScrumTool</title>
 
@@ -21,8 +26,8 @@
 				</div>
 				<div>
       			<ul class="nav navbar-nav">
-        			<li><a href="#">Backlog</a></li>
-        			<li><a href="sprint">Sprint</a></li> 
+        			<li><a href="home">Backlog</a></li>
+        			<li><a href="#">Sprint</a></li> 
       			</ul>
     		</div>
 			</div>
@@ -31,34 +36,9 @@
 		<div class="container">
 
 			<div class="jumbotron">
-				<h1>Backlog</h1>
+				<h1>Sprint</h1>
 				<p>Drag&Drop to change status</p>
 			</div>
-		
- 
- <div id="add"><span class="glyphicon glyphicon-plus"></span> Add Story</div>
-			<div id="addFormu">
-					<h3> ADD STORY </h3>
-							<form action="new-story" method="POST">
-								<div class="form-group">
-    								#springFormInput("story.title" "class='form-control' id='title' placeholder='Title'")
- 								</div>
-								<div class="form-group">
-									#springFormTextarea("story.description" "class='form-control' rows='3' id='description' placeholder='Description'")	
-								</div>
-								<div class="form-group">
-										#springFormSingleSelect("story.category" $categories "class='form-control'")
-								</div>
-								<div class="form-group">
-    								<label for="rating" style="color:#8F8F8F">Story Point</label>
-									#springFormInput("story.storyPoints" "type='number' class='form-control' min='1' max='10' id='story_points'")
-  								</div>
-								<br>
-								<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Submit</button>
-					
-							</form>
-					</div>
-		<br>
 		
 			<div class="drag-container">
 		<ul class="drag-list">
@@ -117,46 +97,34 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove" /></button>
           <h1 class="modal-title"></h1>
-          <p class="modalStatusInfo bg-success text-success">Update successful</p>
-          <p class="modalStatusInfo bg-danger text-danger">Update failure</p>
         </div>
         <div class="modal-body">
         <form role="form">
         <div class="form-group">
         	<label for="titleInput">Title</label>
-        	<input type ="text" class="form-control" value="titleInput" id="titleInput" ></input>
+        	<input type ="text" class="form-control" value="titleInput" id="titleInput" disabled></input>
         </div>
         <div class="form-group">
         	<label for="descriptionInput">Description</label>
-        	<input type ="text" class="form-control" value="descriptionInput" id="descriptionInput" ></input>
+        	<input type ="text" class="form-control" value="descriptionInput" id="descriptionInput" disabled></input>
         </div>
         <div class="form-group">
         	<label for="storypointInput">Story points</label>
-        	<input type ="number" class="form-control" value="storypointInput" id="storypointInput" ></input>
-        	<input type ="hidden" class="form-control" value="idStoryInput" id="idStoryInput" ></input>
+        	<input type ="number" class="form-control" value="storypointInput" id="storypointInput" disabled></input>
         </div>
-       
         </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" id="editBtn"> <span class="glyphicon glyphicon-pencil"></span> Edit story</button>
-          <button type="button" class="btn btn-default" id="closeBtn" data-dismiss="modal">Close</button>
-          
-          <button type="button" class="btn btn-success" id="saveModifications"> <span class="glyphicon glyphicon-ok"></span> Save Modification</button>
-          <button type="button" class="btn btn-danger" id="cancelBtn" ><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
       
     </div>
   </div>
-  
-  		<script type="text/javascript" src="resources/js/jquery.min.js"></script>
-		<script type="text/javascript" src="resources/js/dragula.min.js"></script>
-		<script type="text/javascript" src="resources/js/utility.js"></script>
-		<script type="text/javascript" src="resources/js/ajax.js"></script>
-		<script type="text/javascript" src="resources/js/scrumtool.js"></script>
+
+
 		
-  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		
+
 	</body>
 </html>
