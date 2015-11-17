@@ -5,9 +5,7 @@ $(function() {
 					document.getElementById('story_column_2'),
 					document.getElementById('story_column_3') ]).on(
 			'drop',
-			function(elem, target, source, sib) {
-				console.log(sib)
-				
+			function(elem, target, source, sib) {				
 				if(sib != null){
 					changeStoryCategory($(elem).data('storyid'), $(target).data('storycolumnid'), $(sib).data('storyid'));	
 				}else{
@@ -15,11 +13,9 @@ $(function() {
 				}
 			});
 
-	$("#toggleBtn").click(
-			function() {
+	$("#toggleBtn").click(function() {
 				$(".addForm").slideToggle();
-				$("#toggleBtn span").toggleClass(
-						"glyphicon-chevron-right glyphicon-chevron-down");
+				$("#toggleBtn span").toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
 			});
 
 	$('#detailsModal').on('show.bs.modal', function(event) {
@@ -43,7 +39,8 @@ $(function() {
 	});
 
 	// Suppression d'une story
-	$(".btnSup").click(function() {
+	$(".btnSup").click(function(e) {
+		e.stopPropagation();
 		var id = $(this).attr('id');
 		var $that = $(this).parent();
 
@@ -70,12 +67,21 @@ $(function() {
 		var container = $("#addFormu");
 	});
 
+    if (!container.is(e.target)
+        && container.has(e.target).length === 0)
+    {
+        container.fadeOut();
+    }
+  });
+
 	// enregistre la ou les modifications apportées
 	$("#saveModifications").click(function() {
 		var id = $('#idStoryInput').val();
 		var title = $('#titleInput').val();
 		var description = $('#descriptionInput').val();
 		var storyPoint = $('#storypointInput').val();
+
+		
 		var story = {
 			title : title,
 			id : id,
@@ -83,11 +89,6 @@ $(function() {
 			storyPoints : storyPoint
 		};
 		saveStory(story);
-	});
-
-	$("#cancelBtn").click(function() {
-		// showDetailsStory($('#idStoryInput').val());
-
 	});
 
 });

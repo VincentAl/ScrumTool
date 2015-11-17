@@ -3,10 +3,13 @@ package hei.gl.scrumtool.web.controller;
 
 import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.enumeration.StoryColumn;
+import hei.gl.scrumtool.core.enumeration.StoryPoint;
 import hei.gl.scrumtool.core.service.SprintService;
 import hei.gl.scrumtool.core.service.StoryService;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -14,6 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import javax.inject.Inject;
 
@@ -57,15 +61,46 @@ public class BacklogController {
 	        }
 
 			storyList.put(storyColumn.toString(), sortedMap);
-		}
 
+		}
+		
+		
+		
+		
+		
 		Map<StoryColumn, String> categories = new HashMap();
 		for (StoryColumn storyColumn : StoryColumn.values()) {
 			categories.put(storyColumn, storyColumn.getLabel());
 		}
+
+		Map<StoryPoint, String> storyPoints = new HashMap();
+		for (StoryPoint storyPoint : StoryPoint.values()) {
+			storyPoints.put(storyPoint, storyPoint.getLabel());
+		}
+		
+		Comparator<StoryPoint> sort = new Comparator<StoryPoint>() 
+		{
+			@Override
+			public int compare(StoryPoint arg0, StoryPoint arg1) {
+				if(arg0.getId() > arg1.getId()){
+					return 1;
+				}else if(arg0.getId() < arg1.getId()){
+					return -1;
+				}else{
+					return 0;
+				}
+			}
+		};
+		
+
+		Map<StoryPoint, String> sortedStoryPointsMap = new TreeMap<StoryPoint, String>(sort);
+		sortedStoryPointsMap.putAll(storyPoints);
+		
+		
 		
 		model.addAllAttributes(storyList);
 		model.addAttribute("categories", categories);
+		model.addAttribute("storyPoints", sortedStoryPointsMap);
 		model.put("story", new Story());
 		return "home";
 	}
@@ -80,6 +115,6 @@ public class BacklogController {
 	public String submitForm(@ModelAttribute("story") Story story){
 		story.setPriority(storyService.findByCategory(story.getCategory()).size());
 		storyService.create(story);
-		return "redirect:/";
+		return "redirect:/home";
 	}
 }

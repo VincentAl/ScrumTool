@@ -51,7 +51,7 @@
 								</div>
 								<div class="form-group">
     								<label for="rating" style="color:#8F8F8F">Story Point</label>
-									#springFormInput("story.storyPoints" "type='number' class='form-control' min='1' max='10' id='story_points'")
+									#springFormSingleSelect("story.storyPoints" $storyPoints "type='number' class='form-control' id='story_points'")
   								</div>
 								<br>
 								<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Submit</button>
@@ -143,7 +143,7 @@
           <button type="button" class="btn btn-default" id="closeBtn" data-dismiss="modal">Close</button>
           
           <button type="button" class="btn btn-success" id="saveModifications"> <span class="glyphicon glyphicon-ok"></span> Save Modification</button>
-          <button type="button" class="btn btn-danger" id="cancelBtn" ><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelBtn" ><span class="glyphicon glyphicon-remove"></span> Cancel</button>
         </div>
       </div>
       

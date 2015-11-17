@@ -2,6 +2,7 @@ package hei.gl.scrumtool.core.service;
 
 import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.enumeration.StoryColumn;
+import hei.gl.scrumtool.core.enumeration.StoryPoint;
 
 import java.util.List;
 import java.util.Set;

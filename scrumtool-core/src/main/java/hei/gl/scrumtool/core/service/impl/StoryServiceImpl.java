@@ -3,6 +3,7 @@ package hei.gl.scrumtool.core.service.impl;
 import hei.gl.scrumtool.core.dao.StoryDAO;
 import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.enumeration.StoryColumn;
+import hei.gl.scrumtool.core.enumeration.StoryPoint;
 import hei.gl.scrumtool.core.service.SprintService;
 import hei.gl.scrumtool.core.service.StoryService;
 
@@ -122,5 +123,5 @@ public class StoryServiceImpl implements StoryService {
 		sprintService.removeStory(idStory, idOldSprint);
 		this.update(story);
 	}
-
+	
 }

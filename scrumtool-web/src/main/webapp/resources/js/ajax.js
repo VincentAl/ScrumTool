@@ -18,6 +18,10 @@ var saveStory = function(story) {
 		success : function(data, status, req) {
 			console.log("loool")
 			$(".bg-success").slideToggle();
+			var title = $('#titleInput').val();
+			var storyPoint = $('#storypointInput').val();
+			$('[data-storyid = "'+ story.id +'"]').find(".drag-title").text(title);
+			$('[data-storyid = "'+ story.id +'"]').find(".badge").text(storyPoint);
 			setTimeout(function() {
 				$("#detailsModal").modal('hide');
 			}, 800);
