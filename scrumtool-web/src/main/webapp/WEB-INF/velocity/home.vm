@@ -132,7 +132,7 @@
         </div>
         <div class="form-group">
         	<label for="storypointInput">Story points</label>
-        	<input type ="number" class="form-control" value="storypointInput" id="storypointInput" ></input>
+        	<input type ="text" class="form-control" value="storypointInput" id="storypointInput" ></input>
         	<input type ="hidden" class="form-control" value="idStoryInput" id="idStoryInput" ></input>
         </div>
        

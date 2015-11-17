@@ -59,14 +59,8 @@ public class BacklogController {
 	        for(Integer key: keys){
 	            sortedMap.put(key, storyMap.get(key));
 	        }
-
 			storyList.put(storyColumn.toString(), sortedMap);
-
 		}
-		
-		
-		
-		
 		
 		Map<StoryColumn, String> categories = new HashMap();
 		for (StoryColumn storyColumn : StoryColumn.values()) {
@@ -92,19 +86,15 @@ public class BacklogController {
 			}
 		};
 		
-
 		Map<StoryPoint, String> sortedStoryPointsMap = new TreeMap<StoryPoint, String>(sort);
 		sortedStoryPointsMap.putAll(storyPoints);
-		
-		
-		
+
 		model.addAllAttributes(storyList);
 		model.addAttribute("categories", categories);
 		model.addAttribute("storyPoints", sortedStoryPointsMap);
 		model.put("story", new Story());
 		return "home";
 	}
-	
 	
 	@RequestMapping(value="/sprint", method=RequestMethod.GET)
 	public String sprint(ModelMap model){

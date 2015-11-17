@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import hei.gl.scrumtool.core.enumeration.StoryColumn;
+import hei.gl.scrumtool.core.enumeration.StoryPoint;
 
 @Entity
 public class Story {
@@ -26,7 +27,7 @@ public class Story {
 	private long id;
 
 	@JsonView(View.Summary.class)
-	private long storyPoints;
+	private StoryPoint storyPoints;
 
 	private int priority;
 
@@ -51,11 +52,11 @@ public class Story {
 		this.id = id;
 	}
 
-	public long getStoryPoints() {
+	public StoryPoint getStoryPoints() {
 		return storyPoints;
 	}
 
-	public void setStoryPoints(long storyPoints) {
+	public void setStoryPoints(StoryPoint storyPoints) {
 		this.storyPoints = storyPoints;
 	}
 

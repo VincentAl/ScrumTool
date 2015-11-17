@@ -5,17 +5,21 @@ $(function() {
 					document.getElementById('story_column_2'),
 					document.getElementById('story_column_3') ]).on(
 			'drop',
-			function(elem, target, source, sib) {				
-				if(sib != null){
-					changeStoryCategory($(elem).data('storyid'), $(target).data('storycolumnid'), $(sib).data('storyid'));	
-				}else{
-					changeStoryCategory($(elem).data('storyid'), $(target).data('storycolumnid'), -1);
+			function(elem, target, source, sib) {
+				if (sib != null) {
+					changeStoryCategory($(elem).data('storyid'), $(target)
+							.data('storycolumnid'), $(sib).data('storyid'));
+				} else {
+					changeStoryCategory($(elem).data('storyid'), $(target)
+							.data('storycolumnid'), -1);
 				}
 			});
 
-	$("#toggleBtn").click(function() {
+	$("#toggleBtn").click(
+			function() {
 				$(".addForm").slideToggle();
-				$("#toggleBtn span").toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
+				$("#toggleBtn span").toggleClass(
+						"glyphicon-chevron-right glyphicon-chevron-down");
 			});
 
 	$('#detailsModal').on('show.bs.modal', function(event) {
@@ -65,14 +69,10 @@ $(function() {
 	// Remove pop up when you click around it
 	$(document).mouseup(function(e) {
 		var container = $("#addFormu");
+		if (!container.is(e.target) && container.has(e.target).length === 0) {
+			container.fadeOut();
+		}
 	});
-
-    if (!container.is(e.target)
-        && container.has(e.target).length === 0)
-    {
-        container.fadeOut();
-    }
-  });
 
 	// enregistre la ou les modifications apportées
 	$("#saveModifications").click(function() {
@@ -80,8 +80,6 @@ $(function() {
 		var title = $('#titleInput').val();
 		var description = $('#descriptionInput').val();
 		var storyPoint = $('#storypointInput').val();
-
-		
 		var story = {
 			title : title,
 			id : id,
