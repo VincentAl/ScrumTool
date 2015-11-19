@@ -77,8 +77,13 @@ public class StoryServiceImpl implements StoryService {
 		}
 
 		// deplacement de la story
+		if (story.getCategory()==category){
+			story.setPriority(this.findByCategory(category).size()-1);
+		}
+		else {
+			story.setPriority(this.findByCategory(category).size());
+		}
 		story.setCategory(category);
-		story.setPriority(this.findByCategory(category).size());
 		update(story);
 	}
 
@@ -86,31 +91,49 @@ public class StoryServiceImpl implements StoryService {
 	public void move(long idStory, StoryColumn category, int newPriority) {
 		Story story = this.findById(idStory);
 
-		// decrementation des priorites dans l'ancienne categorie
-		Set<Story> storiesInOldCategory = this.findByCategory(story
-				.getCategory());
-		for (Story storyInOldCategory : storiesInOldCategory) {
-			if (storyInOldCategory.getPriority() > story.getPriority()) {
-				//log.debug(storyInOldCategory.getTitle() + " passe de " + storyInOldCategory.getPriority() + " à " + (storyInOldCategory.getPriority() - 1));
-				storyInOldCategory.setPriority(storyInOldCategory.getPriority() - 1);
-				update(storyInOldCategory);
+		// si on fait un deplacement vers le bas (ver une priorite plus basse) dans une même cathegory 
+		if (story.getCategory()==category && story.getPriority()<newPriority){ 
+			// decrementation des priroter entre l'ancienne et la nouvelle position
+			Set<Story> storiesInCategory = this.findByCategory(category);
+			for(Story storyInCategory : storiesInCategory){
+				if (storyInCategory.getPriority() > story.getPriority()&& storyInCategory.getPriority()<newPriority) {
+					//log.debug(storyInOldCategory.getTitle() + " passe de " + storyInOldCategory.getPriority() + " à " + (storyInOldCategory.getPriority() - 1));
+					storyInCategory.setPriority(storyInCategory.getPriority() - 1);
+					update(storyInCategory);
+				}
 			}
+	
+			// deplacement de la story
+			story.setPriority(newPriority-1);
+			update(story);
 		}
-
-		// incrementation des priorites dans la nouvelle categorie
-		Set<Story> storiesInNewCategory = this.findByCategory(category);
-		for (Story storyInNewCategory : storiesInNewCategory) {
-			if (storyInNewCategory.getPriority() >= newPriority) {
-				//log.debug(storyInNewCategory.getTitle() + " passe de " + storyInNewCategory.getPriority() + " à " + (storyInNewCategory.getPriority() + 1));
-				storyInNewCategory.setPriority(storyInNewCategory.getPriority() + 1);
-				update(storyInNewCategory);
+		else
+		{
+			// decrementation des priorites dans l'ancienne categorie
+			Set<Story> storiesInOldCategory = this.findByCategory(story.getCategory());
+			for (Story storyInOldCategory : storiesInOldCategory) {
+				if (storyInOldCategory.getPriority() > story.getPriority()) {
+					//log.debug(storyInOldCategory.getTitle() + " passe de " + storyInOldCategory.getPriority() + " à " + (storyInOldCategory.getPriority() - 1));
+					storyInOldCategory.setPriority(storyInOldCategory.getPriority() - 1);
+					update(storyInOldCategory);
+				}
 			}
+			
+			// incrementation des priorites dans la nouvelle categorie
+			Set<Story> storiesInNewCategory = this.findByCategory(category);
+			for (Story storyInNewCategory : storiesInNewCategory) {
+				if (storyInNewCategory.getPriority() >= newPriority) {
+					//log.debug(storyInNewCategory.getTitle() + " passe de " + storyInNewCategory.getPriority() + " à " + (storyInNewCategory.getPriority() + 1));
+					storyInNewCategory.setPriority(storyInNewCategory.getPriority() + 1);
+					update(storyInNewCategory);
+				}
+			}
+	
+			// deplacement de la story
+			story.setCategory(category);
+			story.setPriority(newPriority);
+			update(story);
 		}
-
-		// deplacement de la story
-		story.setCategory(category);
-		story.setPriority(newPriority);
-		update(story);
 	}
 
 	@Override
