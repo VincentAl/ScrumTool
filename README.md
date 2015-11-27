@@ -8,12 +8,12 @@ Projet du cours de Génie Logiciel en Agile
 (cf le fichier du tp04 pour la mise en forme)
 NB : La base doit déjà être créée.
 
-- Url pour voir si tout fonctionne : "localhost:8080/scrumtool-web/"
+- Url pour voir si tout fonctionne : "localhost:8080/scrumtool-web/home"
 
 SourceTree config OK : 
 	- Vincent
 	- Adrien
 	
-Edit demo conflict r�solu
+Edit demo conflict r�solu
 
 Test de modif de michel (pour essayer les merge)

@@ -3,13 +3,13 @@ package hei.gl.scrumtool.core.enumeration;
 public enum StoryPoint {
 	ZERO(1, "0"),
 	HALF(2, "0.5"),
-	ONE(3, "1"),
-	TWO(4, "2"),
-	THREE(5, "3"),
-	FIVE(6, "5"),
-	EIGHT(7, "8"),
-	THIRTEEN(8, "13"),
-	TWENTYONE(9, "21");	
+	I(3, "1"),
+	II(4, "2"),
+	III(5, "3"),
+	V(6, "5"),
+	VIII(7, "8"),
+	XIII(8, "13"),
+	XXI(9, "21");	
 	
 	private int id;
 	private String label;
@@ -30,5 +30,7 @@ public enum StoryPoint {
 	public void setLabel(String label) {
 		this.label = label;
 	}
+	
+	
 	
 }

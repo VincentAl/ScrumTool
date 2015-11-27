@@ -36,7 +36,7 @@
 			</div>
 		
  
- <div id="add"><span class="glyphicon glyphicon-plus"></span> Add Story</div>
+ <div id="add" title="SHIFT+A"><span class="glyphicon glyphicon-plus"></span> Add Story</div>
 			<div id="addFormu">
 					<h3> ADD STORY </h3>
 							<form action="new-story" method="POST">

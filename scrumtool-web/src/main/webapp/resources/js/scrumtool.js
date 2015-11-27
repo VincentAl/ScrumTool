@@ -62,6 +62,13 @@ $(function() {
 		editModal();
 	});
 
+	// Shortcut for opening the form
+	$(document).keydown(function(e) {
+	    if (e.keyCode == 65 && e.shiftKey) {
+	        $("#addFormu").show();
+	    }
+	});
+	
 	$('#add').click(function() {
 		$('#addFormu').fadeToggle();
 	});
