@@ -1,5 +1,6 @@
 package hei.gl.scrumtool.core.dao;
 
+import hei.gl.scrumtool.core.entity.Sprint;
 import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.enumeration.StoryColumn;
 import hei.gl.scrumtool.core.enumeration.StoryPoint;
@@ -23,6 +24,7 @@ public interface StoryDAO extends JpaRepository<Story, Long> {
 
 	@Override
 	List<Story> findAll();
+	List<Story> findBySprint(Sprint sprint); 
 	
 	Set<Story> findByCategory(StoryColumn category);
 	Set<Story> findByCategory(StoryPoint category);

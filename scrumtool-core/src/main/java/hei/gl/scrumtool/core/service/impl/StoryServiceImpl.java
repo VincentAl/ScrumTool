@@ -1,12 +1,5 @@
 package hei.gl.scrumtool.core.service.impl;
 
-import hei.gl.scrumtool.core.dao.StoryDAO;
-import hei.gl.scrumtool.core.entity.Story;
-import hei.gl.scrumtool.core.enumeration.StoryColumn;
-import hei.gl.scrumtool.core.enumeration.StoryPoint;
-import hei.gl.scrumtool.core.service.SprintService;
-import hei.gl.scrumtool.core.service.StoryService;
-
 import java.util.List;
 import java.util.Set;
 
@@ -16,6 +9,15 @@ import javax.inject.Named;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
+
+import hei.gl.scrumtool.core.dao.StoryDAO;
+import hei.gl.scrumtool.core.entity.Sprint;
+import hei.gl.scrumtool.core.entity.Story;
+import hei.gl.scrumtool.core.entity.Task;
+import hei.gl.scrumtool.core.enumeration.StoryColumn;
+import hei.gl.scrumtool.core.service.SprintService;
+import hei.gl.scrumtool.core.service.StoryService;
+import hei.gl.scrumtool.core.service.TaskService;
 
 @Named
 @Transactional
@@ -29,6 +31,9 @@ public class StoryServiceImpl implements StoryService {
 
 	@Inject
 	private SprintService sprintService;
+	
+	@Inject
+	private TaskService taskService;
 
 	@Override
 	public Story findById(long idStory) {
@@ -54,6 +59,16 @@ public class StoryServiceImpl implements StoryService {
 	@Override
 	public Set<Story> findByCategory(StoryColumn category) {
 		return storyDAO.findByCategory(category);
+	}
+	
+	@Override
+	public List<Story> findBySprint(long idSprint) {
+		return storyDAO.findBySprint(sprintService.findById(idSprint));
+	}
+	
+	@Override
+	public List<Story> findBySprint(Sprint sprint) {
+		return storyDAO.findBySprint(sprint);
 	}
 
 	@Override
@@ -83,6 +98,8 @@ public class StoryServiceImpl implements StoryService {
 		else {
 			story.setPriority(this.findByCategory(category).size());
 		}
+		
+		//deplacement de la story
 		story.setCategory(category);
 		update(story);
 	}
@@ -146,5 +163,36 @@ public class StoryServiceImpl implements StoryService {
 		sprintService.removeStory(idStory, idOldSprint);
 		this.update(story);
 	}
+
+	@Override
+	public void changeState(long idStory, StoryColumn category) {
+		Story story = this.findById(idStory);
+		
+		//deplacement de la story
+		story.setCategory(category);
+		update(story);
+	}
+
+	@Override
+	public void addTask(long idTask, long idStory) {
+		Story story= this.findById(idStory);
+		story.addTask(taskService.findByID(idTask));
+		this.update(story);
+	}
+
+	@Override
+	public void addTask(Task task, long idStory) {
+		Story story=this.findById(idStory);
+		story.addTask(task);
+		this.update(story);
+	}
+
+	@Override
+	public void removeTask(long idTask, long idStory) {
+		Story story=findById(idStory);
+		story.removeTask(idTask);
+		this.update(story);
+	}
+
 	
 }

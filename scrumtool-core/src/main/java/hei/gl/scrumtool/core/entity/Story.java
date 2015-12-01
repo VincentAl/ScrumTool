@@ -1,5 +1,6 @@
 package hei.gl.scrumtool.core.entity;
 
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -42,6 +43,21 @@ public class Story {
 
 	@JsonView(View.Summary.class)
 	private String title;
+	
+	
+	public void addTask(Task task){
+		this.tasksList.add(task);
+	}
+	
+	public void removeTask (long idTask){
+		Iterator<Task>i = this.tasksList.iterator();
+		while (i.hasNext()) {
+			Task task = (Task) i.next();
+			if(task.getId()==idTask){
+				i.remove();
+			}
+		}
+	}
 
 	// Getters-Setters
 	public long getId() {

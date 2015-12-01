@@ -1,5 +1,6 @@
 package hei.gl.scrumtool.core.dao;
 
+import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.entity.Task;
 
 import java.util.List;
@@ -20,6 +21,8 @@ public interface TaskDAO extends JpaRepository<Task, Long> {
 	Task findById(Long id);
 
 	Task findByTitle(String title);
+	
+	List<Task> findByStory(Story story);
 
 	@Override
 	List<Task> findAll();

@@ -1,9 +1,6 @@
 package hei.gl.scrumtool.core.enumeration;
 
-public enum StoryColumn {
-	IDEA(1,"Idea"),
-	CONFIRMED(2,"Confirmed"),
-	NEXT_SPRINT(3, "Next sprint"),
+public enum TaskColumn {
 	TODO(4,"Todo"),
 	DOING(5,"Doing"),
 	DONE(6,"Done");
@@ -12,7 +9,7 @@ public enum StoryColumn {
 	private int id;
 	private String label;
 	
-	private StoryColumn(int id, String label) {
+	private TaskColumn(int id, String label) {
 		this.id = id;
 		this.label = label;
 	}
@@ -25,11 +22,12 @@ public enum StoryColumn {
 		return label;
 	}
 	
-	public static StoryColumn getStoryColumnById(long id){
-		for (StoryColumn sc : StoryColumn.values()) {
-			if(sc.getId() == id)
-				return sc;
+	public static TaskColumn getTaskColumnById(long id){
+		for (TaskColumn tc : TaskColumn.values()) {
+			if(tc.getId() == id)
+				return tc;
 		}
 		return null;
 	}
+
 }

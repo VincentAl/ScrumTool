@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import hei.gl.scrumtool.core.enumeration.TaskColumn;
+
 
 @Entity
 public class Task {
@@ -23,7 +25,7 @@ public class Task {
 
 	private String description;
 
-	private String state;
+	private TaskColumn state;
 
 	private String priority;
 
@@ -59,11 +61,11 @@ public class Task {
 		this.description = description;
 	}
 
-	public String getState() {
+	public TaskColumn getState() {
 		return state;
 	}
 
-	public void setState(String state) {
+	public void setState(TaskColumn state) {
 		this.state = state;
 	}
 
