@@ -17,7 +17,7 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand">Scrumtool</a>
+					<a id="titleLink" class="navbar-brand">Scrumtool</a>
 				</div>
 				<div>
       			<ul class="nav navbar-nav">
@@ -32,7 +32,7 @@
 
 			<div class="jumbotron">
 				<h1>Backlog</h1>
-				<p>Drag&Drop to change status</p>
+				<p></p>
 			</div>
 		
  

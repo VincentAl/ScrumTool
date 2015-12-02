@@ -17,6 +17,16 @@ ul {
 	margin: 0;
 	padding: 0;
 }
+.navbar-header #titleLink a:over{
+	color:rgb(255,255,255);
+	cursor:default;
+	
+	
+}
+#titleLink{
+	color:rgb(255,255,255);
+	cursor:default;
+}
 
 /*Style du formulaire d'ajout*/
 .addForm {
