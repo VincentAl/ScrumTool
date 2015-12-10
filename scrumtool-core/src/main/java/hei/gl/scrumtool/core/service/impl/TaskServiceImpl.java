@@ -3,6 +3,9 @@ package hei.gl.scrumtool.core.service.impl;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Named;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import hei.gl.scrumtool.core.dao.TaskDAO;
 import hei.gl.scrumtool.core.entity.Story;
@@ -11,13 +14,15 @@ import hei.gl.scrumtool.core.enumeration.TaskColumn;
 import hei.gl.scrumtool.core.service.StoryService;
 import hei.gl.scrumtool.core.service.TaskService;
 
+@Named
+@Transactional
 public class TaskServiceImpl implements TaskService {
-	
+
 	@Inject
-	TaskDAO taskDao;
-	
+	private TaskDAO taskDao;
+
 	@Inject
-	StoryService storyService;
+	private StoryService storyService;
 
 	@Override
 	public Task findByID(long idTask) {
@@ -41,9 +46,9 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	public void changeState(long idTask, TaskColumn category) {
-		Task task=this.findByID(idTask);
-		
-		//deplacement
+		Task task = this.findByID(idTask);
+
+		// deplacement
 		task.setState(category);
 		this.update(task);
 	}
