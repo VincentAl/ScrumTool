@@ -2,10 +2,12 @@ package hei.gl.scrumtool.web.controller;
 
 
 import hei.gl.scrumtool.core.entity.Story;
+import hei.gl.scrumtool.core.entity.Task;
 import hei.gl.scrumtool.core.enumeration.StoryColumn;
 import hei.gl.scrumtool.core.enumeration.StoryPoint;
 import hei.gl.scrumtool.core.service.SprintService;
 import hei.gl.scrumtool.core.service.StoryService;
+import hei.gl.scrumtool.core.service.TaskService;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -105,6 +107,12 @@ public class BacklogController {
 	public String submitForm(@ModelAttribute("story") Story story){
 		story.setPriority(storyService.findByCategory(story.getCategory()).size());
 		storyService.create(story);
+		return "redirect:/home";
+	}
+	
+	@RequestMapping(value="/new-task", method=RequestMethod.POST)
+	public String submitForm(@ModelAttribute("task") Task task, @ModelAttribute("story") Story story){
+		storyService.addTask(task.getId(), story.getId());
 		return "redirect:/home";
 	}
 }
