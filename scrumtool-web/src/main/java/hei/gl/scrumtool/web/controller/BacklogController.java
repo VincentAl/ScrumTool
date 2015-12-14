@@ -42,6 +42,9 @@ public class BacklogController {
 	
 	@Inject
 	private StoryService storyService;
+	
+	@Inject
+	private TaskService taskService;
 
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String home(ModelMap model){
@@ -111,8 +114,8 @@ public class BacklogController {
 	}
 	
 	@RequestMapping(value="/new-task", method=RequestMethod.POST)
-	public String submitForm(@ModelAttribute("task") Task task, @ModelAttribute("story") Story story){
-		storyService.addTask(task.getId(), story.getId());
+	public String submitForm(@ModelAttribute("task") Task task){
+		taskService.create(task);
 		return "redirect:/home";
 	}
 }
