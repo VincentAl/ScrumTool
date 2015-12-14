@@ -27,7 +27,7 @@ public class Task {
 
 	private TaskColumn state;
 
-	private String priority;
+	private int priority;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date startTime;
@@ -69,11 +69,11 @@ public class Task {
 		this.state = state;
 	}
 
-	public String getPriority() {
+	public int getPriority() {
 		return priority;
 	}
 
-	public void setPriority(String priority) {
+	public void setPriority(int priority) {
 		this.priority = priority;
 	}
 

@@ -76,4 +76,23 @@ public class SprintServiceImpl implements SprintService {
 
 	}
 
+	@Override
+	public Sprint findCurrentSprint() {
+		return sprintDAO.findByCurrentSprintTrue();
+	}
+
+	@Override
+	public boolean areAllSprintClosed() {
+		if(sprintDAO.findByCurrentSprintTrue() != null){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	@Override
+	public Sprint findLastSprint() {
+		return sprintDAO.findLastSprint();
+	}
+
 }

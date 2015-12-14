@@ -44,10 +44,10 @@
 		<ul class="drag-list">
 			<li class="drag-column drag-column-on-hold">
 				<span class="drag-column-header">
-					<h2>Ideas</h2>
+					<h2>To Do</h2>
 				</span>
-				<ul class="drag-inner-list" id="story_column_1" data-storycolumnid="1">
-					#foreach($story in $IDEA)
+				<ul class="drag-inner-list" id="story_column_1" data-storycolumnid="4">
+					#foreach($story in $TODO)
 						<li class="drag-item" data-toggle="modal" data-target="#detailsModal" data-storyid="$story.id">
 							<span class="drag-title" >$story.title</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
@@ -58,10 +58,10 @@
 			</li>
 			<li class="drag-column drag-column-in-progress">
 				<span class="drag-column-header">
-					<h2>CONFIRMED</h2>
+					<h2>Doing</h2>
 				</span>
-				<ul class="drag-inner-list" id="story_column_2" data-storycolumnid="2">
-					#foreach($story in $CONFIRMED)
+				<ul class="drag-inner-list" id="story_column_2" data-storycolumnid="5">
+					#foreach($story in $DOING)
 						<li class="drag-item" data-toggle="modal" data-target="#detailsModal" data-storyid="$story.id">
 							<span class="drag-title" >$story.title</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
@@ -72,10 +72,10 @@
 			</li>
 			<li class="drag-column drag-column-needs-review">
 				<span class="drag-column-header">
-					<h2>Next Sprint</h2>
+					<h2>Done</h2>
 				</span>
-				<ul class="drag-inner-list" id="story_column_3" data-storycolumnid="3">
-					#foreach($story in $NEXT_SPRINT)
+				<ul class="drag-inner-list" id="story_column_3" data-storycolumnid="6">
+					#foreach($story in $DONE)
 						<li class="drag-item" data-toggle="modal" data-target="#detailsModal" data-storyid="$story.id">
 							<span class="drag-title" >$story.title</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>

@@ -27,7 +27,10 @@ public class Sprint {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endTime;
-
+	
+	
+	private boolean currentSprint;
+	
 	private long number;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sprint")
@@ -115,5 +118,14 @@ public class Sprint {
 	public void setProductOwner(User productOwner) {
 		this.productOwner = productOwner;
 	}
+	
+	public boolean isCurrentSprint() {
+		return currentSprint;
+	}
+
+	public void setCurrentSprint(boolean currentSprint) {
+		this.currentSprint = currentSprint;
+	}
+
 
 }

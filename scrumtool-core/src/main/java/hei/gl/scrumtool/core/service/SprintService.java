@@ -20,4 +20,10 @@ public interface SprintService {
 	public Sprint create(Sprint sprint);
 	public Sprint update(Sprint sprint);
 	void delete(long idSprint);
+	
+	public Sprint findCurrentSprint();
+	public boolean areAllSprintClosed();
+	public Sprint findLastSprint();
+	
+	
 }
