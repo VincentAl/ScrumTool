@@ -33,6 +33,9 @@
 
 			<div class="jumbotron">
 				<h1>Backlog</h1>
+				<div id="message_helper">
+					<div id="message_helper_$messageHelperType" class="alert alert-$messageHelperType">$messageHelper</div>
+				</div>
 				<button type="button" class="btn btn-info"><a href="launch-new-spring">Create next spring</a></button>
 			</div>
 		

@@ -17,6 +17,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class SprintServiceImpl implements SprintService {
 	
+	private String messageHelper = "";
+	private String messageHelperType = "";
+	
+	
+	
 	@Inject
 	private SprintDAO sprintDAO;
 
@@ -93,6 +98,34 @@ public class SprintServiceImpl implements SprintService {
 	@Override
 	public Sprint findLastSprint() {
 		return sprintDAO.findLastSprint();
+	}
+
+	@Override
+	public void closeCurrentSprint() {
+		Sprint s = sprintDAO.findByCurrentSprintTrue();
+		s.setCurrentSprint(false);
+		sprintDAO.save(s);
+	}
+	
+	public void clearMessageHelper(){
+		this.messageHelper = "";
+		this.messageHelperType = "";
+	}
+
+	public String getMessageHelper() {
+		return messageHelper;
+	}
+
+	public void setMessageHelper(String messageHelper) {
+		this.messageHelper = messageHelper;
+	}
+
+	public String getMessageHelperType() {
+		return messageHelperType;
+	}
+
+	public void setMessageHelperType(String messageHelperType) {
+		this.messageHelperType = messageHelperType;
 	}
 
 }

@@ -14,6 +14,8 @@ $(function() {
 							.data('storycolumnid'), -1);
 				}
 			});
+	
+	
 
 	$("#toggleBtn").click(
 			function() {
@@ -95,5 +97,9 @@ $(function() {
 		};
 		saveStory(story);
 	});
+	
+	window.setTimeout(function(){
+		$('#message_helper').css('visibility', 'hidden');
+	}, 3000);
 
 });

@@ -24,6 +24,6 @@ public interface SprintService {
 	public Sprint findCurrentSprint();
 	public boolean areAllSprintClosed();
 	public Sprint findLastSprint();
-	
+	public void closeCurrentSprint();
 	
 }

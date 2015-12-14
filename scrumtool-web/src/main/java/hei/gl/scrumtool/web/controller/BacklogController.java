@@ -9,6 +9,7 @@ import hei.gl.scrumtool.core.enumeration.StoryPoint;
 import hei.gl.scrumtool.core.service.SprintService;
 import hei.gl.scrumtool.core.service.StoryService;
 import hei.gl.scrumtool.core.service.TaskService;
+import hei.gl.scrumtool.core.service.impl.SprintServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -94,6 +95,8 @@ public class BacklogController {
 		sortedStoryPointsMap.putAll(storyPoints);
 
 		model.addAllAttributes(storyList);
+		model.addAttribute("messageHelper", ((SprintServiceImpl) sprintService).getMessageHelper());
+		model.addAttribute("messageHelperType", ((SprintServiceImpl) sprintService).getMessageHelperType());
 		model.addAttribute("categories", categories);
 		model.addAttribute("storyPoints", sortedStoryPointsMap);
 		model.put("story", new Story());
@@ -125,10 +128,12 @@ public class BacklogController {
 				story.setSprint(newSprint);
 				storyService.create(story);
 			}
-			
+			((SprintServiceImpl) sprintService).clearMessageHelper();
 			return "redirect:/sprint";
 		}else{
-			System.out.println("There is a sprint open");
+			long numSprint = sprintService.findLastSprint().getNumber();
+			((SprintServiceImpl) sprintService).setMessageHelper("Please, close the Sprint "+ numSprint +" before creating a new one. :)");
+			((SprintServiceImpl) sprintService).setMessageHelperType("danger");
 			return "redirect:/home";
 		}
 	}
