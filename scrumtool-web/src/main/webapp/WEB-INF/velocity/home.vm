@@ -23,24 +23,22 @@
 				<div>
       			<ul class="nav navbar-nav">
         			<li><a href="#">Backlog</a></li>
-        			<li><a href="sprint">Sprint</a></li> 
+        			<li><a href="sprint">Sprint</a></li> 	
       			</ul>
+      			<ul id="sexyButtonContainer">
+      				<li id="sexyButton"><a href="launch-new-spring"><span class="glyphicon glyphicon-play-circle"></span> Create next spring</a></li>
+        			<li id="sexyButton"><a href="#" id="add" title="SHIFT+A"><span class="glyphicon glyphicon-plus"></span> Add Story</a></li>
+      			</ul>
+      			
     		</div>
 			</div>
 		</nav>
 		
 		<div class="container">
-
-			<div class="jumbotron">
-				<h1>Backlog</h1>
 				<div id="message_helper">
 					<div id="message_helper_$messageHelperType" class="alert alert-$messageHelperType">$messageHelper</div>
 				</div>
-				<button type="button" class="btn btn-info"><a href="launch-new-spring">Create next spring</a></button>
-			</div>
-		
- 
- <div id="add" title="SHIFT+A"><span class="glyphicon glyphicon-plus"></span> Add Story</div>
+
 			<div id="addFormu">
 					<h3> ADD STORY </h3>
 							<form action="new-story" method="POST">

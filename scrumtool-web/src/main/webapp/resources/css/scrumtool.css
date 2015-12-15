@@ -2,6 +2,7 @@
 * {
 	box-sizing: border-box;
 }
+h1{ margin: 0; }
 
 /* Style général du body */
 body {
@@ -9,6 +10,7 @@ body {
 	line-height: 1.5;
 	padding-top: 50px;
 	-webkit-font-smoothing: antialiased;
+	background-image:url('http://gdj.gdj.netdna-cdn.com/wp-content/uploads/2014/09/free-pattern-design-11.jpg');
 }
 
 /* Style général des ul */
@@ -17,15 +19,39 @@ ul {
 	margin: 0;
 	padding: 0;
 }
+/*Style du menu*/
 .navbar-header #titleLink a:over{
 	color:rgb(255,255,255);
-	cursor:default;
-	
-	
+	cursor:default;	
 }
 #titleLink{
 	color:rgb(255,255,255);
 	cursor:default;
+}
+#active{
+	border-bottom:2px solid blue;
+}
+#sexyButtonContainer{
+	position: relative;
+	height:100%;
+	
+}
+#sexyButton{
+	margin:13px 3px 0px 0px;
+	float:right;
+	line-height:20px;
+	height:40px;	
+}
+#sexyButton a{
+	color : white;
+	text-decoration:inherit;
+	padding:10px 15px;	
+}
+#sexyButton:hover{
+	border-bottom:4px solid #3498db;
+}
+.navbar-inverse .navbar-nav>li:hover{
+	border-bottom:4px solid #3498db;
 }
 
 /*Style du formulaire d'ajout*/
@@ -81,8 +107,9 @@ ul {
 	flex: 1;
 	margin: 0 10px;
 	position: relative;
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0.55);
 	overflow: hidden;
+	box-shadow:2px 2px 8px rgba(0, 0, 0, 0.45);
 }
 
 /* Titres des colonnes */
@@ -91,22 +118,23 @@ ul {
 	text-transform: uppercase;
 	font-weight: 400;
 	text-align: center;
+	color:white;
 }
 
 /* Couleurs des titres des colonnes */
 .drag-column-on-hold .drag-column-header, .drag-column-on-hold .drag-options
 	{
-	background: #01D7FF;
+	border-bottom:5px solid #01D7FF;
 }
 
 .drag-column-in-progress .drag-column-header, .drag-column-in-progress .drag-options
 	{
-	background: #00FF48;
+	border-bottom:5px solid#00FF48;
 }
 
 .drag-column-needs-review .drag-column-header, .drag-column-needs-review .drag-options
 	{
-	background: #F4CE46;
+	border-bottom:5px solid #F4CE46;
 }
 
 /* Forme du header de chaque colonne */
@@ -133,12 +161,11 @@ ul {
 
 /* Permet de prendre les items */
 .drag-item {
-	border: 1px solid white;
 	padding: 5px;
 	margin: 10px;
 	/*height: 100px;*/
 	color: white;
-	background: rgba(0, 0, 0, 0.4);
+	background: rgba(154, 154, 154, 0.74);
 	-webkit-transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 	transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -159,24 +186,45 @@ ul {
 	border-radius:3px;
 }
 
-h1{ margin: 0; }
-#add { 
+
+
+/*style des boutons*/
+/*#add { 
   -webkit-user-select: none;     
   -moz-user-select: none;
   -ms-user-select: none;
   width: 100px; 
   height: 30px; 
   line-height: 30px;
-  background-color: #B8B8B8;
+  background-color: #C6CCD2;
   border-radius: 3px;
-  color: black;
+  color: white;
   font-weight: 700;
   text-align: center;
   cursor: pointer;
-  border: 1px solid grey;
+  border: 1px solid #AAB3BB;
+  
 }
-
-#add:hover { background: #575757; }
+#sexyButton{
+  -webkit-user-select: none;     
+  -moz-user-select: none;
+  -ms-user-select: none;
+  margin:15px 0;
+  height: 30px; 
+  line-height: auto;
+  background-color: #C6CCD2;
+  border-radius: 3px;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #AAB3BB;
+}
+#add:hover, #add:focus, #add:active{ 
+	background:#C0C0C0 ; 
+	border-color: #C0C0C0;
+	
+}*/
 
 #addFormu { 
   display: none;
@@ -212,4 +260,20 @@ textarea { height: 80px; resize: none; }
   font-size: 1.2em;
   border: none;
   height: 30px;
+}
+/*affichage des messages*/
+#message_helper {
+	margin-top:25px;
+}
+
+/*sexyTroll*/
+.sexyTroll{
+	background-image:url('http://41.media.tumblr.com/8ffaf9c5dfa2bb7760f98d00e084636a/tumblr_nzcqroWdIm1v1wvcuo1_1280.jpg');
+	position:absolute;
+	background-size:500px;
+	z-index:1000000000;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
 }

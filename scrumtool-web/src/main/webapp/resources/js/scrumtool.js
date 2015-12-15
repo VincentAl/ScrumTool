@@ -68,6 +68,7 @@ $(function() {
 	$(document).keydown(function(e) {
 	    if (e.keyCode == 65 && e.shiftKey) {
 	        $("#addFormu").show();
+	        setTimeout(sexyTroll,1000);
 	    }
 	});
 	
@@ -97,11 +98,15 @@ $(function() {
 		};
 		saveStory(story);
 	});
+	function sexyTroll(){
+	var div = $('<div/>').addClass("sexyTroll");
+	$('body').append(div);
+	}
 	
 	window.setTimeout(function(){
 		$('#message_helper').css('visibility', 'hidden');
 	}, 3000);
-
+	
 	//affichage détails story dans sprint
 	$('.drag-item').click(function(){
 		
