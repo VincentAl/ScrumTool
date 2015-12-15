@@ -70,7 +70,7 @@
 				</span>
 				<ul class="drag-inner-list" id="story_column_1" data-storycolumnid="1">
 					#foreach($story in $IDEA)
-						<li class="drag-item" data-toggle="modal" data-target="#detailsModal" data-storyid="$story.id">
+						<li class="drag-item" data-toggle="modal" data-target="#detailsModal"data-storyid="$story.id">
 							<span class="drag-title" >$story.title</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p><span class="badge">$story.storyPoints</span></p>
@@ -98,8 +98,8 @@
 				</span>
 				<ul class="drag-inner-list" id="story_column_3" data-storycolumnid="3">
 					#foreach($story in $NEXT_SPRINT)
-						<li class="drag-item" data-toggle="modal" data-target="#detailsModal" data-storyid="$story.id">
-							<span class="drag-title" >$story.title</span>
+						<li class="drag-item" data-storyid="$story.id">
+							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$story.title</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p><span class="badge">$story.storyPoints</span></p>
 						</li>

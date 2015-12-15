@@ -8,12 +8,6 @@
 		<link rel="stylesheet" type="text/css" href="resources/css/dragula.min.css">
 		<link rel="stylesheet" type="text/css" href="resources/css/scrumtool.css">
 		
-		<script type="text/javascript" src="resources/js/jquery.min.js"></script>
-		<script type="text/javascript" src="resources/js/dragula.min.js"></script>
-		<script type="text/javascript" src="resources/js/ajax.js"></script>
-		<script type="text/javascript" src="resources/js/scrumtool.js"></script>
-  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		
 		<title>ScrumTool</title>
 
 	</head>
@@ -91,7 +85,22 @@
   </div>
 		
 		</div>
-		
+			
+				<div class="addFormuTask">
+					<h3> ADD TASK </h3>
+					<form action="new-task" method="POST">
+						<div class="form-group">
+							#springFormInput("story.title" "class='form-control' id='title' placeholder='Title'")
+						</div>
+						<div class="form-group">
+							#springFormTextarea("story.description" "class='form-control' rows='3' id='description' placeholder='Description'")	
+						</div>
+						<br>
+						<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Submit</button>	
+					</form>
+				</div>
+			
+			
 			<div class="drag-container">
 		<ul class="drag-list">
 			<li class="drag-column drag-column-on-hold">
@@ -104,6 +113,8 @@
 							<span class="drag-title" >$story.title</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p><span class="badge">$story.storyPoints</span></p>
+							<div class="addTask" title="SHIFT+T" identif=$story.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>
+										
 						</li>
 					#end
 				</ul>
@@ -115,9 +126,10 @@
 				<ul class="drag-inner-list" id="story_column_2" data-storycolumnid="5">
 					#foreach($story in $DOING)
 						<li class="drag-item" data-storyid="$story.id">
-							<span class="drag-title" >$story.title</span>
+							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$story.title</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p><span class="badge">$story.storyPoints</span></p>
+							<div class="addTask" title="SHIFT+T" identif=$story.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>		
 						</li>
 					#end
 				</ul>
@@ -129,18 +141,110 @@
 				<ul class="drag-inner-list" id="story_column_3" data-storycolumnid="6">
 					#foreach($story in $DONE)
 						<li class="drag-item" data-storyid="$story.id">
+							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$story.title</span>
+							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<p><span class="badge">$story.storyPoints</span></p>
+							<div class="addTask" title="SHIFT+T" identif=$story.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>
+						</li>
+					#end
+				</ul>
+			</li>
+		</ul>
+		
+		<hr>
+		
+		<ul class="drag-list">
+			<li class="drag-column drag-column-on-hold">
+				<span class="drag-column-header">
+					<h2>To Do</h2>
+				</span>
+				<ul class="drag-inner-list" id="story_column_1" data-storycolumnid="4">
+					#foreach($story in $TODO)
+						<li class="drag-item" data-toggle="modal" data-target="#detailsModal" data-storyid="$story.id">
 							<span class="drag-title" >$story.title</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p><span class="badge">$story.storyPoints</span></p>
+							<div class="addTask" title="SHIFT+T" identif=$story.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>
+										
+						</li>
+					#end
+				</ul>
+			</li>
+			<li class="drag-column drag-column-in-progress">
+				<span class="drag-column-header">
+					<h2>Doing</h2>
+				</span>
+				<ul class="drag-inner-list" id="story_column_2" data-storycolumnid="5">
+					#foreach($story in $DOING)
+						<li class="drag-item" data-storyid="$story.id">
+							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$story.title</span>
+							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<p><span class="badge">$story.storyPoints</span></p>
+							<div class="addTask" title="SHIFT+T" identif=$story.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>		
+						</li>
+					#end
+				</ul>
+			</li>
+			<li class="drag-column drag-column-needs-review">
+				<span class="drag-column-header"
+					<h2>Done</h2>
+				</span>
+				<ul class="drag-inner-list" id="story_column_3" data-storycolumnid="6">
+					#foreach($story in $DONE)
+						<li class="drag-item" data-storyid="$story.id">
+							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$story.title</span>
+							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<p><span class="badge">$story.storyPoints</span></p>
+							<div class="addTask" title="SHIFT+T" identif=$story.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>	
 						</li>
 					#end
 				</ul>
 			</li>
 		</ul>
 	</div>
+
+	
+  <!-- Modal -->
+  <div class="modal fade" id="detailsModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove" /></button>
+          <h1 class="modal-title"></h1>
+        </div>
+        <div class="modal-body">
+        <form role="form">
+        <div class="form-group">
+        	<label for="titleInput">Title</label>
+        	<input type ="text" class="form-control" value="titleInput" id="titleInput" disabled></input>
+        </div>
+        <div class="form-group">
+        	<label for="descriptionInput">Description</label>
+        	<input type ="text" class="form-control" value="descriptionInput" id="descriptionInput" disabled></input>
+        </div>
+        <div class="form-group">
+        	<label for="storypointInput">Story points</label>
+        	<input type ="number" class="form-control" value="storypointInput" id="storypointInput" disabled></input>
+        </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="editBtn"> <span class="glyphicon glyphicon-pencil"></span> Edit story</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
   </div>
 
-
+		
+		<script type="text/javascript" src="resources/js/jquery.min.js"></script>
+		<script type="text/javascript" src="resources/js/dragula.min.js"></script>
+		<script type="text/javascript" src="resources/js/ajax.js"></script>
+		<script type="text/javascript" src="resources/js/scrumtool.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		
 
 	</body>

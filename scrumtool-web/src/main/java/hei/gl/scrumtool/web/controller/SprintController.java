@@ -11,10 +11,12 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.hibernate.mapping.Column;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,6 +25,7 @@ import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.entity.Task;
 import hei.gl.scrumtool.core.enumeration.StoryColumn;
 import hei.gl.scrumtool.core.enumeration.StoryPoint;
+import hei.gl.scrumtool.core.enumeration.TaskColumn;
 import hei.gl.scrumtool.core.service.SprintService;
 import hei.gl.scrumtool.core.service.StoryService;
 import hei.gl.scrumtool.core.service.TaskService;
@@ -52,40 +55,52 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 			taskList.addAll(taskService.findByStory(story.getId()));
 		}
 		
-			// Location of the stories
-			//horizontal priority
-			Map<String, Map<Integer, Story>> storyList = new HashMap();
-			for (StoryColumn storyColumn : StoryColumn.values()) {
-				Map<Integer, Story> storyMap = new HashMap();
-					for (Story story : stroryList ) {
-						if(story.getCategory().equals(storyColumn)){
-							System.out.println("8=========================D");
-							storyMap.put(story.getPriority(), story);
-						}
-					}
-	
-				List<Integer> keys = new LinkedList<Integer>(storyMap.keySet());
-		        Collections.sort(keys);
-		     
-		        //LinkedHashMap will keep the keys in the order they are inserted
-		        //which is currently sorted on natural ordering
-		        Map<Integer,Story> sortedMap = new LinkedHashMap<Integer,Story>();
-			        for(Integer key: keys){
-			            sortedMap.put(key, storyMap.get(key));
-			        }
-				storyList.put(storyColumn.toString(), sortedMap);
-			}
-		/*
-		Map<StoryColumn, String> categories = new HashMap();
+		// Location of the stories
+		//horizontal priority
+		Map<String, Map<Integer, Story>> storyList = new HashMap();
 		for (StoryColumn storyColumn : StoryColumn.values()) {
-			categories.put(storyColumn, storyColumn.getLabel());
-		}
+			Map<Integer, Story> storyMap = new HashMap();
+				for (Story story : stroryList ) {
+					if(story.getCategory().equals(storyColumn)){
+						storyMap.put(story.getPriority(), story);
+					}
+				}
 
-		Map<StoryPoint, String> storyPoints = new HashMap();
-		for (StoryPoint storyPoint : StoryPoint.values()) {
-			storyPoints.put(storyPoint, storyPoint.getLabel());
+			List<Integer> keys = new LinkedList<Integer>(storyMap.keySet());
+	        Collections.sort(keys);
+	     
+	        //LinkedHashMap will keep the keys in the order they are inserted
+	        //which is currently sorted on natural ordering
+	        Map<Integer,Story> sortedMap = new LinkedHashMap<Integer,Story>();
+		        for(Integer key: keys){
+		            sortedMap.put(key, storyMap.get(key));
+		        }
+			storyList.put(storyColumn.toString(), sortedMap);
 		}
-		*/
+		
+		// Location of the stories
+		//horizontal priority
+		Map<String, Map<Integer, Task>> tasksList = new HashMap();
+		for (TaskColumn taskColumn : TaskColumn.values()) {
+			Map<Integer, Task> taskMap = new HashMap();
+				for (Task task : taskList ) {
+					if(task.getState().equals(taskColumn)){
+						taskMap.put(task.getPriority(), task);
+					}
+				}
+
+			List<Integer> keys = new LinkedList<Integer>(taskMap.keySet());
+	        Collections.sort(keys);
+	     
+	        //LinkedHashMap will keep the keys in the order they are inserted
+	        //which is currently sorted on natural ordering
+	        Map<Integer,Task> sortedMapTask = new LinkedHashMap<Integer,Task>();
+		        for(Integer key: keys){
+		            sortedMapTask.put(key, taskMap.get(key));
+		        }
+			tasksList.put(taskColumn.toString(), sortedMapTask);
+		}
+		
 			
 		//vertical priority
 		Comparator<StoryPoint> sort = new Comparator<StoryPoint>() 
@@ -103,6 +118,8 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 		};
 		
 		model.addAllAttributes(storyList);
+		model.addAllAttributes(tasksList);
+		model.put("task", new Task());
 		return "sprint";
 	}
 	@RequestMapping(value="/close-sprint", method=RequestMethod.GET)
@@ -117,6 +134,13 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 			sprintService.closeCurrentSprint();
 		}
 		return "redirect:/home";
-		
 	}
+	
+	@RequestMapping(value="/new-task", method=RequestMethod.POST)
+	public String submitForm(@ModelAttribute("task") Task task, @ModelAttribute("story") Story story){
+		taskService.create(task);
+		storyService.addTask(task.getId(), story.getId());
+		return "redirect:/home";
+	}
+
 }
