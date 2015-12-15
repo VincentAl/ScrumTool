@@ -102,4 +102,21 @@ $(function() {
 		$('#message_helper').css('visibility', 'hidden');
 	}, 3000);
 
+	//affichage détails story dans sprint
+	$('.drag-item').click(function(){
+		
+		$('#detailStory').show(500)
+		var id = $(this).data('storyid')
+		
+		$.ajax({
+			url : "story/" + id,
+			type : "GET",
+			success : function(story) {
+				// Update the modal's content.
+				$('#storyTitle').html(story.title);
+				$('#storyDescription').html(story.description);
+				$('#storyPoint').html(story.storyPoints);
+			}
+		});
+	})
 });
