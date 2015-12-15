@@ -38,7 +38,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class BacklogController {
 	
-	private final static Logger logger = LoggerFactory.getLogger(BacklogController.class);
+
 	
 	@Inject
 	private SprintService sprintService;
@@ -136,12 +136,5 @@ public class BacklogController {
 			((SprintServiceImpl) sprintService).setMessageHelperType("danger");
 			return "redirect:/home";
 		}
-	}
-
-	@RequestMapping(value="/new-task", method=RequestMethod.POST)
-	public String submitForm(@ModelAttribute("task") Task task, @ModelAttribute("story") Story story){
-		storyService.addTask(task.getId(), story.getId());
-		return "redirect:/home";
-
 	}
 }

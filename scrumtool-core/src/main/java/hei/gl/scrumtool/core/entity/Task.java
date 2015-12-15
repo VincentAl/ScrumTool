@@ -28,7 +28,7 @@ public class Task {
 	private TaskColumn state;
 
 	private int priority;
-
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date startTime;
 

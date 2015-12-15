@@ -67,7 +67,7 @@ $(function() {
 	// Shortcut for opening the form
 	$(document).keydown(function(e) {
 	    if (e.keyCode == 65 && e.shiftKey) {
-	        $("#addFormu").show();
+	        $('#add').click();
 	    }
 	});
 	
@@ -75,6 +75,27 @@ $(function() {
 		$('#addFormu').fadeToggle();
 	});
 
+	$('.addTask').click(function() {
+		var idStory = $(this).attr("identif");
+		$('.addFormuTask').fadeToggle();
+		$('.' + idStory).fadeToggle();		
+	});
+	
+	// Shortcut for opening the form
+	$(document).keydown(function(e) {
+	    if (e.keyCode == 84 && e.shiftKey) {
+	        $('.addFormuTask').click();
+	    }
+	});
+
+	// Remove pop up when you click around it
+	$(document).mouseup(function(e) {
+		var container = $(".addFormuTask");
+		if (!container.is(e.target) && container.has(e.target).length === 0) {
+			container.fadeOut();
+		}
+	});	    
+	
 	// Remove pop up when you click around it
 	$(document).mouseup(function(e) {
 		var container = $("#addFormu");
