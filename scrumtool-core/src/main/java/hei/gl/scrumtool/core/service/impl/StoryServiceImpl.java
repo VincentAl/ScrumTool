@@ -175,9 +175,7 @@ public class StoryServiceImpl implements StoryService {
 
 	@Override
 	public void addTask(long idTask, long idStory) {
-		Story story= this.findById(idStory);
-		story.addTask(taskService.findByID(idTask));
-		this.update(story);
+		this.addTask(taskService.findByID(idTask), idStory);
 	}
 
 	@Override
@@ -185,6 +183,19 @@ public class StoryServiceImpl implements StoryService {
 		Story story=this.findById(idStory);
 		story.addTask(task);
 		this.update(story);
+		task.setStory(story);
+		taskService.update(task);
+	}
+
+	@Override
+	public void addTask(List<Task> tasks, long idStory) {
+		Story story=this.findById(idStory);
+		story.addTaskList(tasks);
+		this.update(story);
+		for (Task task : tasks) {
+			task.setStory(story);
+			taskService.update(task);
+		}
 	}
 
 	@Override

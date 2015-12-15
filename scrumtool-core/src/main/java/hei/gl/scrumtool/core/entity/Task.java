@@ -1,12 +1,14 @@
 package hei.gl.scrumtool.core.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,11 +32,13 @@ public class Task {
 	private int priority;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date startTime;
+	private Date duration;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Story story;
-
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private User user;
 	
 //Getters-Setters
 	public long getId() {
@@ -78,11 +82,27 @@ public class Task {
 	}
 
 	public Date getStartPoint() {
-		return startTime;
+		return duration;
 	}
 
-	public void setStartPoint(Date startTime) {
-		this.startTime = startTime;
+	public void setStartPoint(Date duration) {
+		this.duration = duration;
+	}
+
+	public Date getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Date duration) {
+		this.duration = duration;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Story getStory() {

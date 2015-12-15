@@ -1,6 +1,7 @@
 package hei.gl.scrumtool.core.entity;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -35,7 +36,7 @@ public class Story {
 	@JsonView(View.Summary.class)
 	private String description;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Sprint sprint;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "story")
@@ -47,6 +48,9 @@ public class Story {
 	
 	public void addTask(Task task){
 		this.tasksList.add(task);
+	}
+	public void addTaskList(List<Task> tasks){
+		this.tasksList.addAll(tasks);
 	}
 	
 	public void removeTask (long idTask){

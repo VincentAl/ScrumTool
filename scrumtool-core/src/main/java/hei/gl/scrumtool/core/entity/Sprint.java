@@ -9,8 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -36,10 +36,10 @@ public class Sprint {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "sprint")
 	private List<Story> storyList;
 
-	@OneToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private User scrumMaster;
 
-	@OneToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private User productOwner;
 
 

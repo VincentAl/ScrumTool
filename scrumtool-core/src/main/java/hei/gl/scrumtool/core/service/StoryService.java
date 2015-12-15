@@ -31,6 +31,7 @@ public interface StoryService {
 	
 	public void addTask(long idTask, long idStory);
 	public void addTask(Task task, long idStory);
+	public void addTask(List<Task> tasks, long idStory);
 	
 	public void removeTask(long idTask, long idStory);
 	

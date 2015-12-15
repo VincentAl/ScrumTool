@@ -3,6 +3,7 @@ package hei.gl.scrumtool.core.service.impl;
 import hei.gl.scrumtool.core.dao.SprintDAO;
 import hei.gl.scrumtool.core.entity.Sprint;
 import hei.gl.scrumtool.core.entity.Story;
+import hei.gl.scrumtool.core.entity.Task;
 import hei.gl.scrumtool.core.service.SprintService;
 import hei.gl.scrumtool.core.service.StoryService;
 
@@ -49,6 +50,8 @@ public class SprintServiceImpl implements SprintService {
 		Sprint sprint=this.findById(idSprint);
 		sprint.addStory(story);
 		update(sprint);
+		story.setSprint(sprint);
+		storyService.update(story);
 	}
 
 	@Override
@@ -56,6 +59,10 @@ public class SprintServiceImpl implements SprintService {
 		Sprint sprint=this.findById(idSprint);
 		sprint.addStoryList(stories);
 		update(sprint);
+		for (Story story : stories) {
+			story.setSprint(sprint);
+			storyService.update(story);
+		}
 	}
 
 	@Override
