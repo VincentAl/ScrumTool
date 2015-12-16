@@ -116,7 +116,12 @@ public class BacklogController {
 	public String launchNewSpring(){
 		if(sprintService.areAllSprintClosed()){
 			Sprint newSprint = new Sprint();
-			newSprint.setNumber(sprintService.findLastSprint().getNumber()+1);
+			if(sprintService.findLastSprint() != null){
+				newSprint.setNumber(sprintService.findLastSprint().getNumber()+1);
+			}else{
+				newSprint.setNumber(Long.valueOf(1));
+			}
+			
 			newSprint.setCurrentSprint(true);
 			newSprint = sprintService.create(newSprint);
 			
