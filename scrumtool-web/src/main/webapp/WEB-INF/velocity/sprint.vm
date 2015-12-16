@@ -113,8 +113,7 @@
 							<span class="drag-title" >$story.title</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p><span class="badge">$story.storyPoints</span></p>
-							<div class="addTask" title="SHIFT+T" identif=$story.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>
-										
+							<div class="addTask" title="SHIFT+T" identif=$story.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>					
 						</li>
 					#end
 				</ul>

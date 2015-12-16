@@ -91,10 +91,11 @@ $(function() {
 		$('#addFormu').fadeToggle();
 	});
 
-	$('.addTask').click(function() {
+	$('.addTask').click(function(e) {
 		var idStory = $(this).attr("identif");
 		$('.addFormuTask').fadeToggle();
-		$('.' + idStory).fadeToggle();		
+		$('.' + idStory).fadeToggle();	
+		e.stopPropagation();
 	});
 	
 	// Shortcut for opening the form
@@ -134,10 +135,10 @@ $(function() {
 		};
 		saveStory(story);
 	});
-	function sexyTroll(){
-	var div = $('<div/>').addClass("sexyTroll");
-	$('body').append(div);
-	}
+	//function sexyTroll(){
+	//var div = $('<div/>').addClass("sexyTroll");
+	//$('body').append(div);
+	//}
 	
 	window.setTimeout(function(){
 		$('#message_helper').css('visibility', 'hidden');

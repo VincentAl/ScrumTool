@@ -26,7 +26,7 @@
         			<li><a href="sprint">Sprint</a></li> 	
       			</ul>
       			<ul id="sexyButtonContainer">
-      				<li id="sexyButton"><a href="launch-new-spring"><span class="glyphicon glyphicon-play-circle"></span> Create next spring</a></li>
+      				<li id="sexyButton"><a href="launch-new-spring"><span class="glyphicon glyphicon-play-circle"></span> Create next sprint</a></li>
         			<li id="sexyButton"><a href="#" id="add" title="SHIFT+A"><span class="glyphicon glyphicon-plus"></span> Add Story</a></li>
       			</ul>
       			

@@ -312,3 +312,20 @@ textarea { height: 80px; resize: none; }
   left:50%;
   transform: translate(-50%,-50%);
 }
+
+/* Détails tâches */
+#detailStory{
+	background-color:#6a6a6a;
+	opacity:0.95;
+	border-radius:3px;
+}
+
+.tab-content{
+	color:white;
+	padding-left:5px;
+}
+
+.nav-tabs>li>a{
+	color:black;
+}
+

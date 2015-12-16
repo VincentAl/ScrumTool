@@ -125,11 +125,6 @@ public class BacklogController {
 				newSprint.setNumber(Long.valueOf(1));
 			}
 			
-				newSprint.setNumber(sprintService.findLastSprint().getNumber()+1);
-			}else{
-				newSprint.setNumber(Long.valueOf(1));
-			}
-			
 			newSprint.setCurrentSprint(true);
 			newSprint = sprintService.create(newSprint);
 			
