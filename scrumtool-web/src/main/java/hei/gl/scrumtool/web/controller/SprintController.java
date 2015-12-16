@@ -48,19 +48,19 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 	public String homeSprint(ModelMap model){
 
 		Sprint currentSprint = sprintService.findCurrentSprint();
-		List<Story> stroryList = storyService.findBySprint(currentSprint);
+		List<Story> storyList = storyService.findBySprint(currentSprint);
 		List<Task> taskList = new ArrayList<>();
 		
-		for (Story story : stroryList) {
+		for (Story story : storyList) {
 			taskList.addAll(taskService.findByStory(story.getId()));
 		}
 		
 		// Location of the stories
 		//horizontal priority
-		Map<String, Map<Integer, Story>> storyList = new HashMap();
+		Map<String, Map<Integer, Story>> storiesList = new HashMap();
 		for (StoryColumn storyColumn : StoryColumn.values()) {
 			Map<Integer, Story> storyMap = new HashMap();
-				for (Story story : stroryList ) {
+				for (Story story : storyList ) {
 					if(story.getCategory().equals(storyColumn)){
 						storyMap.put(story.getPriority(), story);
 					}
@@ -75,7 +75,7 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 		        for(Integer key: keys){
 		            sortedMap.put(key, storyMap.get(key));
 		        }
-			storyList.put(storyColumn.toString(), sortedMap);
+			storiesList.put(storyColumn.toString(), sortedMap);
 		}
 		
 		// Location of the stories
