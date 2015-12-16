@@ -8,6 +8,16 @@ var changeStoryCategory = function(storyId, columnId, previousStoryId) {
 	});
 };
 
+var changeTaskCategory = function(storyId, columnId, previousStoryId) {
+	$.ajax({
+		url : "task/" + storyId + "/column/" + columnId + "/previous/" + previousStoryId,
+		method : "PUT",
+		success : function() {
+			console.log("ok");
+		}
+	});
+};
+
 var saveStory = function(story) {
 	$.ajax({
 		url : "story/" + story.id,

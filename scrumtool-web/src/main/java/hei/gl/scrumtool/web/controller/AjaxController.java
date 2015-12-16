@@ -1,5 +1,12 @@
 package hei.gl.scrumtool.web.controller;
 
+import hei.gl.scrumtool.core.entity.Story;
+import hei.gl.scrumtool.core.entity.View;
+import hei.gl.scrumtool.core.enumeration.StoryColumn;
+import hei.gl.scrumtool.core.enumeration.TaskColumn;
+import hei.gl.scrumtool.core.service.StoryService;
+import hei.gl.scrumtool.core.service.TaskService;
+
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
@@ -16,11 +23,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import hei.gl.scrumtool.core.entity.Story;
-import hei.gl.scrumtool.core.entity.View;
-import hei.gl.scrumtool.core.enumeration.StoryColumn;
-import hei.gl.scrumtool.core.service.StoryService;
-
 @Controller
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -29,6 +31,9 @@ public class AjaxController {
 
 	@Inject
 	private StoryService storyService;
+	
+	@Inject
+	private TaskService taskService;
 
 	@ResponseBody
 	@RequestMapping(value = "/story/{id}", method = RequestMethod.DELETE)
@@ -69,6 +74,13 @@ public class AjaxController {
 			storyService.move(id, StoryColumn.getStoryColumnById(idCol), 
 					storyService.findById(idPrev).getPriority());
 		}
+		return "{}";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/task/{id}/column/{id_col}/previous/{id_previous}", method = RequestMethod.PUT)
+	public String updateOneTask(@PathVariable("id") long id, @PathVariable("id_col") long idCol, @PathVariable("id_previous") long idPrev) {
+		taskService.changeState(id, TaskColumn.getTaskColumnById(idCol));
 		return "{}";
 	}
 

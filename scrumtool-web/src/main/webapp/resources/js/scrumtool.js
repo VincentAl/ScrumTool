@@ -1,9 +1,9 @@
 $(function() {
 
 	dragula(
-			[ document.getElementById('story_column_1'),
+			[document.getElementById('story_column_1'),
 					document.getElementById('story_column_2'),
-					document.getElementById('story_column_3') ]).on(
+					document.getElementById('story_column_3')]).on(
 			'drop',
 			function(elem, target, source, sib) {
 				if (sib != null) {
@@ -12,6 +12,21 @@ $(function() {
 				} else {
 					changeStoryCategory($(elem).data('storyid'), $(target)
 							.data('storycolumnid'), -1);
+				}
+			});
+	
+	dragula(
+			[document.getElementById('task_column_1'),
+					document.getElementById('task_column_2'),
+					document.getElementById('task_column_3')]).on(
+			'drop',
+			function(elem, target, source, sib) {
+				if (sib != null) {
+					changeTaskCategory($(elem).data('taskid'), $(target)
+							.data('taskcolumnid'), $(sib).data('taskid'));
+				} else {
+					changeTaskCategory($(elem).data('taskid'), $(target)
+							.data('taskcolumnid'), -1);
 				}
 			});
 	

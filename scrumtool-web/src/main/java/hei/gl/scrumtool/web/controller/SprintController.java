@@ -75,7 +75,7 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 		        for(Integer key: keys){
 		            sortedMap.put(key, storyMap.get(key));
 		        }
-			storiesList.put(storyColumn.toString(), sortedMap);
+			storiesList.put(storyColumn.toString()+"_story", sortedMap);
 		}
 		
 		// Location of the stories
@@ -98,7 +98,7 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 		        for(Integer key: keys){
 		            sortedMapTask.put(key, taskMap.get(key));
 		        }
-			tasksList.put(taskColumn.toString(), sortedMapTask);
+			tasksList.put(taskColumn.toString()+"_task", sortedMapTask);
 		}
 		
 			
@@ -117,7 +117,7 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 			}
 		};
 		
-		model.addAllAttributes(storyList);
+		model.addAllAttributes(storiesList);
 		model.addAllAttributes(tasksList);
 		model.put("task", new Task());
 		return "sprint";

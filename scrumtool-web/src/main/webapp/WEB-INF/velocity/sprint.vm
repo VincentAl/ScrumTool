@@ -108,7 +108,7 @@
 					<h2>To Do</h2>
 				</span>
 				<ul class="drag-inner-list" id="story_column_1" data-storycolumnid="4">
-					#foreach($story in $TODO)
+					#foreach($story in $TODO_story)
 						<li class="drag-item" data-storyid="$story.id">
 							<span class="drag-title" >$story.title</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
@@ -124,7 +124,7 @@
 					<h2>Doing</h2>
 				</span>
 				<ul class="drag-inner-list" id="story_column_2" data-storycolumnid="5">
-					#foreach($story in $DOING)
+					#foreach($story in $DOING_story)
 						<li class="drag-item" data-storyid="$story.id">
 							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$story.title</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
@@ -139,7 +139,7 @@
 					<h2>Done</h2>
 				</span>
 				<ul class="drag-inner-list" id="story_column_3" data-storycolumnid="6">
-					#foreach($story in $DONE)
+					#foreach($story in $DONE_story)
 						<li class="drag-item" data-storyid="$story.id">
 							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$story.title</span>
 							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
@@ -155,35 +155,31 @@
 		
 		<ul class="drag-list">
 			<li class="drag-column drag-column-on-hold">
-				<ul class="drag-inner-list" id="story_column_1" data-storycolumnid="4">
-					#foreach($task in $TODO)
+				<ul class="drag-inner-list" id="task_column_1" data-taskcolumnid="4">
+					#foreach($task in $TODO_task)
 						<li class="drag-item" data-toggle="modal" data-target="#detailsModal" data-taskid="$task.id">
 							<span class="drag-title" >$task.title</span>
-							<button type="button" class="close btnSup" id="$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-							<div class="addTask" title="SHIFT+T" identif=$task.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>
-										
+							<button type="button" class="close btnSup" id="$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>										
 						</li>
 					#end
 				</ul>
 			</li>
 			<li class="drag-column drag-column-in-progress">
 				<ul class="drag-inner-list" id="task_column_2" data-taskcolumnid="5">
-					#foreach($task in $DOING)
+					#foreach($task in $DOING_task)
 						<li class="drag-item" data-taskid="$task.id">
 							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$task.title</span>
 							<button type="button" class="close btnSup" id="$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-							<div class="addTask" title="SHIFT+T" identif=$task.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>		
 						</li>
 					#end
 				</ul>
 			</li>
 			<li class="drag-column drag-column-needs-review">
 				<ul class="drag-inner-list" id="task_column_3" data-taskcolumnid="6">
-					#foreach($task in $DONE)
+					#foreach($task in $DONE_task)
 						<li class="drag-item" data-taskid="$task.id">
 							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$task.title</span>
 							<button type="button" class="close btnSup" id="$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-							<div class="addTask" title="SHIFT+T" identif=$task.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>	
 						</li>
 					#end
 				</ul>

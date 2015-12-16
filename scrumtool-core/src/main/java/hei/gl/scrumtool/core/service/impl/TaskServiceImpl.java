@@ -47,7 +47,6 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public void changeState(long idTask, TaskColumn category) {
 		Task task = this.findByID(idTask);
-
 		// deplacement
 		task.setState(category);
 		this.update(task);
