@@ -17,7 +17,6 @@
 			<div class="container">
 				<div class="navbar-header">
 					<a id="titleLink" class="navbar-brand">Scrumtool</a>
-					
 				</div>
 				<div>
       			<ul class="nav navbar-nav">
@@ -90,7 +89,7 @@
 					<h3> ADD TASK </h3>
 					<form action="new-task" method="POST">
 						<div class="form-group">
-							#springFormInput("task.title" "class='form-control' id='title' placeholder='Title'")
+							#springFormInput("task.title" "class='form-control' id='title' placeholder='Title' autofocus")
 						</div>
 						<div class="form-group">
 							#springFormTextarea("task.description" "class='form-control' rows='3' id='description' placeholder='Description'")	
@@ -109,11 +108,11 @@
 				</span>
 				<ul class="drag-inner-list" id="story_column_1" data-storycolumnid="4">
 					#foreach($story in $TODO_story)
-						<li class="drag-item" data-storyid="$story.id">
+						<li class="drag-item story-card" data-storyid="$story.id" id="storyid$story.id">
 							<span class="drag-title" >$story.title</span>
-							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<button type="button" class="close btnSup" id="story_$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p><span class="badge">$story.storyPoints</span></p>
-							<div class="addTask" title="SHIFT+T" identif=$story.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>					
+							<button type="button" class="btn btn-primary  btn-add-task" data-toggle="modal" data-target="#addTaskModal" data-idstory="$story.id">ADD TASK</button>				
 						</li>
 					#end
 				</ul>
@@ -124,11 +123,11 @@
 				</span>
 				<ul class="drag-inner-list" id="story_column_2" data-storycolumnid="5">
 					#foreach($story in $DOING_story)
-						<li class="drag-item" data-storyid="$story.id">
+						<li class="drag-item story-card" data-storyid="$story.id" id="storyid$story.id">
 							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$story.title</span>
-							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<button type="button" class="close btnSup" id="story_$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p><span class="badge">$story.storyPoints</span></p>
-							<div class="addTask" title="SHIFT+T" identif=$story.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>		
+							<button type="button" class="btn btn-primary  btn-add-task" data-toggle="modal" data-target="#addTaskModal" data-idstory="$story.id">ADD TASK</button>				
 						</li>
 					#end
 				</ul>
@@ -139,11 +138,10 @@
 				</span>
 				<ul class="drag-inner-list" id="story_column_3" data-storycolumnid="6">
 					#foreach($story in $DONE_story)
-						<li class="drag-item" data-storyid="$story.id">
+						<li class="drag-item story-card" data-storyid="$story.id" id="storyid$story.id">
 							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$story.title</span>
-							<button type="button" class="close btnSup" id="$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<button type="button" class="close btnSup" id="story_$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p><span class="badge">$story.storyPoints</span></p>
-							<div class="addTask" title="SHIFT+T" identif=$story.id><span class="glyphicon glyphicon-plus"></span> Add Task</div>
 						</li>
 					#end
 				</ul>
@@ -156,9 +154,9 @@
 			<li class="drag-column drag-column-on-hold">
 				<ul class="drag-inner-list" id="task_column_1" data-taskcolumnid="4">
 					#foreach($task in $TODO_task)
-						<li class="drag-item" data-toggle="modal" data-target="#detailsModal" data-taskid="$task.id">
+						<li class="drag-item task-card" data-taskid="$task.id" data-storyid="$task.story.id">
 							<span class="drag-title" >$task.title</span>
-							<button type="button" class="close btnSup" id="$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>										
+							<button type="button" class="close btnSup" id="task_$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>										
 						</li>
 					#end
 				</ul>
@@ -166,9 +164,9 @@
 			<li class="drag-column drag-column-in-progress">
 				<ul class="drag-inner-list" id="task_column_2" data-taskcolumnid="5">
 					#foreach($task in $DOING_task)
-						<li class="drag-item" data-taskid="$task.id">
+						<li class="drag-item task-card" data-taskid="$task.id" data-storyid="$task.story.id">
 							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$task.title</span>
-							<button type="button" class="close btnSup" id="$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<button type="button" class="close btnSup" id="task_$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 						</li>
 					#end
 				</ul>
@@ -176,9 +174,9 @@
 			<li class="drag-column drag-column-needs-review">
 				<ul class="drag-inner-list" id="task_column_3" data-taskcolumnid="6">
 					#foreach($task in $DONE_task)
-						<li class="drag-item" data-taskid="$task.id">
+						<li class="drag-item task-card" data-taskid="$task.id" data-storyid="$task.story.id">
 							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$task.title</span>
-							<button type="button" class="close btnSup" id="$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<button type="button" class="close btnSup" id="task_$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 						</li>
 					#end
 				</ul>
@@ -222,9 +220,37 @@
     </div>
   </div>
 
+<div class="modal fade" id="addTaskModal" tabindex="" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel"><h3><b>ADD TASK</b></h3></h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" id="addNewTaskForm">
+          <div class="form-group">
+            <label for="addTask_title" class="control-label">Titre</label>
+            <input type="text" class="form-control" id="addTask_title" autofocus></input>
+          </div>
+          <div class="form-group">
+            <label for="addTask_description" class="control-label">Description</label>
+            <textarea class="form-control" id="addTask_description"></textarea>
+          </div>
+          <input type="hidden" class="form-control" id="addTask_idStory">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button form="addNewTaskForm" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Submit</button>        
+      </div>
+    </div>
+  </div>
+</div>
 		
 		<script type="text/javascript" src="resources/js/jquery.min.js"></script>
 		<script type="text/javascript" src="resources/js/dragula.min.js"></script>
+		<script type="text/javascript" src="resources/js/utility.js"></script>
 		<script type="text/javascript" src="resources/js/ajax.js"></script>
 		<script type="text/javascript" src="resources/js/scrumtool.js"></script>
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

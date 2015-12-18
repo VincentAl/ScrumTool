@@ -1,6 +1,8 @@
 package hei.gl.scrumtool.web.controller;
 
+import hei.gl.scrumtool.core.dto.TaskDTO;
 import hei.gl.scrumtool.core.entity.Story;
+import hei.gl.scrumtool.core.entity.Task;
 import hei.gl.scrumtool.core.entity.View;
 import hei.gl.scrumtool.core.enumeration.StoryColumn;
 import hei.gl.scrumtool.core.enumeration.TaskColumn;
@@ -67,7 +69,6 @@ public class AjaxController {
 	@RequestMapping(value = "/story/{id}/column/{id_col}/previous/{id_previous}", method = RequestMethod.PUT)
 	public String updateOneStory(@PathVariable("id") long id, @PathVariable("id_col") long idCol, @PathVariable("id_previous") long idPrev) {
 		
-		
 		if(idPrev == -1){
 			storyService.move(id, StoryColumn.getStoryColumnById(idCol));
 		}else{
@@ -80,8 +81,26 @@ public class AjaxController {
 	@ResponseBody
 	@RequestMapping(value = "/task/{id}/column/{id_col}/previous/{id_previous}", method = RequestMethod.PUT)
 	public String updateOneTask(@PathVariable("id") long id, @PathVariable("id_col") long idCol, @PathVariable("id_previous") long idPrev) {
-		taskService.changeState(id, TaskColumn.getTaskColumnById(idCol));
+
+		logger.debug("Canard - "+idCol+" - "+id);
+		if(idPrev == -1){
+			taskService.moveTask(taskService.findByID(id), TaskColumn.getTaskColumnById(idCol));
+		}else{
+			taskService.moveTask(taskService.findByID(id), TaskColumn.getTaskColumnById(idCol), taskService.findByID(idPrev).getPriority());
+		}
 		return "{}";
+	}
+	
+	@ResponseBody
+	@JsonView(View.Summary.class)
+	@RequestMapping(value="/new-task", method=RequestMethod.POST)
+	public Task addNewTask(@RequestBody TaskDTO taskDTO){
+		Task newTask = new Task(taskDTO.getTaskTitle(), taskDTO.getTaskDescription(), TaskColumn.TODO);
+		taskService.save(newTask);
+		newTask.setStory(storyService.findById(taskDTO.getIdStory()));
+		newTask.setPriority(taskService.findByCategory(newTask.getCategory()).size());
+		newTask = taskService.save(newTask);
+		return newTask;
 	}
 
 }

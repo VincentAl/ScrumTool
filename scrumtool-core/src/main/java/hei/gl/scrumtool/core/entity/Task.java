@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import hei.gl.scrumtool.core.enumeration.TaskColumn;
 
 
@@ -20,6 +22,7 @@ import hei.gl.scrumtool.core.enumeration.TaskColumn;
 public class Task {
 
 	@Id
+	@JsonView(View.Summary.class)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
@@ -27,7 +30,7 @@ public class Task {
 
 	private String description;
 
-	private TaskColumn state;
+	private TaskColumn category;
 
 	private int priority;
 	
@@ -40,6 +43,18 @@ public class Task {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User user;
 	
+	
+	
+public Task(String title, String description, TaskColumn category) {
+		this.title = title;
+		this.description = description;
+		this.category = category;
+	}
+
+public Task() {}
+
+
+
 //Getters-Setters
 	public long getId() {
 		return id;
@@ -65,12 +80,12 @@ public class Task {
 		this.description = description;
 	}
 
-	public TaskColumn getState() {
-		return state;
+	public TaskColumn getCategory() {
+		return category;
 	}
 
-	public void setState(TaskColumn state) {
-		this.state = state;
+	public void setCategory(TaskColumn category) {
+		this.category = category;
 	}
 
 	public int getPriority() {

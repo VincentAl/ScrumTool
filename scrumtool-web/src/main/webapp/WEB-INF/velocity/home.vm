@@ -43,7 +43,7 @@
 					<h3> ADD STORY </h3>
 							<form action="new-story" method="POST">
 								<div class="form-group">
-    								#springFormInput("story.title" "class='form-control' id='title' placeholder='Title'")
+    								#springFormInput("story.title" "class='form-control' id='title' placeholder='Title' autofocus")
  								</div>
 								<div class="form-group">
 									#springFormTextarea("story.description" "class='form-control' rows='3' id='description' placeholder='Description'")	

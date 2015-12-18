@@ -84,7 +84,7 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 		for (TaskColumn taskColumn : TaskColumn.values()) {
 			Map<Integer, Task> taskMap = new HashMap();
 				for (Task task : taskList ) {
-					if(task.getState().equals(taskColumn)){
+					if(task.getCategory().equals(taskColumn)){
 						taskMap.put(task.getPriority(), task);
 					}
 				}
@@ -101,27 +101,13 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 			tasksList.put(taskColumn.toString()+"_task", sortedMapTask);
 		}
 		
-			
-		//vertical priority
-		Comparator<StoryPoint> sort = new Comparator<StoryPoint>() 
-		{
-			@Override
-			public int compare(StoryPoint arg0, StoryPoint arg1) {
-				if(arg0.getId() > arg1.getId()){
-					return 1;
-				}else if(arg0.getId() < arg1.getId()){
-					return -1;
-				}else{
-					return 0;
-				}
-			}
-		};
 		
 		model.addAllAttributes(storiesList);
 		model.addAllAttributes(tasksList);
 		model.put("task", new Task());
 		return "sprint";
 	}
+	
 	@RequestMapping(value="/close-sprint", method=RequestMethod.GET)
 	public String closeSprint(ModelMap model){
 		if( sprintService.areAllSprintClosed()){
@@ -135,12 +121,4 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 		}
 		return "redirect:/home";
 	}
-	
-	@RequestMapping(value="/new-task", method=RequestMethod.POST)
-	public String submitForm(@ModelAttribute("task") Task task, @ModelAttribute("story") Story story){
-		taskService.create(task);
-		storyService.addTask(task.getId(), story.getId());
-		return "redirect:/home";
-	}
-
 }

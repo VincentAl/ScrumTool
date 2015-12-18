@@ -23,8 +23,7 @@ import hei.gl.scrumtool.core.service.TaskService;
 @Transactional
 public class StoryServiceImpl implements StoryService {
 
-	private final static Logger log = LoggerFactory
-			.getLogger(StoryServiceImpl.class);
+	private final static Logger log = LoggerFactory.getLogger(StoryServiceImpl.class);
 
 	@Inject
 	private StoryDAO storyDAO;
@@ -81,8 +80,7 @@ public class StoryServiceImpl implements StoryService {
 		Story story = this.findById(idStory);
 
 		// decrementation des priorites dans l'ancienne categorie
-		Set<Story> storiesInOldCategory = this.findByCategory(story
-				.getCategory());
+		Set<Story> storiesInOldCategory = this.findByCategory(story.getCategory());
 		for (Story storyInOldCategory : storiesInOldCategory) {
 			if (storyInOldCategory.getPriority() > story.getPriority()) {
 				//log.debug(storyInOldCategory.getTitle() + " passe de " + storyInOldCategory.getPriority() + " à " + (storyInOldCategory.getPriority() - 1));
@@ -108,9 +106,9 @@ public class StoryServiceImpl implements StoryService {
 	public void move(long idStory, StoryColumn category, int newPriority) {
 		Story story = this.findById(idStory);
 
-		// si on fait un deplacement vers le bas (ver une priorite plus basse) dans une même cathegory 
+		// si on fait un deplacement vers le bas (vers une priorite plus basse) dans une même categorie 
 		if (story.getCategory()==category && story.getPriority()<newPriority){ 
-			// decrementation des priroter entre l'ancienne et la nouvelle position
+			// decrementation des prirotés entre l'ancienne et la nouvelle position
 			Set<Story> storiesInCategory = this.findByCategory(category);
 			for(Story storyInCategory : storiesInCategory){
 				if (storyInCategory.getPriority() > story.getPriority()&& storyInCategory.getPriority()<newPriority) {
@@ -188,7 +186,7 @@ public class StoryServiceImpl implements StoryService {
 	}
 
 	@Override
-	public void addTask(List<Task> tasks, long idStory) {
+	public void addTasks(List<Task> tasks, long idStory) {
 		Story story=this.findById(idStory);
 		story.addTaskList(tasks);
 		this.update(story);

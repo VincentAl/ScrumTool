@@ -24,4 +24,9 @@ function editModal() {
 	$("#storypointInput").prop("disabled", false);
 	$("#descriptionInput").prop("disabled", false);
 	$("#titleInput").prop("disabled", false);
-}
+};
+
+function starlight(idStory){
+	var story = $('#storyid'+idStory).addClass('starlight');
+	$('.task-card[data-storyid='+idStory+']').addClass('starlight');
+};

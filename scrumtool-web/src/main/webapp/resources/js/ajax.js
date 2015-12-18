@@ -3,17 +3,17 @@ var changeStoryCategory = function(storyId, columnId, previousStoryId) {
 		url : "story/" + storyId + "/column/" + columnId + "/previous/" + previousStoryId,
 		method : "PUT",
 		success : function() {
-			console.log("ok");
+			console.log("Story category changed !");
 		}
 	});
 };
 
-var changeTaskCategory = function(storyId, columnId, previousStoryId) {
+var changeTaskCategory = function(taskId, columnId, previousTaskId) {
 	$.ajax({
-		url : "task/" + storyId + "/column/" + columnId + "/previous/" + previousStoryId,
+		url : "task/" + taskId + "/column/" + columnId + "/previous/" + previousTaskId,
 		method : "PUT",
 		success : function() {
-			console.log("ok");
+			console.log("Task category changed !");
 		}
 	});
 };
@@ -39,6 +39,32 @@ var saveStory = function(story) {
 		error : function(req, status, error) {
 			console.log("error", error);
 			$(".bg-danger").slideToggle();
+		}
+	});
+};
+
+
+var createNewTask = function(idStory, taskTitle, taskDescription) {
+	console.log("chattte")
+	$.ajax({
+		url : "new-task/",
+		method : "POST",
+		data : JSON.stringify({'idStory': idStory, 'taskTitle': taskTitle, 'taskDescription': taskDescription}),
+		dataType : "json",
+		contentType : "application/json",
+		success : function(data, status, req) {
+			console.log("Successfully saved task !")
+			$('#task_column_1').append(
+				'<li class="drag-item" data-toggle="modal" data-target="#detailsModal" data-taskid="'+data.id+'">'+
+				'<span class="drag-title" >'+taskTitle+'</span>'+
+				'<button type="button" class="close btnSup" id="task_'+data.id+'" data-dismiss="alert" aria-label="Close">'+
+				'<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></li>'
+			);
+			$('#addTaskModal').modal('hide');
+		},
+		error : function(req, status, error) {
+			console.log("error", error);
+			//$(".bg-danger").slideToggle();
 		}
 	});
 };
