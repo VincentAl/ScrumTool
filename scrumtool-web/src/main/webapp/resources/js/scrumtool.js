@@ -64,6 +64,8 @@ $(function() {
 		var idStory = button.data('idstory');
 		var modal = $(this);
 		modal.find('#addTask_idStory').val(idStory);
+	}).on('hidden.bs.modal', function(event){
+		$('#addTaskModal').find('form')[0].reset();
 	});
 	
 	//Submit du formulaire d'ajout d'une tâche
@@ -202,7 +204,7 @@ $(function() {
 	});
 	
 	// mise en lumière dans le sprint ! #starlight
-	$('.task-card, .story-card').on('click', function(e){
+	$('.drag-inner-list').on('click', '.task-card, .story-card', function(e){
 		starlight($(this).data('storyid'));
 	});
 	// Remove starlighted tasks

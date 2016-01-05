@@ -55,12 +55,13 @@ var createNewTask = function(idStory, taskTitle, taskDescription) {
 		success : function(data, status, req) {
 			console.log("Successfully saved task !")
 			$('#task_column_1').append(
-				'<li class="drag-item" data-toggle="modal" data-target="#detailsModal" data-taskid="'+data.id+'">'+
+				'<li class="drag-item task-card" data-taskid="'+data.id+'" data-storyid="'+idStory+'">'+
 				'<span class="drag-title" >'+taskTitle+'</span>'+
 				'<button type="button" class="close btnSup" id="task_'+data.id+'" data-dismiss="alert" aria-label="Close">'+
 				'<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></li>'
 			);
-			$('#addTaskModal').modal('hide');
+			$('#addTaskModal').modal('hide').find('form')[0].reset();
+			
 		},
 		error : function(req, status, error) {
 			console.log("error", error);
