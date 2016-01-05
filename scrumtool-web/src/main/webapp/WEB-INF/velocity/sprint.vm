@@ -156,7 +156,7 @@
 					#foreach($task in $TODO_task)
 						<li class="drag-item task-card" data-taskid="$task.id" data-storyid="$task.story.id">
 							<span class="drag-title" >$task.title</span>
-							<button type="button" class="close btnSup" id="task_$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>										
+							<button type="button" class="close btnSupT" id="task_$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>										
 						</li>
 					#end
 				</ul>
@@ -165,8 +165,8 @@
 				<ul class="drag-inner-list" id="task_column_2" data-taskcolumnid="5">
 					#foreach($task in $DOING_task)
 						<li class="drag-item task-card" data-taskid="$task.id" data-storyid="$task.story.id">
-							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$task.title</span>
-							<button type="button" class="close btnSup" id="task_$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<span class="drag-title"  data-target="#detailsModal">$task.title</span>
+							<button type="button" class="close btnSupT" id="task_$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 						</li>
 					#end
 				</ul>
@@ -175,8 +175,8 @@
 				<ul class="drag-inner-list" id="task_column_3" data-taskcolumnid="6">
 					#foreach($task in $DONE_task)
 						<li class="drag-item task-card" data-taskid="$task.id" data-storyid="$task.story.id">
-							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$task.title</span>
-							<button type="button" class="close btnSup" id="task_$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+							<span class="drag-title"  data-target="#detailsModal">$task.title</span>
+							<button type="button" class="close btnSupT" id="task_$task.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 						</li>
 					#end
 				</ul>

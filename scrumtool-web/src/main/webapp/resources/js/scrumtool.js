@@ -92,6 +92,25 @@ $(function() {
 			},
 		});
 	});
+	
+	//Suppression d'une tâche 
+	$(".btnSupT").click(function(e) {
+		e.stopPropagation();
+		var taskId=$(this).attr('id')
+		var id = taskId.substr(5,5);
+		var $that = $(this).parent();
+
+		$.ajax({
+			url : "task/" + id,
+			type : "DELETE",
+			success : function() {
+				$that.remove();
+			},
+		});
+	});
+	
+	
+	
 
 	// change les boutons pour la modification de story
 	$("#editBtn").click(function(event) {

@@ -17,7 +17,7 @@ public interface TaskService {
 	
 	public Task save(Task task);
 	public Task update(Task task);
-	public void delete(Task task);
+	public void delete(long idTask);
 	
 	public Set<Task> findByCategory(TaskColumn column);
 	

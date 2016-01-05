@@ -61,8 +61,8 @@ public class TaskServiceImpl implements TaskService {
 	}
 
 	@Override
-	public void delete(Task task) {
-		taskDao.delete(task);
+	public void delete(long idTask) {
+		taskDao.delete(idTask);
 	}
 	
 	public Integer findNewPriority(){

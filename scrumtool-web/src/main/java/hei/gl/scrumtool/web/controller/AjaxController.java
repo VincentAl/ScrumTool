@@ -43,6 +43,13 @@ public class AjaxController {
 		storyService.delete(id);
 		return "{}";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/task/{id}", method = RequestMethod.DELETE)
+	public String deleteOneTask(@PathVariable("id") long id) {
+		taskService.delete(id);
+		return "{}";}
+	
 
 	@ResponseBody
 	@RequestMapping(value = "/story/{id}", method = RequestMethod.PATCH)
