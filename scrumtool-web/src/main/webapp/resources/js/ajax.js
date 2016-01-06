@@ -140,3 +140,17 @@ var putColorOn = function(className){
 		}	
 	});
 };
+
+var getTasksByStory = function(storyId) {
+	$.ajax({
+		url : "task/" + storyId,
+		method : "GET",
+		success : function(tasks) {
+			$('.panel-group').empty()
+			$.each(tasks, function(key, task) {
+				$('.panel-group').append("<div class='panel panel-default'><div class='panel-heading' role='tab' id='task"+task.id+"'><h4 class='panel-title'><a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapse"+task.id+"'>"+task.title+"</a></h4></div><div id='collapse"+task.id+"' class='panel-collapse collapse' role='tabpanel'><div class='panel-body'>Description : "+task.description+"</div></div></div>")
+
+			})
+		}
+	});
+}

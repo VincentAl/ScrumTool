@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import hei.gl.scrumtool.core.dao.TaskDAO;
 import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.entity.Task;
-import hei.gl.scrumtool.core.enumeration.StoryColumn;
 import hei.gl.scrumtool.core.enumeration.TaskColumn;
 import hei.gl.scrumtool.core.service.StoryService;
 import hei.gl.scrumtool.core.service.TaskService;

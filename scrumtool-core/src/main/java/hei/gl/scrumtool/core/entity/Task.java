@@ -1,14 +1,12 @@
 package hei.gl.scrumtool.core.entity;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,8 +24,10 @@ public class Task {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	@JsonView(View.Summary.class)
 	private String title;
 
+	@JsonView(View.Summary.class)
 	private String description;
 
 	private TaskColumn category;

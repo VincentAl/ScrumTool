@@ -1,6 +1,7 @@
 package hei.gl.scrumtool.web.controller;
 
 import hei.gl.scrumtool.core.dto.TaskDTO; 
+import java.util.List;
 import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.entity.Task;
 import hei.gl.scrumtool.core.entity.View;
@@ -118,6 +119,14 @@ public class AjaxController {
 		newTask.setPriority(taskService.findByCategory(newTask.getCategory()).size());
 		newTask = taskService.save(newTask);	
 		return newTask;
+	}
+	
+	@ResponseBody
+	@JsonView(View.Summary.class)
+	@RequestMapping(value = "/task/{idStory}", method = RequestMethod.GET)
+	public List<Task> getTasksByStory(@PathVariable("idStory") long idStory){
+		
+		return taskService.findByStory(storyService.findById(idStory));
 	}
 
 }

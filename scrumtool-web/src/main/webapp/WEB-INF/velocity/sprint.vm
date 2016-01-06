@@ -43,42 +43,35 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
-    <p><b>Title : </b><span id="storyTitle"></span></p>
-    <p><b>Description : </b><span id="storyDescription"></span></p>
-    <p><b>Story Point : </b><span id="storyPoint"></span><p>
+    <form role="form">
+        <div class="form-group">
+        	<label for="titleInput">Title</label>
+        	<input type ="text" class="form-control" value="titleInput" id="titleInput" disabled></input>
+        </div>
+        <div class="form-group">
+        	<label for="descriptionInput">Description</label>
+        	<input type ="text" class="form-control" value="descriptionInput" id="descriptionInput" disabled></input>
+        </div>
+        <div class="form-group">
+        	<label for="storypointInput">Story points</label>
+        	<input type ="text" class="form-control" value="storypointInput" id="storypointInput" disabled></input>
+        	<input type ="hidden" class="form-control" value="idStoryInput" id="idStoryInput" ></input>
+        </div>
+        </form>
+        <hr>
+    <button type="button" class="btn btn-primary" id="editStoryBtn"> <span class="glyphicon glyphicon-pencil"></span> Edit story</button>
+    <button type="button" class="btn btn-default" id="closeDetailsBtn">Close</button>
+    
+    <button type="button" class="btn btn-success" id="saveModifications"> <span class="glyphicon glyphicon-ok"></span> Save Modification</button>
+    <button type="button" class="btn btn-danger" id="cancelEditBtn" ><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">
     
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Task 1
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-		Task 1 Detail
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingThree">
-      <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Task 2
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body">
-		Task 2 Detail
-      </div>
-    </div>
-  </div>
-</div>
+    <div class="panel-group" id="accordion" role="tablist">
+  		
+  	
+	</div>
     
     </div>
   </div>

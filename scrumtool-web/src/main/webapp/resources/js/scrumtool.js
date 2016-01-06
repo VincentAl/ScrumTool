@@ -176,6 +176,8 @@ $(function() {
 			storyPoints : storyPoint
 		};
 		saveStory(story);
+		$("#cancelEditBtn").click();
+		
 	});
 
 	// function sexyTroll(){
@@ -184,12 +186,16 @@ $(function() {
 	// }
 
 	window.setTimeout(function() {
-		$('#message_helper').css('visibility', 'hidden');
+		$('#message_helper').hide();
 	}, 3000);
 
 	// affichage détails story dans sprint
-	$('.drag-item').click(function() {
+	$('.story-card').click(function() {
 
+		$("#editStoryBtn").show();
+		$("#closeDetailsBtn").show();
+		$("#saveModifications").hide();
+		$("#cancelEditBtn").hide();
 		$('#detailStory').show(500)
 		var id = $(this).data('storyid')
 
@@ -197,12 +203,15 @@ $(function() {
 			url : "story/" + id,
 			type : "GET",
 			success : function(story) {
-				// Update the modal's content.
-				$('#storyTitle').html(story.title);
-				$('#storyDescription').html(story.description);
-				$('#storyPoint').html(story.storyPoints);
+				// Update the form's content.
+				$('#titleInput').val(story.title);
+				$('#descriptionInput').val(story.description);
+				$('#storypointInput').val(story.storyPoints);
+				$('#idStoryInput').val(story.id);
 			}
 		});
+		
+		getTasksByStory(id);
 	});
 	
 	// mise en lumière dans le sprint ! #starlight
@@ -215,6 +224,32 @@ $(function() {
 		if (!$.contains($('.starlight'), e.target) && container.has(e.target).length === 0) {
 			$('.starlight').removeClass('starlight');
 		}
+	});
+	
+	$('#closeDetailsBtn').click(function(){
+		$('#detailStory').hide(500)
+	});
+	
+	$('#editStoryBtn').click(function(){
+		$("#editStoryBtn").hide();
+		$("#closeDetailsBtn").hide();
+		$("#saveModifications").show();
+		$("#cancelEditBtn").show();
+		
+		$("#storypointInput").prop("disabled", false);
+		$("#descriptionInput").prop("disabled", false);
+		$("#titleInput").prop("disabled", false);
+	});
+	
+	$("#cancelEditBtn").click(function(){
+		$("#editStoryBtn").show();
+		$("#closeDetailsBtn").show();
+		$("#saveModifications").hide();
+		$("#cancelEditBtn").hide();
+		
+		$("#storypointInput").prop("disabled", true);
+		$("#descriptionInput").prop("disabled", true);
+		$("#titleInput").prop("disabled", true);
 	});
 });
 
