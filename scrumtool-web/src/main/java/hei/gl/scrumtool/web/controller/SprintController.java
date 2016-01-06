@@ -134,8 +134,18 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 			long numSprint = sprintService.findLastSprint().getNumber();
 			((SprintServiceImpl) sprintService).setMessageHelper("The Sprint "+ numSprint +" is now closed, it can be found in the archive tab.");
 			((SprintServiceImpl) sprintService).setMessageHelperType("success");
+			
+			Sprint sprint=sprintService.findCurrentSprint();
+			for(Story story : sprint.getStoryList()){
+				 if(story.getCategory()!=StoryColumn.DONE){
+					story.setCategory(StoryColumn.NEXT_SPRINT);
+					storyService.update(story);
+				 }
+			}
+			
 			sprintService.closeCurrentSprint();
 		}
+		
 		return "redirect:/home";
 	}
 }

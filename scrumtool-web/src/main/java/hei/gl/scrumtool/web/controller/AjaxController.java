@@ -1,18 +1,28 @@
 package hei.gl.scrumtool.web.controller;
 
+<<<<<<< HEAD
 import hei.gl.scrumtool.core.dto.TaskDTO; 
 import java.util.List;
+=======
+import hei.gl.scrumtool.core.dto.TaskDTO;
+import hei.gl.scrumtool.core.entity.Message;
+import hei.gl.scrumtool.core.entity.Sprint;
+>>>>>>> affichage du message l'ors de la fermetur d'un sprint.
 import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.entity.Task;
 import hei.gl.scrumtool.core.entity.View;
 import hei.gl.scrumtool.core.entity.User;
+import hei.gl.scrumtool.core.enumeration.MessageEnum;
 import hei.gl.scrumtool.core.enumeration.StoryColumn;
 import hei.gl.scrumtool.core.enumeration.TaskColumn;
+import hei.gl.scrumtool.core.service.SprintService;
 import hei.gl.scrumtool.core.service.StoryService;
 import hei.gl.scrumtool.core.service.TaskService;
 import hei.gl.scrumtool.core.service.UserService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -46,6 +56,9 @@ public class AjaxController {
 	
 	@Inject
 	private UserService userService;
+	
+	@Inject
+	private SprintService sprintService;
 
 	@ResponseBody
 	@RequestMapping(value = "/story/{id}", method = RequestMethod.DELETE)
@@ -129,4 +142,48 @@ public class AjaxController {
 		return taskService.findByStory(storyService.findById(idStory));
 	}
 
+	@ResponseBody
+	@JsonView(View.Summary.class)
+	@RequestMapping(value = "/getClosedSprintMessage", method = RequestMethod.GET)
+	public Message getClosedSprintMessage() {
+		Message message=new Message(0,"", 0, 0, MessageEnum.EMPTY_MSG, true);
+		if(!sprintService.areAllSprintClosed()){
+			Sprint sprint=sprintService.findCurrentSprint();
+			boolean incoherentState = false;
+			List<Story> storiesInIncoherentState=new ArrayList<Story>();
+			List<Story> storiesNotEnd=new ArrayList<Story>();
+			for(Story story : sprint.getStoryList()){
+				if(story.getCategory()==StoryColumn.DONE){
+					for(Task task : story.getTasksList()){
+						if(task.getCategory()!=TaskColumn.DONE)
+							incoherentState=true;
+						storiesInIncoherentState.add(story);
+					}
+				}
+				else if(story.getCategory()!=StoryColumn.DONE)
+					storiesNotEnd.add(story);
+			}
+			if(incoherentState){
+				message.setContent(MessageEnum.STORY_TASK_NOT_FINISHED);
+				message.setType("Story ");
+				for(Story story : storiesInIncoherentState){
+					message.setType(message.getType()+story.getTitle()+", ");
+				}
+				message.setType(message.getType()+"are in incoherence state ");
+			}
+			else if(!storiesNotEnd.isEmpty()){
+				message.setContent(MessageEnum.STORY_NOT_FINISHED);
+				message.setType("Story ");
+				for(Story story : storiesNotEnd){
+					message.setType(message.getType()+story.getTitle()+", ");
+				}
+				message.setType(message.getType()+"are not finished and will be add to backlog ");
+			}
+			else{
+				message.setContent(MessageEnum.CLOSE_SPRINT);
+				message.setType("the sprint will be closed ");
+			}
+		}
+		return message;
+	}
 }

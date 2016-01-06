@@ -21,7 +21,7 @@
 				</div>
 				<div>
 				<ul id="sexyButtonContainer">
-      				<li id="sexyButton"><a href="close-sprint"><span class="glyphicon glyphicon-remove-sign"></span> Close sprint</a></li>
+      				<li id="sexyButton"><span class="glyphicon glyphicon-remove-sign data-toggle="modal" data-target="#closeSprintModal" "></span> Close sprint</li>
       			</ul>
       			<ul id="sexyButtonContainer">
       				<li id="sexyButtonActive"><a href="#">Sprint</a></li> 	
@@ -235,6 +235,26 @@
         <button form="addNewTaskForm" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Submit</button>        
       </div>
     </div>
+  </div>
+</div>
+
+<div id="closeSprintModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">closing of Sprint</h4>
+      </div>
+      <div class="modal-body">
+        <p id="closeSprintMessage">Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">      	
+        <a href="close-sprint" class="btn btn-default" id="closeSprintSubmite" data-dismiss="modal">OK</a>
+        <button " type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
   </div>
 </div>
 		

@@ -225,7 +225,7 @@ $(function() {
 			$('.starlight').removeClass('starlight');
 		}
 	});
-	
+
 	$('#closeDetailsBtn').click(function(){
 		$('#detailStory').hide(500)
 	});
@@ -250,6 +250,21 @@ $(function() {
 		$("#storypointInput").prop("disabled", true);
 		$("#descriptionInput").prop("disabled", true);
 		$("#titleInput").prop("disabled", true);
+	});
+		
+	//on show popup to close sprint
+	$('#closeSprintModal').on('show.bs.modal', function(event) {
+		$.ajax({
+			url : "getClosedSprintMessage/",
+			type : "GET",
+			success : function(message) {
+				// Update the modal's content.
+				$('#closeSprintMessage').html(message.type);
+				if(message.id!=3){
+					$('closeSprintSubmite').hide();
+				}
+			}
+		});
 	});
 });
 
