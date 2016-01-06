@@ -139,9 +139,10 @@ $(function() {
 	
 
 	// Shortcut for opening the form
-	$(document).keydown(function(e) {
-		if (e.keyCode == 84 && e.shiftKey) {
-			$('.addTask').click();
+	$(document).keydown(function(evt) {
+		if (evt.keyCode == 84 && (evt.shiftKey)) {
+			evt.preventDefault();
+			$('#addTaskModal').modal();
 		}
 	});
 
@@ -214,120 +215,9 @@ $(function() {
 			$('.starlight').removeClass('starlight');
 		}
 	});
-	//association des tâches et des story avec les couleurs
-		//pour les story
-	$(document).ready(function(){
-		$('.story-card').each(function(){
-			var id = $(this).data('storyid');
-				switch(id%12){
-				case 1%12:
-					//$(this).css('color', 'rgb(237,28,36)');//red
-					$(this).css('background-color', 'rgba(237,28,36,0.55)');
-					break;
-				case 2%12:
-					//$(this).css('color', 'rgb(255,127,39)');//orange
-					$(this).css('background-color', 'rgba(255,127,39,0.55)');
-					break;
-				case 3%12:
-					//$(this).css('color', 'rgb(255,242,0)');//yellow
-					$(this).css('background-color', 'rgba(255,242,0,0.55)');
-					break;
-				case 4%12:
-					//$(this).css('color', 'rgb(34,177,76)');//green
-					$(this).css('background-color', 'rgba(34,177,76,0.55)');
-					break;
-				case 5%12:
-					//$(this).css('color', 'rgb(0,162,232)');//cyan
-					$(this).css('background-color', 'rgba(0,255,255,0.55)');
-					break;
-				case 6%12:
-					//$(this).css('color', 'rgb(63,72,204)');//blue
-					$(this).css('background-color', 'rgba(63,72,204,0.55)');
-					break;
-				case 7%12:
-					//$(this).css('color', 'rgb(163,73,164)');//purple
-					$(this).css('background-color', 'rgba(163,73,164,0.55)');
-					break;
-				case 8%12:
-					//$(this).css('color', 'rgb(255,0,128)');//pink
-					$(this).css('background-color', 'rgba(255,0,128,0.55)');
-					break;
-				case 9%12:
-					//$(this).css('color', 'rgb(255,201,14)');//ocra
-					$(this).css('background-color', 'rgba(255,201,14,0.55)');
-					break;
-				case 10%12:
-					//$(this).css('color', 'rgb(181,230,29)');//lime
-					$(this).css('background-color', 'rgba(9,106,9,0.55)');
-					break;
-				case 11%12:
-					//$(this).css('color', 'rgb(185,122,87)');//brown
-					$(this).css('background-color', 'rgba(185,122,87,0.55)');
-					break;
-				case 12%12:
-					//$(this).css('color', 'rgb(136,0,21)');//bordeau
-					$(this).css('background-color', 'rgba(136,0,21,0.55)');
-					break;
-				}
-		});
-	});
-		//pour les taches
-	$(document).ready(function(){
-		$('.task-card').each(function(){
-			var id = $(this).data('storyid');
-				switch(id%12){
-				case 1%12:
-					//$(this).css('color', 'rgb(237,28,36)');//red
-					$(this).css('background-color', 'rgba(237,28,36,0.55)');
-					break;
-				case 2%12:
-					//$(this).css('color', 'rgb(255,127,39)');//orange
-					$(this).css('background-color', 'rgba(255,127,39,0.55)');
-					break;
-				case 3%12:
-					//$(this).css('color', 'rgb(255,242,0)');//yellow
-					$(this).css('background-color', 'rgba(255,242,0,0.55)');
-					break;
-				case 4%12:
-					//$(this).css('color', 'rgb(34,177,76)');//green
-					$(this).css('background-color', 'rgba(34,177,76,0.55)');
-					break;
-				case 5%12:
-					//$(this).css('color', 'rgb(0,162,232)');//cyan
-					$(this).css('background-color', 'rgba(0,255,255,0.55)');
-					break;
-				case 6%12:
-					//$(this).css('color', 'rgb(63,72,204)');//blue
-					$(this).css('background-color', 'rgba(63,72,204,0.55)');
-					break;
-				case 7%12:
-					//$(this).css('color', 'rgb(163,73,164)');//purple
-					$(this).css('background-color', 'rgba(163,73,164,0.55)');
-					break;
-				case 8%12:
-					//$(this).css('color', 'rgb(255,0,128)');//pink
-					$(this).css('background-color', 'rgba(255,0,128,0.55)');
-					break;
-				case 9%12:
-					//$(this).css('color', 'rgb(255,201,14)');//ocra
-					$(this).css('background-color', 'rgba(255,201,14,0.55)');
-					break;
-				case 10%12:
-					//$(this).css('color', 'rgb(181,230,29)');//lime
-					$(this).css('background-color', 'rgba(9,106,9,0.55)');
-					break;
-				case 11%12:
-					//$(this).css('color', 'rgb(185,122,87)');//brown
-					$(this).css('background-color', 'rgba(185,122,87,0.55)');
-					break;
-				case 12%12:
-					//$(this).css('color', 'rgb(136,0,21)');//bordeau
-					$(this).css('background-color', 'rgba(136,0,21,0.55)');
-					break;
-				}
-		});
-	});
 });
+
+
 
 
 

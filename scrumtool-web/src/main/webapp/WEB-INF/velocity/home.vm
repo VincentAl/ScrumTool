@@ -49,7 +49,7 @@
 					<div id="message_helper_$messageHelperType" class="alert alert-$messageHelperType">$messageHelper</div>
 				</div>
 
-			<div id="addFormu">
+			 <div id="addFormu">
 					<h3> ADD STORY </h3>
 							<form action="new-story" method="POST">
 								<div class="form-group">
@@ -69,7 +69,7 @@
 								<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Submit</button>
 					
 							</form>
-					</div>
+					</div> 
 		<br>
 		
 			<div class="drag-container">
@@ -136,7 +136,7 @@
         <form role="form">
         <div class="form-group">
         	<label for="titleInput">Title</label>
-        	<input type ="text" class="form-control" value="titleInput" id="titleInput" ></input>
+        	<input type ="text" class="form-control" value="titleInput" id="titleInput" autofocus required></input>
         </div>
         <div class="form-group">
         	<label for="descriptionInput">Description</label>

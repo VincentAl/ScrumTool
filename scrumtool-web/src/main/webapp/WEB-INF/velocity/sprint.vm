@@ -84,22 +84,7 @@
   </div>
 		
 		</div>
-			
-				<div class="addFormuTask">
-					<h3> ADD TASK </h3>
-					<form action="new-task" method="POST">
-						<div class="form-group">
-							#springFormInput("task.title" "class='form-control' id='title' placeholder='Title' autofocus required")
-						</div>
-						<div class="form-group">
-							#springFormTextarea("task.description" "class='form-control' rows='3' id='description' placeholder='Description'")	
-						</div>
-						<br>
-						<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Submit</button>	
-					</form>
-				</div>
-			
-			
+
 			<div class="drag-container">
 		<ul class="drag-list">
 			<li class="drag-column drag-column-on-hold">
@@ -110,7 +95,6 @@
 					#foreach($story in $TODO_story)
 						<li class="drag-item story-card" data-storyid="$story.id" id="storyid$story.id">
 							<span class="drag-title" >$story.title</span>
-							<button type="button" class="close btnSup" id="story_$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p><span class="badge">$story.storyPoints</span></p>
 							<button type="button" class="btn btn-primary  btn-add-task" data-toggle="modal" data-target="#addTaskModal" data-idstory="$story.id">ADD TASK</button>				
 						</li>
@@ -125,7 +109,6 @@
 					#foreach($story in $DOING_story)
 						<li class="drag-item story-card" data-storyid="$story.id" id="storyid$story.id">
 							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$story.title</span>
-							<button type="button" class="close btnSup" id="story_$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p><span class="badge">$story.storyPoints</span></p>
 							<button type="button" class="btn btn-primary  btn-add-task" data-toggle="modal" data-target="#addTaskModal" data-idstory="$story.id">ADD TASK</button>				
 						</li>
@@ -140,7 +123,6 @@
 					#foreach($story in $DONE_story)
 						<li class="drag-item story-card" data-storyid="$story.id" id="storyid$story.id">
 							<span class="drag-title" data-toggle="modal" data-target="#detailsModal">$story.title</span>
-							<button type="button" class="close btnSup" id="story_$story.id" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 							<p><span class="badge">$story.storyPoints</span></p>
 						</li>
 					#end
@@ -231,7 +213,7 @@
         <form role="form" id="addNewTaskForm">
           <div class="form-group">
             <label for="addTask_title" class="control-label">Titre</label>
-            <input type="text" class="form-control" id="addTask_title" autofocus></input>
+            <input type="text" class="form-control" id="addTask_title" autofocus required></input>
           </div>
           <div class="form-group">
             <label for="addTask_description" class="control-label">Description</label>
