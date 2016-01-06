@@ -99,6 +99,7 @@ public class BacklogController {
 		model.addAttribute("messageHelperType", ((SprintServiceImpl) sprintService).getMessageHelperType());
 		model.addAttribute("categories", categories);
 		model.addAttribute("storyPoints", sortedStoryPointsMap);
+		model.addAttribute("allSprintClosed", sprintService.areAllSprintClosed());
 		model.put("story", new Story());
 		return "home";
 	}

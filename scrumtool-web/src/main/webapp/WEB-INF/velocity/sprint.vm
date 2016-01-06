@@ -17,16 +17,16 @@
 			<div class="container">
 				<div class="navbar-header">
 					<a id="titleLink" class="navbar-brand">Scrumtool</a>
+					
 				</div>
 				<div>
-      			<ul class="nav navbar-nav">
-        			<li><a href="home">Backlog</a></li>
-        			<li><a href="#">Sprint</a></li> 	
+				<ul id="sexyButtonContainer">
+      				<li id="sexyButton"><a href="close-sprint"><span class="glyphicon glyphicon-remove-sign"></span> Close sprint</a></li>
       			</ul>
       			<ul id="sexyButtonContainer">
-        			<li id="sexyButton"><a href="close-sprint"><span class="glyphicon glyphicon-remove-sign"></span> Close sprint</a></li>
+      				<li id="sexyButtonActive"><a href="#">Sprint</a></li> 	
+        			<li id="sexyButton" ><a href="home">Backlog</a></li>        			
       			</ul>
-      			
     		</div>
 			</div>
 		</nav>
@@ -89,7 +89,7 @@
 					<h3> ADD TASK </h3>
 					<form action="new-task" method="POST">
 						<div class="form-group">
-							#springFormInput("task.title" "class='form-control' id='title' placeholder='Title' autofocus")
+							#springFormInput("task.title" "class='form-control' id='title' placeholder='Title' autofocus required")
 						</div>
 						<div class="form-group">
 							#springFormTextarea("task.description" "class='form-control' rows='3' id='description' placeholder='Description'")	
