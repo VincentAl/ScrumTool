@@ -40,6 +40,7 @@ public class Task {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Story story;
 	
+	@JsonView(View.Summary.class)
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User user;
 	
@@ -49,6 +50,7 @@ public Task(String title, String description, TaskColumn category) {
 		this.title = title;
 		this.description = description;
 		this.category = category;
+		this.user = user;
 	}
 
 public Task() {}

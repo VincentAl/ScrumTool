@@ -44,11 +44,11 @@ var saveStory = function(story) {
 };
 
 
-var createNewTask = function(idStory, taskTitle, taskDescription) {
+var createNewTask = function(idStory, taskTitle, taskDescription, idUser) {
 	$.ajax({
 		url : "new-task/",
 		method : "POST",
-		data : JSON.stringify({'idStory': idStory, 'taskTitle': taskTitle, 'taskDescription': taskDescription}),
+		data : JSON.stringify({'idStory': idStory, 'taskTitle': taskTitle, 'taskDescription': taskDescription,'idUser': idUser }),
 		dataType : "json",
 		contentType : "application/json",
 		success : function(data, status, req) {
@@ -57,7 +57,9 @@ var createNewTask = function(idStory, taskTitle, taskDescription) {
 				'<li class="drag-item task-card" data-taskid="'+data.id+'" data-storyid="'+idStory+'">'+
 				'<span class="drag-title" >'+taskTitle+'</span>'+
 				'<button type="button" class="close btnSup" id="task_'+data.id+'" data-dismiss="alert" aria-label="Close">'+
-				'<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></li>'
+				'<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>'+
+				'<img class="drag-img" src="http://www.gravatar.com/avatar/'+data.user.hash+'"/>'+
+				'</li>'
 			);
 			$('#addTaskModal').modal('hide').find('form')[0].reset();
 			putColorOn('.task-card');

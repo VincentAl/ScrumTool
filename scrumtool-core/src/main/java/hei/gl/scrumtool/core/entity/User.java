@@ -1,5 +1,7 @@
 package hei.gl.scrumtool.core.entity;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -7,8 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
@@ -28,13 +31,32 @@ public class User {
 	private List<Task> task;
 	
 	String name;
-
+	
+	@JsonView(View.Summary.class)
+	String mail;
+	
+	@JsonView(View.Summary.class)
+	String hash;
+	
 	public long getId() {
 		return id;
 	}
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	
+	public String getHash() {
+		String hash = MD5Util.md5Hex(this.mail);
+		return hash;
 	}
 
 	public List<Sprint> getSprintAsScrumMaster() {

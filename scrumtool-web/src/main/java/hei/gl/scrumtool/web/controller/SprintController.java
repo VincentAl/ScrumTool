@@ -1,6 +1,8 @@
 package hei.gl.scrumtool.web.controller;
 
-import java.util.ArrayList;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList; 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -23,12 +25,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import hei.gl.scrumtool.core.entity.Sprint;
 import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.entity.Task;
+import hei.gl.scrumtool.core.entity.User;
 import hei.gl.scrumtool.core.enumeration.StoryColumn;
 import hei.gl.scrumtool.core.enumeration.StoryPoint;
 import hei.gl.scrumtool.core.enumeration.TaskColumn;
 import hei.gl.scrumtool.core.service.SprintService;
 import hei.gl.scrumtool.core.service.StoryService;
 import hei.gl.scrumtool.core.service.TaskService;
+import hei.gl.scrumtool.core.service.UserService;
 import hei.gl.scrumtool.core.service.impl.SprintServiceImpl;
 
 @Controller
@@ -44,6 +48,9 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 	@Inject
 	private TaskService taskService;
 	
+	@Inject
+	private UserService UserService;
+	 
 	@RequestMapping(value="/sprint", method=RequestMethod.GET)
 	public String homeSprint(ModelMap model){
 
@@ -51,6 +58,15 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 		List<Story> storyList = storyService.findBySprint(currentSprint);
 		List<Task> taskList = new ArrayList<>();
 		
+		List<User> userList = UserService.findAll();
+		
+		Map<String, Map<String, User>> usersList = new HashMap();	
+		Map<String, User> userMap = new HashMap();
+		for (User user :userList) {
+		userMap.put(String.valueOf(user.getId()), user);
+		usersList.put("usersList", userMap);
+		}
+				
 		for (Story story : storyList) {
 			taskList.addAll(taskService.findByStory(story.getId()));
 		}
@@ -104,6 +120,7 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 		
 		model.addAllAttributes(storiesList);
 		model.addAllAttributes(tasksList);
+		model.addAllAttributes(usersList);
 		model.put("task", new Task());
 		return "sprint";
 	}

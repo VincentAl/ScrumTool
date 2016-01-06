@@ -4,6 +4,7 @@ public class TaskDTO {
 	private Integer idStory;
     private String taskTitle;
     private String taskDescription;
+    private Integer idUser;
     
 	public Integer getIdStory() {
 		return idStory;
@@ -22,5 +23,11 @@ public class TaskDTO {
 	}
 	public void setTaskDescription(String taskDescription) {
 		this.taskDescription = taskDescription;
+	}
+	public Integer getIdUser() {
+		return idUser;
+	}
+	public void setIdUSer(Integer idUser) {
+		this.idUser = idUser;
 	}
 }

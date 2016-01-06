@@ -1,5 +1,6 @@
 package hei.gl.scrumtool.core.dao;
 
+import hei.gl.scrumtool.core.entity.Task;
 import hei.gl.scrumtool.core.entity.User;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public interface UserDAO extends JpaRepository<User, Long> {
 	User findById(Long id);
 	
 	User save (User user);
+	
 
 	@Override
 	List<User> findAll();

@@ -170,6 +170,18 @@ ul {
 	min-height: 50px;
 }
 
+/* Taille des images dans les tâches du sprint*/
+.drag-img {
+	width: 40px;
+    margin-left: 88%;
+    position: relative;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius:1px;
+
+}
+
 /* Permet de prendre les items */
 .drag-item {
 	padding: 5px;

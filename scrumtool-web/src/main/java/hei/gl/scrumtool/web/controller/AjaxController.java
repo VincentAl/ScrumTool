@@ -1,13 +1,18 @@
 package hei.gl.scrumtool.web.controller;
 
-import hei.gl.scrumtool.core.dto.TaskDTO;
+import hei.gl.scrumtool.core.dto.TaskDTO; 
 import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.entity.Task;
 import hei.gl.scrumtool.core.entity.View;
+import hei.gl.scrumtool.core.entity.User;
 import hei.gl.scrumtool.core.enumeration.StoryColumn;
 import hei.gl.scrumtool.core.enumeration.TaskColumn;
 import hei.gl.scrumtool.core.service.StoryService;
 import hei.gl.scrumtool.core.service.TaskService;
+import hei.gl.scrumtool.core.service.UserService;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -17,6 +22,7 @@ import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +42,9 @@ public class AjaxController {
 	
 	@Inject
 	private TaskService taskService;
+	
+	@Inject
+	private UserService userService;
 
 	@ResponseBody
 	@RequestMapping(value = "/story/{id}", method = RequestMethod.DELETE)
@@ -105,8 +114,9 @@ public class AjaxController {
 		Task newTask = new Task(taskDTO.getTaskTitle(), taskDTO.getTaskDescription(), TaskColumn.TODO);
 		taskService.save(newTask);
 		newTask.setStory(storyService.findById(taskDTO.getIdStory()));
+		newTask.setUser(userService.findByID(taskDTO.getIdUser()));
 		newTask.setPriority(taskService.findByCategory(newTask.getCategory()).size());
-		newTask = taskService.save(newTask);
+		newTask = taskService.save(newTask);	
 		return newTask;
 	}
 

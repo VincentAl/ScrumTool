@@ -75,8 +75,9 @@ $(function() {
 		var idStory = $(this).find('#addTask_idStory').val();
 		var taskTitle = $(this).find('#addTask_title').val();
 		var taskDescription = $(this).find('#addTask_description').val();
+		var idUser = $(this).find('#addTask_idUser').val();
 
-		createNewTask(idStory, taskTitle, taskDescription);
+		createNewTask(idStory, taskTitle,taskDescription, idUser) ;
 		return false;
 	});
 
