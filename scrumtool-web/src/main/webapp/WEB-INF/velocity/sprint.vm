@@ -216,7 +216,7 @@
         <form role="form" id="addNewTaskForm">
           <div class="form-group">
             <label for="addTask_title" class="control-label">Titre</label>
-            <input type="text" class="form-control" id="addTask_title" autofocus required></input>
+            <input type="text" class='form-control' id='addTask_title' autofocus required></input>
           </div>
           <div class="form-group">
             <label for="addTask_description" class="control-label">Description</label>
