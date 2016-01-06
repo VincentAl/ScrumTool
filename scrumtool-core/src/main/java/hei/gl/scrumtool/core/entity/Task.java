@@ -37,7 +37,7 @@ public class Task {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date duration;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Story story;
 	
 	@JsonView(View.Summary.class)

@@ -97,7 +97,7 @@ $(function() {
 	});
 	
 	//Suppression d'une tâche 
-	$(".btnSupT").click(function(e) {
+	$(".drag-inner-list").on('click', '.btnSupT',function(e) {
 		e.stopPropagation();
 		var taskId=$(this).attr('id')
 		var id = taskId.substr(5,5);

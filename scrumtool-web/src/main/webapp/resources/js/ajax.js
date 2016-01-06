@@ -56,7 +56,7 @@ var createNewTask = function(idStory, taskTitle, taskDescription, idUser) {
 			$('#task_column_1').append(
 				'<li class="drag-item task-card" data-taskid="'+data.id+'" data-storyid="'+idStory+'">'+
 				'<span class="drag-title" >'+taskTitle+'</span>'+
-				'<button type="button" class="close btnSup" id="task_'+data.id+'" data-dismiss="alert" aria-label="Close">'+
+				'<button type="button" class="close btnSupT" id="task_'+data.id+'" data-dismiss="alert" aria-label="Close">'+
 				'<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>'+
 				'<img class="drag-img" src="http://www.gravatar.com/avatar/'+data.user.hash+'"/>'+
 				'</li>'
