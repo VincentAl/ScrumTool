@@ -1,0 +1,216 @@
+diff a/scrumtool-web/src/main/webapp/resources/css/scrumtool.css b/scrumtool-web/src/main/webapp/resources/css/scrumtool.css	(rejected hunks)
+@@ -246,118 +246,125 @@
+ 	border-color: #C0C0C0;
+ 	
+ }*/
++#addFormu {
++	display: none;
++	border: 6px solid #CCCCCC;
++	border-radius: 7px;
++	padding: 2em;
++	width: 400px;
++	text-align: center;
++	background: #F0F0F0;
++	position: absolute;
++	Z-Index: 2;
++	top: 50%;
++	left: 50%;
++	transform: translate(-50%, -50%);
++}
+ 
+-#addFormu { 
+-  display: none;
+-  border: 6px solid #CCCCCC; 
+-  border-radius: 7px;
+-  padding: 2em;
+-  width: 400px;
+-  text-align: center;
+-  background: #F0F0F0;
+-  position: absolute;
+-  Z-Index:2;
+-  top:50%;
+-  left:50%;
+-  transform: translate(-50%,-50%);
+-}
+-
+-input, textarea { 
+-  margin: .8em auto;
+-  -webkit-font-smoothing: antialiased;
+-  display: block; 
+-  width: 280px; 
+-  padding: .4em;
+-}
+-
+-textarea { height: 80px; resize: none; }
+-
+-.formBtn { 
+-  width: 140px;
+-  display: inline-block;
+-  background: teal;
+-  color: #fff;
+-  font-weight: 100;
+-  font-size: 1.2em;
+-  border: none;
+-  height: 30px;
++input, textarea {
++	margin: .8em auto;
++	-webkit-font-smoothing: antialiased;
++	display: block;
++	width: 280px;
++	padding: .4em;
++}
++
++textarea {
++	height: 80px;
++	resize: none;
++}
++
++.formBtn {
++	width: 140px;
++	display: inline-block;
++	background: teal;
++	color: #fff;
++	font-weight: 100;
++	font-size: 1.2em;
++	border: none;
++	height: 30px;
+ }
+ /*affichage des messages*/
+ #message_helper {
+-	margin-top:25px;
++	margin-top: 25px;
+ }
+ 
+ /*sexyTroll*/
+-.sexyTroll{
+-	background-image:url('http://41.media.tumblr.com/8ffaf9c5dfa2bb7760f98d00e084636a/tumblr_nzcqroWdIm1v1wvcuo1_1280.jpg');
+-	position:absolute;
+-	background-size:500px;
+-	z-index:1000000000;
+-	top:0;
+-	bottom:0;
+-	right:0;
+-	left:0;
++.sexyTroll {
++	background-image:
++		url('http://41.media.tumblr.com/8ffaf9c5dfa2bb7760f98d00e084636a/tumblr_nzcqroWdIm1v1wvcuo1_1280.jpg');
++	position: absolute;
++	background-size: 500px;
++	z-index: 1000000000;
++	top: 0;
++	bottom: 0;
++	right: 0;
++	left: 0;
+ }
+ 
+ /* Bouton ajouter t�che */
+-.addTask{
+-  -webkit-user-select: none;     
+-  -moz-user-select: none;
+-  -ms-user-select: none;
+-  width: 100px; 
+-  height: 30px; 
+-  line-height: 30px;
+-  background-color: #B8B8B8;
+-  border-radius: 3px;
+-  color: black;
+-  font-weight: 700;
+-  text-align: center;
+-  cursor: pointer;
+-  border: 1px solid white;
+-  margin-left: 230px;
++.addTask {
++	-webkit-user-select: none;
++	-moz-user-select: none;
++	-ms-user-select: none;
++	width: 100px;
++	height: 30px;
++	line-height: 30px;
++	background-color: #B8B8B8;
++	border-radius: 3px;
++	color: black;
++	font-weight: 700;
++	text-align: center;
++	cursor: pointer;
++	border: 1px solid white;
++	margin-left: 230px;
+ }
+ 
+-.addTask:hover { background: #575757; }
++.addTask:hover {
++	background: #575757;
++}
+ 
+-.addFormuTask { 
+-  display: none;
+-  border: 6px solid #CCCCCC; 
+-  border-radius: 7px;
+-  padding: 2em;
+-  width: 400px;
+-  text-align: center;
+-  background: #F0F0F0;
+-  position: absolute;
+-  Z-Index:2;
+-  top:50%;
+-  left:50%;
+-  transform: translate(-50%,-50%);
++.addFormuTask {
++	display: none;
++	border: 6px solid #CCCCCC;
++	border-radius: 7px;
++	padding: 2em;
++	width: 400px;
++	text-align: center;
++	background: #F0F0F0;
++	position: absolute;
++	Z-Index: 2;
++	top: 50%;
++	left: 50%;
++	transform: translate(-50%, -50%);
+ }
+ 
+ /* D�tails t�ches */
+-#detailStory{
+-	background-color:#6a6a6a;
+-	opacity:0.95;
+-	border-radius:3px;
++#detailStory {
++	opacity: 0.95;
++	border-radius: 3px;
++	margin-top: 20px;
+ }
+ 
+-.tab-content{
+-	color:white;
+-	padding-left:5px;
++.tab-content {
++	padding: 5px;
++	background-color: white;
+ }
+ 
+-.nav-tabs>li>a{
+-	color:black;
++.nav-tabs>li>a {
++	color: white;
++	background-color: grey;
+ }
+ 
+ /* eclairage des stories et tasks */
+ 
+-.story-card{
++/* eclairage des stories et tasks */
++.story-card {
+ 	border: 2px solid rgba(0, 0, 0, 0);
+ }
+-.starlight {
+-    box-shadow: 0 0 30px rgb(0, 8, 255);
+-    border: 2px solid rgba(0, 8, 255, 0.92);
+-    border-radius: 2px;
+-}
+ 
++.starlight {
++	box-shadow: 0 0 30px rgb(52, 152, 219);
++	border: 2px solid rgba(52, 152, 219, 0.92); /*(0, 8, 255, 0.92);*/
++	border-radius: 2px;
++}
+\ No newline at end of file

@@ -230,6 +230,7 @@ $(function() {
 		$('#detailStory').hide(500)
 	});
 	
+
 	$('#editStoryBtn').click(function(){
 		$("#editStoryBtn").hide();
 		$("#closeDetailsBtn").hide();
@@ -265,6 +266,33 @@ $(function() {
 				}
 			}
 		});
+	});
+
+	$('#closeDetailsBtn').click(function(){
+		$('#detailStory').hide(500)
+	});
+	
+	$('#editStoryBtn').click(function(){
+		$("#editStoryBtn").hide();
+		$("#closeDetailsBtn").hide();
+		$("#saveModifications").show();
+		$("#cancelEditBtn").show();
+		
+		$("#storypointInput").prop("disabled", false);
+		$("#descriptionInput").prop("disabled", false);
+		$("#titleInput").prop("disabled", false);
+	});
+	
+	$("#cancelEditBtn").click(function(){
+		$("#editStoryBtn").show();
+		$("#closeDetailsBtn").show();
+		$("#saveModifications").hide();
+		$("#cancelEditBtn").hide();
+		
+		$("#storypointInput").prop("disabled", true);
+		$("#descriptionInput").prop("disabled", true);
+		$("#titleInput").prop("disabled", true);
+
 	});
 });
 
