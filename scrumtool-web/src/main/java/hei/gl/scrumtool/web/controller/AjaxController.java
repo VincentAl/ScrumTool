@@ -1,13 +1,10 @@
 package hei.gl.scrumtool.web.controller;
 
-<<<<<<< HEAD
 import hei.gl.scrumtool.core.dto.TaskDTO; 
 import java.util.List;
-=======
 import hei.gl.scrumtool.core.dto.TaskDTO;
 import hei.gl.scrumtool.core.entity.Message;
 import hei.gl.scrumtool.core.entity.Sprint;
->>>>>>> affichage du message l'ors de la fermetur d'un sprint.
 import hei.gl.scrumtool.core.entity.Story;
 import hei.gl.scrumtool.core.entity.Task;
 import hei.gl.scrumtool.core.entity.View;

@@ -69,7 +69,9 @@ public class BacklogController {
 		
 		Map<StoryColumn, String> categories = new HashMap();
 		for (StoryColumn storyColumn : StoryColumn.values()) {
+			if( storyColumn.getId() < 4){
 			categories.put(storyColumn, storyColumn.getLabel());
+			}
 		}
 
 		Map<StoryPoint, String> storyPoints = new HashMap();
