@@ -84,6 +84,21 @@ public class AjaxController {
 		storyService.update(story);
 		return "{}";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/task/{id}", method = RequestMethod.PATCH)
+	public String updateTask(@PathVariable("id") long id ,@RequestBody Task task) {
+		Task oldTask = taskService.findByID(id);
+		// pour ne pas écraser les anciennes valeurs à null
+		task.setCategory(oldTask.getCategory());
+		task.setPriority(oldTask.getPriority());
+		task.setDuration(oldTask.getDuration());
+		task.setStory(oldTask.getStory());
+		task.setUser(oldTask.getUser());
+		// update la task avec les nouvelles valeurs
+		taskService.update(task);
+		return "{}";
+	}
 
 	@ResponseBody
 	@JsonView(View.Summary.class)
