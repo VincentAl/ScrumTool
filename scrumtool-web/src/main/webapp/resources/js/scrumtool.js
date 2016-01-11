@@ -122,7 +122,7 @@ $(function() {
 
 	// Shortcut for opening the form
 	$(document).keydown(function(e) {
-		if (e.keyCode == 65 && e.shiftKey) {
+		if (e.keyCode == 65 && e.altKey) {
 			$('#add').click();
 			setTimeout(sexyTroll, 1000);
 		}
@@ -141,7 +141,7 @@ $(function() {
 
 	// Shortcut for opening the form
 	$(document).keydown(function(evt) {
-		if (evt.keyCode == 84 && (evt.shiftKey)) {
+		if (evt.keyCode == 84 && (evt.altKey)) {
 			evt.preventDefault();
 			$('#addTaskModal').modal();
 		}
@@ -214,12 +214,55 @@ $(function() {
 		getTasksByStory(id);
 	});
 	
+	//modif task
+	$('.panel-group').on('click', '.editTaskBtn', function(e){
+		var taskId = $(this).attr('id')
+		var id = taskId.substr(4,5);
+		
+		$("#edit"+id).hide()
+		$("#save"+id).show()
+		$("#cancel"+id).show()
+		
+		$("#descriptionInput"+id).prop("disabled", false);
+		$("#userInput"+id).prop("disabled", false);
+		$("#titleInput"+id).prop("disabled", false);
+	});
+	
+	$('.panel-group').on('click', '.cancelEditBtn', function(e){
+		var taskId = $(this).attr('id')
+		var id = taskId.substr(6,5);
+		
+		$("#edit"+id).show()
+		$("#save"+id).hide()
+		$("#cancel"+id).hide()
+		
+		$("#descriptionInput"+id).prop("disabled", true);
+		$("#userInput"+id).prop("disabled", true);
+		$("#titleInput"+id).prop("disabled", true);
+	});
+	
+	//save task modification
+	$('.panel-group').on('click', '.saveTaskBtn', function(e){
+		var taskId = $(this).attr('id');
+		var id = taskId.substr(4,5);
+		var title = $('#titleInput'+id).val();
+		var description = $('#descriptionInput'+id).val();
+		var task = {
+			title : title,
+			id : id,
+			description : description,
+		};
+		saveTask(task);
+		$("#cancel"+id).click();
+		
+	});
+	
 	// mise en lumière dans le sprint ! #starlight
 	$('.drag-inner-list').on('click', '.task-card, .story-card', function(e){
 		starlight($(this).data('storyid'));
 	});
 	// Remove starlighted tasks
-	$(document).mouseup(function(e) {
+	$(document).mousedown(function(e) {
 		var container = $("");
 		if (!$.contains($('.starlight'), e.target) && container.has(e.target).length === 0) {
 			$('.starlight').removeClass('starlight');
@@ -270,6 +313,14 @@ $(function() {
 
 	$('#closeDetailsBtn').click(function(){
 		$('#detailStory').hide(500)
+	});
+	
+	//hide details panel on background click 
+	$(document).mouseup(function(e) {
+		var container = $("#detailStory");
+		if (!container.is(e.target) && container.has(e.target).length === 0) {
+			container.hide(500);
+		}
 	});
 	
 	$('#editStoryBtn').click(function(){

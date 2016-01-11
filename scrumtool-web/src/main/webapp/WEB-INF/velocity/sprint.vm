@@ -71,7 +71,8 @@
           
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">
-    
+    	<p class="modalStatusInfo bg-success text-success">Update successful</p>
+    	<p class="modalStatusInfo bg-danger text-danger">Update failure</p>
     <div class="panel-group" id="accordion" role="tablist">
   		
   	

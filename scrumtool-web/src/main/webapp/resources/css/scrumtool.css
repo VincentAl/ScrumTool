@@ -189,6 +189,14 @@ ul {
 
 }
 
+.taskAvatar {
+	width: 40px;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius:1px;
+}
+
 /* Permet de prendre les items */
 .drag-item {
 	padding: 5px;

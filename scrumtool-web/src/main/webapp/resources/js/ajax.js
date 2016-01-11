@@ -43,6 +43,29 @@ var saveStory = function(story) {
 	});
 };
 
+var saveTask = function(task) {
+	
+	$.ajax({
+		url : "task/" + task.id,
+		method : "PATCH",
+		data : JSON.stringify(task),
+		dataType : "json",
+		contentType : "application/json",
+		success : function(data, status, req) {
+			$(".bg-success").slideToggle();
+			var title = $('#titleInput'+task.id).val();
+			var description = $('#descriptionInput'+task.id).val();
+			$('[data-taskid = "'+ task.id +'"]').find(".drag-title").text(title);
+			$('#taskTitleRef'+task.id).html(task.title);
+			
+		},
+		error : function(req, status, error) {
+			console.log("error", error);
+			$(".bg-danger").slideToggle();
+		}
+	});
+};
+
 
 var createNewTask = function(idStory, taskTitle, taskDescription, idUser) {
 	$.ajax({
@@ -63,6 +86,7 @@ var createNewTask = function(idStory, taskTitle, taskDescription, idUser) {
 			);
 			$('#addTaskModal').modal('hide').find('form')[0].reset();
 			putColorOn('.task-card');
+			$('.story-card').click();
 			
 		},
 		error : function(req, status, error) {
@@ -147,10 +171,47 @@ var getTasksByStory = function(storyId) {
 		method : "GET",
 		success : function(tasks) {
 			$('.panel-group').empty()
+			if (jQuery.isEmptyObject(tasks)){
+				$('.panel-group').html('<h4>No task for this story</h4>')
+			}
 			$.each(tasks, function(key, task) {
-				$('.panel-group').append("<div class='panel panel-default'><div class='panel-heading' role='tab' id='task"+task.id+"'><h4 class='panel-title'><a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapse"+task.id+"'>"+task.title+"</a></h4></div><div id='collapse"+task.id+"' class='panel-collapse collapse' role='tabpanel'><div class='panel-body'>Description : "+task.description+"</div></div></div>")
+				$('.panel-group').append(
+						"<div class='panel panel-default'>" +
+							"<div class='panel-heading' role='tab' id='task"+task.id+"'>" +
+								"<h4 class='panel-title'>" +
+									"<a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' id='taskTitleRef"+task.id+"' href='#collapse"+task.id+"'>"+task.title+"</a>" +
+								"</h4>" +
+							"</div>" +
+							"<div id='collapse"+task.id+"' class='panel-collapse collapse' role='tabpanel'>" +
+								"<div class='panel-body'>" +
+								"<form role='form'>"+
+									"<div class='form-group'>"+
+									"<label>Title</label>"+
+									"<input type ='text' class='form-control' value='"+task.title+"' id='titleInput"+task.id+"' disabled></input>"+
+								"</div>"+
+						        "<div class='form-group'>"+
+						        	"<label>Description</label>"+
+						        	"<input type ='text' class='form-control' value='"+task.description+"' id='descriptionInput"+task.id+"' disabled></input>"+
+						        "</div>"+
+						        "<div class='form-group'>"+
+					        	"<label>User</label>"+
+					        	"<br><img class='taskAvatar' src='http://www.gravatar.com/avatar/"+task.user.hash+"'/>" +
+					        	"<span> "+task.user.mail+"</span>"+
+					        			
+					        "</div>"+
+						        
+						        "</form>"+
+						        "<hr>"+
+						        "<button type='button' class='btn btn-primary editTaskBtn' id='edit"+task.id+"'> <span class='glyphicon glyphicon-pencil'></span> Edit task</button>"+
+						        
+						        "<button type='button' class='btn btn-success saveTaskBtn' id='save"+task.id+"' style='display: none;'> <span class='glyphicon glyphicon-ok'></span> Save Modification</button> "+
+						        "<button type='button' class='btn btn-danger cancelEditBtn' id='cancel"+task.id+"' style='display: none;'><span class='glyphicon glyphicon-remove'></span>Cancel</button>"+
+								"</div>" +
+							"</div>" +
+						"</div>")
 
 			})
 		}
 	});
+		
 }
