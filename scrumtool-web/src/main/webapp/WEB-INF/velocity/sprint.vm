@@ -247,7 +247,7 @@
         <h4 class="modal-title">closing of Sprint</h4>
       </div>
       <div class="modal-body">
-        <p id="closeSprintMessage">Some text in the modal.</p>
+        <p id="closeSprintMessage">Etes vous sur de fermer le sprint.</p>
       </div>
       <div class="modal-footer">      	
         <a href="close-sprint" class="btn btn-default" id="closeSprintSubmite">OK</a>
