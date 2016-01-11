@@ -21,7 +21,7 @@
 				</div>
 				<div>
 				<ul id="sexyButtonContainer">
-      				<li id="sexyButton"><span class="glyphicon glyphicon-remove-sign data-toggle="modal" data-target="#closeSprintModal" "></span> Close sprint</li>
+      				<li id="sexyButton" type="button" data-toggle="modal" data-target="#closeSprintModal"><a><span class="glyphicon glyphicon-remove-sign"></span> Close sprint</a></li>
       			</ul>
       			<ul id="sexyButtonContainer">
       				<li id="sexyButtonActive"><a href="#">Sprint</a></li> 	

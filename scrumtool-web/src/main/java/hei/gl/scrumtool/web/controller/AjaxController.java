@@ -149,7 +149,7 @@ public class AjaxController {
 			boolean incoherentState = false;
 			List<Story> storiesInIncoherentState=new ArrayList<Story>();
 			List<Story> storiesNotEnd=new ArrayList<Story>();
-			for(Story story : sprint.getStoryList()){
+			for(Story story : storyService.findBySprint(sprint)){
 				if(story.getCategory()==StoryColumn.DONE){
 					for(Task task : story.getTasksList()){
 						if(task.getCategory()!=TaskColumn.DONE)
