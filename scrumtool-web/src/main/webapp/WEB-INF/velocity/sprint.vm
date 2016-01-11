@@ -250,7 +250,7 @@
         <p id="closeSprintMessage">Some text in the modal.</p>
       </div>
       <div class="modal-footer">      	
-        <a href="close-sprint" class="btn btn-default" id="closeSprintSubmite" data-dismiss="modal">OK</a>
+        <a href="close-sprint" class="btn btn-default" id="closeSprintSubmite">OK</a>
         <button " type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
