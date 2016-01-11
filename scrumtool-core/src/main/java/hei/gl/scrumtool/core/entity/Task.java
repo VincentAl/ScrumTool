@@ -41,7 +41,7 @@ public class Task {
 	private Story story;
 	
 	@JsonView(View.Summary.class)
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private User user;
 	
 	
