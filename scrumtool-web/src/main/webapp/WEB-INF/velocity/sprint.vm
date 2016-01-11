@@ -21,11 +21,7 @@
 				</div>
 				<div>
 				<ul id="sexyButtonContainer">
-				    <li id="sexyButton"><a href="close-sprint"><span class="glyphicon glyphicon-remove-sign"></span> Close sprint</a></li>
-				
-      			<!--	
-      				<li id="sexyButton"><span class="glyphicon glyphicon-remove-sign data-toggle="modal" data-target="#closeSprintModal" "></span> Close sprint</li>
-      			-->
+      				<li id="sexyButton" type="button" data-toggle="modal" data-target="#closeSprintModal"><a><span class="glyphicon glyphicon-remove-sign"></span> Close sprint</a></li>
       			</ul>
       			<ul id="sexyButtonContainer">
       				<li id="sexyButtonActive"><a href="#">Sprint</a></li> 	
@@ -251,10 +247,10 @@
         <h4 class="modal-title">closing of Sprint</h4>
       </div>
       <div class="modal-body">
-        <p id="closeSprintMessage">Some text in the modal.</p>
+        <p id="closeSprintMessage">Etes vous sur de fermer le sprint.</p>
       </div>
       <div class="modal-footer">      	
-        <a href="close-sprint" class="btn btn-default" id="closeSprintSubmite" data-dismiss="modal">OK</a>
+        <a href="close-sprint" class="btn btn-default" id="closeSprintSubmite">OK</a>
         <button " type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

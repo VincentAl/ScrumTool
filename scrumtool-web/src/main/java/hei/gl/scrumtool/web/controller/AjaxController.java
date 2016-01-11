@@ -149,9 +149,9 @@ public class AjaxController {
 			boolean incoherentState = false;
 			List<Story> storiesInIncoherentState=new ArrayList<Story>();
 			List<Story> storiesNotEnd=new ArrayList<Story>();
-			for(Story story : sprint.getStoryList()){
+			for(Story story : storyService.findBySprint(sprint)){
 				if(story.getCategory()==StoryColumn.DONE){
-					for(Task task : story.getTasksList()){
+					for(Task task : taskService.findByStory(story)){
 						if(task.getCategory()!=TaskColumn.DONE)
 							incoherentState=true;
 						storiesInIncoherentState.add(story);
@@ -161,6 +161,7 @@ public class AjaxController {
 					storiesNotEnd.add(story);
 			}
 			if(incoherentState){
+				message.setId(3);
 				message.setContent(MessageEnum.STORY_TASK_NOT_FINISHED);
 				message.setType("Story ");
 				for(Story story : storiesInIncoherentState){
@@ -169,6 +170,7 @@ public class AjaxController {
 				message.setType(message.getType()+"are in incoherence state ");
 			}
 			else if(!storiesNotEnd.isEmpty()){
+				message.setId(2);
 				message.setContent(MessageEnum.STORY_NOT_FINISHED);
 				message.setType("Story ");
 				for(Story story : storiesNotEnd){
@@ -177,6 +179,7 @@ public class AjaxController {
 				message.setType(message.getType()+"are not finished and will be add to backlog ");
 			}
 			else{
+				message.setId(1);
 				message.setContent(MessageEnum.CLOSE_SPRINT);
 				message.setType("the sprint will be closed ");
 			}

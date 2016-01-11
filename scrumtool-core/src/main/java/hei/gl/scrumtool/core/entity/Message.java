@@ -1,11 +1,15 @@
 package hei.gl.scrumtool.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import hei.gl.scrumtool.core.enumeration.MessageEnum;
 
 public class Message {
 
+	@JsonView(View.Summary.class)
 	private long id;
 	
+	@JsonView(View.Summary.class)
 	private String type;
 	
 	private long idStory;

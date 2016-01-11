@@ -137,7 +137,7 @@ private final static Logger logger = LoggerFactory.getLogger(BacklogController.c
 			
 			/*
 			Sprint sprint=sprintService.findCurrentSprint();
-			for(Story story : sprint.getStoryList()){
+			for(Story story : storyService.findBySprint(sprint)){
 				 if(story.getCategory()!=StoryColumn.DONE){
 					story.setCategory(StoryColumn.NEXT_SPRINT);
 					storyService.update(story);

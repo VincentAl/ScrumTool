@@ -260,9 +260,14 @@ $(function() {
 			type : "GET",
 			success : function(message) {
 				// Update the modal's content.
-				$('#closeSprintMessage').html(message.type);
-				if(message.id!=3){
-					$('closeSprintSubmite').hide();
+				$('#closeSprintMessage').text(message.type);
+				console.log(message.type)
+				console.log(message.id)
+				if(message.id==3){
+					$('#closeSprintSubmite').hide();					
+				}
+				if(message.id==1||message.id==2){
+					$('#closeSprintSubmite').show();
 				}
 			}
 		});
